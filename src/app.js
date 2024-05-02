@@ -1,8 +1,11 @@
+import path from 'node:path';
+
 import express from 'express';
 
 import Router from './router.js';
 import mustacheExpress from 'mustache-express';
 
+import db from './db.js';
 import { NotFoundError } from './errors.js';
 import log from './logger.js';
 import { codes, phrases } from './statuscodes.js';
@@ -17,9 +20,21 @@ class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
     // Set view engine
-    this.app.engine('mustache', mustacheExpress());
-    this.app.set('views', './views');
+    const viewsPath = path.join(process.cwd(), 'views');
+    const partialsPath = path.join(viewsPath, 'partials');
+    this.app.engine('mustache', mustacheExpress(partialsPath, '.mustache'));
+    this.app.set('views', viewsPath);
     this.app.set('view engine', 'mustache');
+
+    // Serve public
+    const publicPath = path.join(process.cwd(), 'public');
+    this.app.use(express.static(publicPath));
+
+    // request logging
+    this.app.use((req, res, next) => {
+      log.info(`${req.method}:${req.url}`)
+      next()
+    });
   }
 
   #setupRoutes() {
@@ -57,11 +72,12 @@ class App {
     this.#setupMiddleware();
     this.#setupRoutes();
     this.#handleNotFound();
-    this.#handleError()
+    this.#handleError();
   }
 }
 
 const expressApp = new App(Router)
 expressApp.initialize();
+db.connect();
 
 export default expressApp.app

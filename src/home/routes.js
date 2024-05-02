@@ -10,7 +10,10 @@ export default {
       method: 'get',
       path: '/',
       middleware: [],
-      handler: (req, res) => res.render('home', { msg: 'Home is where the heart is!'}),
+      handler: (req, res) => res.render('home', {
+        pageName: 'Home',
+        msg: 'Home is where the heart is!'
+      }),
     }, {
       method: 'get',
       path: '/login',
