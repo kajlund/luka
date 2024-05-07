@@ -9,9 +9,11 @@
   --font-size-md: 2.4rem;
   --font-size-lg: 3rem;
   --font-size-xl: 4rem;
+
   --gap: 2rem;
   --margin-sm: 2rem;
   --margin-md: 3rem;
+
   --item-min-height-sm: 20rem;
   --item-min-height-md: 30rem;
 
@@ -24,6 +26,8 @@
   --transparent-light-color: rgba(255,255,255,.05);
   --transparent-dark-color: rgba(0,0,0,.75);
 }
+
+/* Base styles */
 
 * {
   margin: 0;
@@ -49,17 +53,53 @@ body {
   transition: background-color .25s, color .25s;
 }
 
-h1 {
-  font-size: 3.2rem;
-}
-
 a {
   text-decoration: none;
   color: inherit;
 }
 
-img {
-  max-width: 100%; /* No overflow of containers */
-  display: block;
+ul {
+  list-style: none;
 }
 
+img{
+  max-width: 100%;
+}
+
+input,
+button {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+}
+
+i {
+  font-size: var(--font-size-md);
+}
+
+/* Reusable classes */
+
+.container {
+  max-width: 128rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.place-items-center {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section {
+  padding-block: 5rem;
+}
+
+.d-grid {
+  display: grid;
+}
+
+.screen-sm-hidden {
+  display: none;
+}

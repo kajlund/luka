@@ -17,6 +17,8 @@ Simply my website
   - [x] Add favicon
   - [x] Add base stylesheet
 - [ ] Home page
+  - [x] Add header section with main navigation
+  - [ ] Add random quote functionality
 - [ ] Login
   - [ ] Add login screen
   - [ ] Add post login handler
