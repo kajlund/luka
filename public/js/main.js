@@ -9,7 +9,7 @@ const selectElement = (selector) => {
 // Add/Remove nav styles on scroll
 window.addEventListener('scroll', () => {
   const navbarElement = selectElement('#header');
-  if(this.scrollY >= 15) {
+  if(window.scrollY >= 15) {
     navbarElement.classList.add('activated');
   } else {
     navbarElement.classList.remove('activated');
@@ -24,4 +24,10 @@ menuToggleIcon.addEventListener('click', () => {
   mobileMenu.classList.toggle('activated');
 });
 
+// Theme toggle
+const themeToggleBtn = selectElement('#theme-toggle-btn');
+themeToggleBtn.addEventListener('click', () => {
+  console.log('click')
+  document.body.classList.toggle('light-theme');
+});
 

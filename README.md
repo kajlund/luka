@@ -19,10 +19,14 @@ Simply my website
 - [ ] Main Navigation
   - [x] Add header section with responsive navigation
   - [x] Add main.js script for handling popup menu
-  - [ ] Add theme toggle functionality
+  - [x] Add theme toggle functionality
+  - [ ] Persist theme selection
 - [ ] Home page
   - [x] Add random quote functionality
   - [ ] Add animation for displaing proverb
 - [ ] Login
   - [ ] Add login screen
   - [ ] Add post login handler
+- [ ] About page
+- [ ] Resources page
+- [ ] Blog page
