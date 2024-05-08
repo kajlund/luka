@@ -9,6 +9,28 @@
   <main>
 
   <section class="home">
+  {{ #proverb }}
+    <div class="card">
+      <div class="card-header">
+        <h1 class="title">{{ proverb.title }}</h1>
+      </div>
+      <div class="card-content">
+        <p class="proverb">
+          <span class="cite">&OpenCurlyDoubleQuote;</span>
+          {{ proverb.content }}
+          <span class="cite">&CloseCurlyDoubleQuote;</span>
+        </p>
+        <p class="author">
+          <em>&mdash; {{ proverb.author }}</em>
+          {{ proverb.description }}
+        </p>
+      </div>
+      <div class="card-footer">
+        <p>{{ proverb.group }}</p>
+        <p>{{ proverb.tags }}</p>
+      </div>
+    </div>
+  {{ /proverb }}
   </section>
   </main>
 </body>

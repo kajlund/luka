@@ -16,9 +16,13 @@ Simply my website
   - [x] Serve public folder
   - [x] Add favicon
   - [x] Add base stylesheet
+- [ ] Main Navigation
+  - [x] Add header section with responsive navigation
+  - [x] Add main.js script for handling popup menu
+  - [ ] Add theme toggle functionality
 - [ ] Home page
-  - [x] Add header section with main navigation
-  - [ ] Add random quote functionality
+  - [x] Add random quote functionality
+  - [ ] Add animation for displaing proverb
 - [ ] Login
   - [ ] Add login screen
   - [ ] Add post login handler

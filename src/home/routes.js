@@ -1,4 +1,5 @@
 import { BadRequestError } from '../errors.js';
+import Proverb from './proverb.model.js';
 
 export default {
   group: {
@@ -10,10 +11,16 @@ export default {
       method: 'get',
       path: '/',
       middleware: [],
-      handler: (req, res) => res.render('home', {
-        pageName: 'Home',
-        msg: 'Home is where the heart is!'
-      }),
+      handler: async (req, res) => {
+        const proverbs = await Proverb.find({ group: 'IT'});
+        const idx = Math.floor(Math.random() * proverbs.length);
+        const proverb =  proverbs[idx];
+        res.render('home', {
+          pageName: 'Home',
+          proverb,
+          msg: 'Home is where the heart is!'
+        });
+      }
     }, {
       method: 'get',
       path: '/login',
