@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon.ico">
+  <title>LuKa - {{ title }}</title>
+  <!-- Remix icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/media.css">
+  {% block css %}{% endblock %}
+  <script type="module" src="/js/main.js" defer></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="navbar container">
+      <a href="/">
+        <h2 class="logo">LuKaz</h2>
+      </a>
+
+      <div class="menu" id="menu">
+        <ul class="list">
+          <li class="list-item">
+            <a href="/" class="list-link {{ "current" if page=='home' }}">Home</a>
+          </li>
+          <li class="list-item">
+            <a href="#" class="list-link {{ "current" if page=='blog' }}">Blog</a>
+          </li>
+          <li class="list-item">
+            <a href="#" class="list-link {{ "current" if page=='resources' }}">Resources</a>
+          </li>
+          <li class="list-item">
+            <a href="/about" class="list-link {{ "current" if page=='about' }}">About</a>
+          </li>
+          <li class="list-item screen-lg-hidden">
+            <a href="/users/login" class="list-link {{ "current" if page=='login' }}">Log on</a>
+          </li>
+          <li class="list-item screen-lg-hidden">
+            <a href="/users/register" class="list-link {{ "current" if page=='register' }}">Register</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="list list-right">
+        <button class="btn place-items-center" id="theme-toggle-btn">
+          <i class="ri-sun-line sun-icon"></i>
+          <i class="ri-moon-line moon-icon"></i>
+        </button>
+
+        <button class="btn place-items-center screen-lg-hidden menu-toggle-icon"
+          id="menu-toggle-icon"
+        >
+          <i class="ri-menu-3-line open-menu-icon"></i>
+          <i class="ri-close-line close-menu-icon"></i>
+        </button>
+
+        <a href="/users/login" class="list-link screen-sm-hidden {{ "current" if page=='login' }}">Log on</a>
+        <a href="/users/register" class="list-link screen-sm-hidden {{ "current" if page=='register' }}">Register</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

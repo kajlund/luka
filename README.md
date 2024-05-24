@@ -2,6 +2,12 @@
 
 Simply my website
 
+## Resources
+
+- [Remix icons](https://remixicon.com/)
+- [Validator.js](https://github.com/validatorjs/validator.js/)
+- [Toastr](https://github.com/CodeSeven/toastr)
+
 ## ToDos
 
 - [x] Add basic files needed and commit initial
@@ -20,12 +26,16 @@ Simply my website
   - [x] Add header section with responsive navigation
   - [x] Add main.js script for handling popup menu
   - [x] Add theme toggle functionality
+  - [x] Highligt active page in main menu
   - [ ] Persist theme selection
 - [ ] Home page
   - [x] Add random quote functionality
   - [ ] Add animation for displaing proverb
+- [ ] Register user
+  - [x] Add register form
+  - [x] Add server functionality for adding user
 - [ ] Login
-  - [ ] Add login screen
+  - [x] Add login screen
   - [ ] Add post login handler
 - [ ] About page
 - [ ] Resources page

@@ -1,9 +1,9 @@
 import path from 'node:path';
 
 import express from 'express';
+import nunjucks from 'nunjucks';
 
 import Router from './router.js';
-import mustacheExpress from 'mustache-express';
 
 import db from './db.js';
 import { NotFoundError } from './errors.js';
@@ -19,12 +19,13 @@ class App {
   #setupMiddleware() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
+
     // Set view engine
-    const viewsPath = path.join(process.cwd(), 'views');
-    const partialsPath = path.join(viewsPath, 'partials');
-    this.app.engine('mustache', mustacheExpress(partialsPath, '.mustache'));
-    this.app.set('views', viewsPath);
-    this.app.set('view engine', 'mustache');
+    nunjucks.configure('views', {
+      autoescape: true,
+      express: this.app,
+    });
+    this.app.set('view engine', 'html');
 
     // Serve public
     const publicPath = path.join(process.cwd(), 'public');

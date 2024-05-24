@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% set title = 'Error' %}
+{% set page = 'error' %}
+
+{% block css %}
+  <link rel="stylesheet" href="/css/error.css" />
+{% endblock %}
+
+<section class="error">
+  <h1>Oops!</h1>
+  <h2>That's a {{ statusCode }}. {{ message }}</h2>
+  <p>{{ detail }}</p>
+</section>

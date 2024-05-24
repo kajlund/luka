@@ -1,0 +1,92 @@
+/*
+form {
+  --color-error: rgb(245, 137, 137);
+  --color-warning: #bea073;
+  --color-success: rgb(121, 196, 114);
+  --color-content-active: #5081a6;
+  --color-content-semi: #89b8dd;
+  --color-content-inactive: #cfe3f0;
+  color: #999;
+  padding: 1.5em;
+  margin: 1rem auto;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(27, 37, 46, 0.5);
+  }
+
+
+  .form-controls {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+label {
+  display: block;
+  font-size: 1.3rem;
+}
+
+.form-input {
+  padding: 1rem 0.5rem;
+  position: relative;
+  border: 1px solid var(--secondary-background-color);
+  border-radius: 1rem;
+}
+
+.form-input label {
+  display: block;
+} */
+
+.small-form {
+  margin-top: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40rem;
+}
+
+
+.form {
+  background-color: var(--light-color);
+  border: none;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.6rem;
+}
+
+.input {
+  border: 1px solid var(--light-color-alt);
+  border-radius: 0.6rem;
+  padding: 1rem;
+  color: var(--background-color-alt);
+  /* outline: 0; */
+  /* outline-color: azure; */
+}
+
+.input:active {
+  border: 2px solid var(--secondary-background-color);
+  color: var(--secondary-background-color);
+}
+
+.input-error {
+  color: coral;
+  font-size: var(--font-size-xs);
+  margin-left: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.input-label {
+  font-size: var(--font-size-xsm);
+  margin-left: 0.4rem;
+}
+

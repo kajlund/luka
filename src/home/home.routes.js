@@ -16,18 +16,15 @@ export default {
         const idx = Math.floor(Math.random() * proverbs.length);
         const proverb =  proverbs[idx];
         res.render('home', {
-          pageName: 'Home',
           proverb,
-          msg: 'Home is where the heart is!'
         });
       }
-    }, {
+    },
+    {
       method: 'get',
-      path: '/login',
+      path: '/about',
       middleware: [],
-      handler: (req, res) => {
-        throw new BadRequestError('That was bad');
-      }
+      handler: (req, res) => res.render('about')
     }
   ],
 }

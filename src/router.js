@@ -1,12 +1,13 @@
 import express from 'express';
 
 import log from './logger.js';
-import homeRoutes from './home/routes.js';
+import homeRoutes from './home/home.routes.js';
+import userRoutes from './users/user.routes.js';
 
 class Router {
   constructor() {
     this.router = express.Router();
-    this.routes = [homeRoutes];
+    this.routes = [homeRoutes, userRoutes];
   }
 
   #attachRoutes(routeGroups, prefix = '') {

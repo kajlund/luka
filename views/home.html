@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  {{ > head }}
-  <link rel="stylesheet" href="/css/home.css">
-</head>
-<body>
-  {{ > header }}
-  <main>
+{% extends 'base.html' %}
 
-  <section class="home">
-  {{ #proverb }}
+{% set title = 'Home' %}
+{% set page = 'home' %}
+
+{% block css %}
+  <link rel="stylesheet" href="/css/home.css" />
+{% endblock %}
+
+{% block content %}
+<section class="home">
+  {% if proverb %}
     <div class="card">
       <div class="card-header">
         <h1 class="title">{{ proverb.title }}</h1>
@@ -30,8 +30,6 @@
         <p>{{ proverb.tags }}</p>
       </div>
     </div>
-  {{ /proverb }}
+  {% endif %}
   </section>
-  </main>
-</body>
-</html>
+  {% endblock %}

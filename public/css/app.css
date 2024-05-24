@@ -4,6 +4,7 @@
   /* Variables */
   --gradient-color: linear-gradient(115deg,#4fcf70,#fad648,#a767e5,#12bcfe,#44ce7b);
   --font-family: 'Poppins', sans-serif;
+  --font-size-xs: 1rem;
   --font-size-xsm: 1.2rem;
   --font-size-sm: 1.6rem;
   --font-size-md: 2.4rem;
@@ -23,8 +24,8 @@
   --secondary-background-color: #252830;
   --hover-light-color: var(--light-color);
   --hover-dark-color: var(--primary-background-color);
-  --transparent-light-color: rgba(255,255,255,.05);
-  --transparent-dark-color: rgba(0,0,0,.75);
+  --transparent-light-color: rgba(255, 255, 255, .05);
+  --transparent-dark-color: rgba(0, 0, 0, .75);
 }
 
 /* Base styles */
@@ -53,8 +54,20 @@ body {
   transition: background-color .25s, color .25s;
 }
 
+h1 { margin-bottom: 2rem; }
+
+input,
+button {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+}
+
+i { font-size: var(--font-size-md); }
+
 /* Theme color change */
-body.light-theme{
+body.light-theme {
   --light-color: #3d3d3d;
   --light-color-alt: rgba(0,0,0,.6);
   --primary-background-color: #fff;
@@ -73,20 +86,8 @@ ul {
   list-style: none;
 }
 
-img{
+img {
   max-width: 100%;
-}
-
-input,
-button {
-  font: inherit;
-  color: inherit;
-  border: none;
-  background-color: transparent;
-}
-
-i {
-  font-size: var(--font-size-md);
 }
 
 /* Reusable classes */
@@ -113,4 +114,15 @@ i {
 
 .screen-sm-hidden {
   display: none;
+}
+
+.btn-primary {
+  padding: 1rem 1.5rem;
+  background-color: var(--transparent-dark-color);
+  color: var(--light-color);
+  border-radius: 0.5rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-background-color);
 }
