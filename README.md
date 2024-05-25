@@ -5,6 +5,7 @@ Simply my website
 ## Resources
 
 - [Remix icons](https://remixicon.com/)
+- [Nunjucks](https://mozilla.github.io/nunjucks/) Temmplating
 - [Validator.js](https://github.com/validatorjs/validator.js/)
 - [Toastr](https://github.com/CodeSeven/toastr)
 
@@ -36,7 +37,11 @@ Simply my website
   - [x] Add server functionality for adding user
 - [ ] Login
   - [x] Add login screen
+  - [x] Add session handling to server
   - [ ] Add post login handler
+  - [ ] Add logged in user image to menu bar
+  - [ ] Add logout option to menu bar. Only show relevant option
+  - [ ] Implement logout in server clearing session
 - [ ] About page
 - [ ] Resources page
 - [ ] Blog page

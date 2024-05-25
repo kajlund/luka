@@ -1,6 +1,7 @@
 import path from 'node:path';
 
 import express from 'express';
+import sessions from 'express-session';
 import nunjucks from 'nunjucks';
 
 import Router from './router.js';
@@ -10,6 +11,8 @@ import { NotFoundError } from './errors.js';
 import log from './logger.js';
 import { codes, phrases } from './statuscodes.js';
 
+const oneDay = 1000 * 60 * 60 * 24;
+
 class App {
   constructor(router) {
     this.app = express();
@@ -17,8 +20,20 @@ class App {
   }
 
   #setupMiddleware() {
+    this.app.set('trust proxy', 1) // trust first proxy
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
+
+    // Session handling
+    this.app.use(sessions({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: true,
+      cookie: {
+        maxAge: oneDay,
+        secure: 'auto'
+      }
+    }));
 
     // Set view engine
     nunjucks.configure('views', {
