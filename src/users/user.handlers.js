@@ -7,6 +7,28 @@ class UserHandlers {
     });
   }
 
+  async login(req, res) {
+    const {email, password } = req.body;
+    const user = await svcUser.login(email, password);
+    req.session.user = user;
+    if (user) {
+      res.render('home', {user});
+    } else {
+      res.render('login', {
+        message: 'Login failed'
+      });
+    }
+  }
+
+  logout(req, res) {
+    let email = '';
+    const user = req.session.user;
+    if (user) email = user.email;
+    req.session.destroy(function(err) {
+      res.render('home', { message: `Logged out user ${email}`});
+    });
+  }
+
   showRegisterForm(req, res) {
     res.render('register', {
       data: null,
@@ -18,9 +40,11 @@ class UserHandlers {
     if (!validation.isValid) return res.render('register', validation);
 
     const result = await svcUser.register(validation.value);
-    if (result.error) return res.render('error', result.error);
+    if (result.error) return res.render('message', result.error);
 
-    res.render('home', { message: `User ${result.user.email} was registered` });
+    res.render('home', {
+      message: `User ${result.user.email} was registered`
+    });
   }
 }
 

@@ -36,9 +36,15 @@
           <li class="list-item">
             <a href="/about" class="list-link {{ "current" if page=='about' }}">About</a>
           </li>
+          {% if user %}
+          <li class="list-item screen-lg-hidden">
+            <a href="/users/logout" class="list-link">Logoff</a>
+          </li>
+          {% else %}
           <li class="list-item screen-lg-hidden">
             <a href="/users/login" class="list-link {{ "current" if page=='login' }}">Log on</a>
           </li>
+          {% endif %}
           <li class="list-item screen-lg-hidden">
             <a href="/users/register" class="list-link {{ "current" if page=='register' }}">Register</a>
           </li>
@@ -58,7 +64,11 @@
           <i class="ri-close-line close-menu-icon"></i>
         </button>
 
+        {% if user %}
+          <a href="/users/logout" class="list-link screen-sm-hidden">Logout</a>
+        {% else %}
         <a href="/users/login" class="list-link screen-sm-hidden {{ "current" if page=='login' }}">Log on</a>
+        {% endif %}
         <a href="/users/register" class="list-link screen-sm-hidden {{ "current" if page=='register' }}">Register</a>
       </div>
     </nav>

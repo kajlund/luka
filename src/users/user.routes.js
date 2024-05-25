@@ -29,11 +29,13 @@ export default {
       method: 'post',
       path: '/login',
       middleware: [],
-      handler: (req, res) => {
-        res.render('login', {
-        pageName: 'Login'
-      });
-      }
+      handler: hndUser.login,
+    },
+    {
+      method: 'get',
+      path: '/logout',
+      middleware: [],
+      handler: hndUser.logout,
     }
   ],
 }

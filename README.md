@@ -38,10 +38,10 @@ Simply my website
 - [ ] Login
   - [x] Add login screen
   - [x] Add session handling to server
-  - [ ] Add post login handler
+  - [x] Add post login handler
   - [ ] Add logged in user image to menu bar
-  - [ ] Add logout option to menu bar. Only show relevant option
-  - [ ] Implement logout in server clearing session
+  - [x] Add logout option to menu bar. Only show relevant option
+  - [x] Implement logout in server clearing session
 - [ ] About page
 - [ ] Resources page
 - [ ] Blog page

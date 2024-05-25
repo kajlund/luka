@@ -1,5 +1,5 @@
 import { BadRequestError } from '../errors.js';
-import Proverb from './proverb.model.js';
+import svcProverbs from '../proverbs/proverb.service.js';
 
 export default {
   group: {
@@ -12,10 +12,10 @@ export default {
       path: '/',
       middleware: [],
       handler: async (req, res) => {
-        const proverbs = await Proverb.find({ group: 'IT'});
-        const idx = Math.floor(Math.random() * proverbs.length);
-        const proverb =  proverbs[idx];
+        const user = req.session.user;
+        const proverb = await svcProverbs.fetchRandomQuote();
         res.render('home', {
+          user,
           proverb,
         });
       }
@@ -24,7 +24,10 @@ export default {
       method: 'get',
       path: '/about',
       middleware: [],
-      handler: (req, res) => res.render('about')
+      handler: (req, res) => {
+        const user = req.session.user;
+        res.render('about', { user });
+      }
     }
   ],
 }

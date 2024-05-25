@@ -1,7 +1,9 @@
 import bcrypt from 'bcryptjs';
 import pkg from 'validator';
 const { isLength, isEmail } = pkg;
-import { BadRequestError } from '../errors.js';
+import { BadRequestError, NotFoundError, UnauthorizedError } from '../errors.js';
+
+import log from '../logger.js';
 import User from './user.model.js';
 
 const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS, 10);
@@ -18,6 +20,20 @@ class UserService {
       createdAt: u.createdAt,
       updatedAt: u.updatedAt,
     };
+  }
+
+  async login(email, password) {
+    try {
+      const user = await User.findOne({ email });
+      if (!user) throw new NotFoundError(`User ${email} was not found`);
+      if (user.role === 'prospect') throw new UnauthorizedError(`Prevented prospect ${email} from logging in`);
+      const ok = await bcrypt.compare(password, user.password);
+      if (!ok) throw new UnauthorizedError(`User ${email} tried logging in with invalid password ${password}`);
+      return user;
+    } catch (err) {
+      log.error(err);
+      return null;
+    }
   }
 
   async register(data) {
