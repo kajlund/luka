@@ -90,3 +90,8 @@
 .menu-toggle-icon.activated .close-menu-icon {
   display: block;
 }
+
+.profile-pic {
+  border-radius: 50%;
+  max-height: 40px;
+}

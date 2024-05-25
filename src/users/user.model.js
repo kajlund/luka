@@ -1,3 +1,4 @@
+import gravatar from 'gravatar';
 import mongoose from 'mongoose';
 
 const UserSchema = new mongoose.Schema(
@@ -29,7 +30,16 @@ const UserSchema = new mongoose.Schema(
       default: 'prospect',
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    virtuals: {
+      picture: {
+        get() {
+          return gravatar.url(this.email, { s: '50' });
+        }
+      }
+    }
+  },
 )
 
 export default mongoose.model('User', UserSchema)

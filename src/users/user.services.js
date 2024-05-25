@@ -16,6 +16,7 @@ class UserService {
       id: u.id,
       email: u.email,
       alias: u.alias,
+      imgage: u.image,
       role: u.role,
       createdAt: u.createdAt,
       updatedAt: u.updatedAt,
@@ -24,7 +25,9 @@ class UserService {
 
   async login(email, password) {
     try {
-      const user = await User.findOne({ email });
+      let user;
+      const result = await User.findOne({ email });
+      if (result) user = result.toObject({ virtuals: true });
       if (!user) throw new NotFoundError(`User ${email} was not found`);
       if (user.role === 'prospect') throw new UnauthorizedError(`Prevented prospect ${email} from logging in`);
       const ok = await bcrypt.compare(password, user.password);

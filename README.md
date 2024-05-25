@@ -35,11 +35,11 @@ Simply my website
 - [ ] Register user
   - [x] Add register form
   - [x] Add server functionality for adding user
-- [ ] Login
+-  [x] Login
   - [x] Add login screen
   - [x] Add session handling to server
   - [x] Add post login handler
-  - [ ] Add logged in user image to menu bar
+  - [x] Add logged in user image to menu bar
   - [x] Add logout option to menu bar. Only show relevant option
   - [x] Implement logout in server clearing session
 - [ ] About page
