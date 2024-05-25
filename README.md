@@ -23,16 +23,14 @@ Simply my website
   - [x] Serve public folder
   - [x] Add favicon
   - [x] Add base stylesheet
-- [ ] Main Navigation
+- [x] Main Navigation
   - [x] Add header section with responsive navigation
   - [x] Add main.js script for handling popup menu
   - [x] Add theme toggle functionality
   - [x] Highligt active page in main menu
-  - [ ] Persist theme selection
-- [ ] Home page
+- [x] Home page
   - [x] Add random quote functionality
-  - [ ] Add animation for displaing proverb
-- [ ] Register user
+- [x] Register user
   - [x] Add register form
   - [x] Add server functionality for adding user
 -  [x] Login
@@ -43,5 +41,16 @@ Simply my website
   - [x] Add logout option to menu bar. Only show relevant option
   - [x] Implement logout in server clearing session
 - [ ] About page
+  - [x] Add personal info and image
+  - [ ] Add See Also section
+  - [ ] Add history section
 - [ ] Resources page
 - [ ] Blog page
+- [ ] Footer
+  - [ ] Add copyright
+  - [ ] Add social media links
+
+## UI improvements
+
+- [ ] Add animation for displaing proverb
+- [ ] Persist theme selection
