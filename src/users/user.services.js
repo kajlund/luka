@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import pkg from 'validator';
 const { isLength, isEmail } = pkg;
-import { BadRequestError, NotFoundError, UnauthorizedError } from '../errors.js';
+import { NotFoundError, UnauthorizedError } from '../errors.js';
 
 import log from '../logger.js';
 import User from './user.model.js';
@@ -11,12 +11,12 @@ const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS, 10);
 class UserService {
   constructor() {}
 
-  #mapToUserEntity = (u) => {
+  #mapToEntity = (u) => {
     return {
       id: u.id,
       email: u.email,
       alias: u.alias,
-      imgage: u.image,
+      picture: u.picture,
       role: u.role,
       createdAt: u.createdAt,
       updatedAt: u.updatedAt,
@@ -27,12 +27,12 @@ class UserService {
     try {
       let user;
       const result = await User.findOne({ email });
-      if (result) user = result.toObject({ virtuals: true });
+      if (result) user = result.toObject();
       if (!user) throw new NotFoundError(`User ${email} was not found`);
       if (user.role === 'prospect') throw new UnauthorizedError(`Prevented prospect ${email} from logging in`);
       const ok = await bcrypt.compare(password, user.password);
       if (!ok) throw new UnauthorizedError(`User ${email} tried logging in with invalid password ${password}`);
-      return user;
+      return this.#mapToEntity(user);
     } catch (err) {
       log.error(err);
       return null;
@@ -46,7 +46,7 @@ class UserService {
       // Save to DB
       const user = await User.create(data);
       // Return registered user
-      return { user: this.#mapToUserEntity(user), error: null };
+      return { user: this.#mapToEntity(user), error: null };
     } catch (err) {
       return { user: null, error: err };
     }

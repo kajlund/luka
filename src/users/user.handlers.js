@@ -12,7 +12,8 @@ class UserHandlers {
     const user = await svcUser.login(email, password);
     req.session.user = user;
     if (user) {
-      res.render('home', {user});
+      req.flash('info', `User ${user.alias} was logged in`);
+      res.redirect('/');
     } else {
       res.render('login', {
         message: 'Login failed'
@@ -24,8 +25,9 @@ class UserHandlers {
     let email = '';
     const user = req.session.user;
     if (user) email = user.email;
+    req.flash('info', `User ${email} logged out`);
     req.session.destroy(function(err) {
-      res.render('home', { message: `Logged out user ${email}`});
+      res.redirect('/');
     });
   }
 
@@ -41,10 +43,8 @@ class UserHandlers {
 
     const result = await svcUser.register(validation.value);
     if (result.error) return res.render('message', result.error);
-
-    res.render('home', {
-      message: `User ${result.user.email} was registered`
-    });
+    req.flash('info', `User ${result.user.email} was registered`);
+    res.redirect('/');
   }
 }
 

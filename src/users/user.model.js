@@ -32,6 +32,8 @@ const UserSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
     virtuals: {
       picture: {
         get() {

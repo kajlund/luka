@@ -1,4 +1,3 @@
-import { BadRequestError } from '../errors.js';
 import hndUser from './user.handlers.js';
 
 export default {
