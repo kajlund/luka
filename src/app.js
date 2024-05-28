@@ -1,6 +1,7 @@
 import path from 'node:path';
 
 import express from 'express';
+import flash from 'express-flash';
 import sessions from 'express-session';
 import nunjucks from 'nunjucks';
 
@@ -34,6 +35,8 @@ class App {
         secure: 'auto'
       }
     }));
+
+    this.app.use(flash());
 
     // Set view engine
     nunjucks.configure('views', {
