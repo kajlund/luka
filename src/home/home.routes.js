@@ -1,5 +1,5 @@
 import { BadRequestError } from '../errors.js';
-import svcProverbs from '../proverbs/proverb.service.js';
+import svcProverbs from '../proverbs/proverb.services.js';
 
 export default {
   group: {

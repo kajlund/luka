@@ -18,8 +18,6 @@ const ProverbSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      minlength: 1,
-      maxlength: 100,
     },
     group: {
       type: String,
@@ -29,7 +27,11 @@ const ProverbSchema = new mongoose.Schema(
     },
     tags: [{ type: String }],
   },
-  { timestamps: true },
-)
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
+  },
+);
 
 export default mongoose.model('Proverb', ProverbSchema)

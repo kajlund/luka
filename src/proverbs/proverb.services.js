@@ -12,6 +12,16 @@ class ProverbService {
     return p
   }
 
+  async getAllProverbs() {
+    try {
+      const proverbs = await Proverb.find({});
+      return { proverbs, error: null };
+    } catch (error) {
+      log.error(error);
+      return { proverbs: [], error };
+    }
+  }
+
   async fetchRandomQuote(group = 'IT') {
     try {
       const proverbs = await Proverb.find({ group });
@@ -24,7 +34,7 @@ class ProverbService {
     }
   }
 
-    async validate(data) {
+  async validate(data) {
     const error = {};
 
     const value = {};
