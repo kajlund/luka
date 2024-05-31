@@ -3,7 +3,6 @@ import path from 'node:path';
 import express from 'express';
 import flash from 'express-flash';
 import sessions from 'express-session';
-import nunjucks from 'nunjucks';
 
 import Router from './router.js';
 
@@ -39,11 +38,7 @@ class App {
     this.app.use(flash());
 
     // Set view engine
-    nunjucks.configure('views', {
-      autoescape: true,
-      express: this.app,
-    });
-    this.app.set('view engine', 'html');
+    this.app.set('view engine', 'ejs');
 
     // Serve public
     const publicPath = path.join(process.cwd(), 'public');
@@ -83,7 +78,7 @@ class App {
         error.errors = err.errors
       }
 
-      return res.render('error', error);
+      return res.render('pages/error', { title: 'Error', page: 'error', error });
     });
   }
 

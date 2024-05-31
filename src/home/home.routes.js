@@ -14,7 +14,9 @@ export default {
       handler: async (req, res) => {
         const user = req.session.user;
         const proverb = await svcProverbs.fetchRandomQuote();
-        res.render('home', {
+        res.render('pages/home', {
+          title: 'Home',
+          page: 'home',
           user,
           proverb,
         });
@@ -26,7 +28,11 @@ export default {
       middleware: [],
       handler: (req, res) => {
         const user = req.session.user;
-        res.render('about', { user });
+        res.render('pages/about', {
+          title: 'About',
+          page: 'about',
+          user,
+        });
       }
     }
   ],

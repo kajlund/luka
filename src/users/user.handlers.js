@@ -2,22 +2,25 @@ import svcUser from './user.services.js';
 
 class UserHandlers {
   showLoginForm(req, res) {
-    res.render('login', {
-      pageName: 'Login',
+    res.render('pages/login', {
+      title: 'Login',
+      page: 'login',
+      user: null,
+      value: {},
+      error: {}
     });
   }
 
   async login(req, res) {
-    const {email, password } = req.body;
+    const { email, password } = req.body;
     const user = await svcUser.login(email, password);
     req.session.user = user;
     if (user) {
       req.flash('info', `User ${user.alias} was logged in`);
       res.redirect('/');
     } else {
-      res.render('login', {
-        message: 'Login failed'
-      });
+      req.flash('info', 'Login failed');
+      res.redirect('/users/login');
     }
   }
 
@@ -25,24 +28,39 @@ class UserHandlers {
     let email = '';
     const user = req.session.user;
     if (user) email = user.email;
-    req.flash('info', `User ${email} logged out`);
     req.session.destroy(function(err) {
       res.redirect('/');
     });
   }
 
   showRegisterForm(req, res) {
-    res.render('register', {
-      data: null,
+    res.render('pages/register', {
+      title: 'Register',
+      page: 'register',
+      user: null,
+      value: {},
+      error: {}
     });
   }
 
   async register(req, res) {
     let validation = await svcUser.validate(req.body);
-    if (!validation.isValid) return res.render('register', validation);
+    if (!validation.isValid) return res.render('pages/register', {
+      title: 'Register',
+      page: 'register',
+      user: null,
+      value: {},
+      error: {}
+    });
 
     const result = await svcUser.register(validation.value);
-    if (result.error) return res.render('message', result.error);
+    if (result.error) return res.render('pages/register', {
+      title: 'Register',
+      page: 'register',
+      user: null,
+      value: result.value,
+      error: result.error
+    });
     req.flash('info', `User ${result.user.email} was registered`);
     res.redirect('/');
   }
