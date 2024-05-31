@@ -31,3 +31,20 @@ themeToggleBtn.addEventListener('click', () => {
   document.body.classList.toggle('light-theme');
 });
 
+const messages = document.querySelectorAll('.alert-message');
+// console.log(messages);
+messages.forEach((element) => {
+  setTimeout(function() {
+    element.remove();
+  }, 5000 );
+});
+
+const closeBtns = document.querySelectorAll('.btn-close');
+closeBtns.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    const msgElm = e.target.closest('.alert-message');
+    msgElm.remove();
+  });
+});
+
+
