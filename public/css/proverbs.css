@@ -1,3 +1,76 @@
-section.proverbs {
+main {
   margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
 }
+
+section.commands {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background-color: var(--light-color);
+  border-color: var(--secondary-background-color);
+  border-radius: 1rem;
+}
+
+section.proverbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 25rem;
+  /* width: 25rem; */
+  padding: 2rem;
+  border: 2px solid var(--secondary-background-color);
+  border-radius: 1rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.title {
+  font-weight: 800;
+  /* letter-spacing: 0.3rem; */
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.proverb {
+  font-size: 1.2rem;
+  /* line-height: 2.8rem; */
+}
+
+.author {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.card-footer {
+  display: flex;
+  font-size: 1rem;
+  justify-content: space-between;
+  flex-grow: 0;
+  width: 100%;
+}
+
+.cite {
+  font-size: 1.2rem;
+}
+

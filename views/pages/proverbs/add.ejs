@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../../partials/head') %>
+  <link rel="stylesheet" href="/css/forms.css" />
+</head>
+<body>
+  <%- include('../../partials/header') %>
+  <main>
+    <section class="small-form">
+      <div class="place-items-center" style="width: 100%;">
+        <h1>Add Proverb</h1>
+      </div>
+
+      <form class="form" action="/proverbs" method="POST">
+        <div class="form-section">
+          <div class="input-group">
+            <label class="input-label" for="title">title</label>
+            <input class="input" type="text" placeholder="Title"
+              name="title" id="title" required
+              value="<%= value.title %>"
+            >
+            <p class="input-error"><%= error.title %></p>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="author">author</label>
+            <input class="input" type="text" placeholder="Author" list="authorsList"
+              name="author" id="author" required
+              value="<%= value.author %>"
+            >
+            <p class="input-error"><%= error.author %></p>
+            <datalist id="authorsList">
+              <% authors.forEach(function(author) { %>
+                <option><%= author %></option>
+              <% }); %>
+            </datalist>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="content">quote</label>
+            <textarea class="input" name="content" id="content" cols="30" rows="5" required
+            ><%= value.content %></textarea>
+            <p class="input-error"><%= error.content %></p>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="description">description</label>
+            <input class="input" type="text"
+              name="description" id="description"
+              placeholder="Description"
+              value="<%= value.description %>"
+            >
+            <p class="input-error"><%= error.description %></p>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="group">Group</label>
+            <input class="input" type="text" placeholder="Group" list="groupList"
+              name="group" id="group" required
+              value="<%= value.group %>"
+            >
+            <p class="input-error"><%= error.group %></p>
+            <datalist id="groupList">
+              <% groups.forEach(function(group) { %>
+                <option><%= group %></option>
+              <% }); %>
+            </datalist>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="title">Tags</label>
+            <input class="input" type="text" placeholder="tag1 tag2"
+              name="tags" id="tags"
+              value="<%= value.tags.join(' ') %>"
+            >
+            <p class="input-error"><%= error.tags %></p>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <input class="btn btn-primary" type="submit" value="Save">
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

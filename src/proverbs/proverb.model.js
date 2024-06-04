@@ -4,8 +4,8 @@ const ProverbSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, 'title must be provided. 1-100 chars'],
-      minlength: 1,
+      required: [true, 'title must be provided. 3 - 100 chars'],
+      minlength: 3,
       maxlength: 100,
     },
     content: {
@@ -21,7 +21,7 @@ const ProverbSchema = new mongoose.Schema(
     },
     group: {
       type: String,
-      required: [true, 'group must be provided. 2-50 characters'],
+      required: [true, 'group must be provided. 2 - 50 characters'],
       maxlength: 50,
       minlength: 2,
     },
