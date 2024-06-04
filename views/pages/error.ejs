@@ -9,8 +9,9 @@
   <main>
     <section class="error">
       <h1>Oops!</h1>
-      <h2>That's a <%= error.statusCode %>. <%= error.message %></h2>
+      <h3><%= error.statusCode %> - <%= error.message %></h3>
       <p><%= error.detail %></p>
+      <a href="/">Go back home</a>
     </section>
   </main>
 </body>

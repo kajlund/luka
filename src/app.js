@@ -63,6 +63,7 @@ class App {
 
   #handleError() {
     this.app.use((err, req, res, next) => {
+      const user = req.session.user;
       let error = {
         success: false,
         statusCode: codes.INTERNAL_SERVER_ERROR,
@@ -78,7 +79,7 @@ class App {
         error.errors = err.errors
       }
 
-      return res.render('pages/error', { title: 'Error', page: 'error', error });
+      return res.render('pages/error', { title: 'Error', page: 'error', user, error });
     });
   }
 
