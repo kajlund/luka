@@ -14,7 +14,6 @@ form {
   box-shadow: 0 10px 25px rgba(27, 37, 46, 0.5);
   }
 
-
   .form-controls {
     display: flex;
     flex-direction: column;
@@ -44,7 +43,6 @@ label {
   max-width: 40rem;
 }
 
-
 .form {
   background-color: var(--light-color);
   border: none;
@@ -58,6 +56,11 @@ label {
   padding: 2rem;
 }
 
+.form-commands {
+  display: flex;
+  justify-content: space-between;
+}
+
 .input-group {
   display: flex;
   flex-direction: column;
@@ -68,14 +71,14 @@ label {
   border: 1px solid var(--light-color-alt);
   border-radius: 0.6rem;
   padding: 1rem;
-  color: var(--background-color-alt);
+  color: var(--primary-background-color);
   /* outline: 0; */
   /* outline-color: azure; */
 }
 
-.input:active {
-  border: 2px solid var(--secondary-background-color);
-  color: var(--secondary-background-color);
+.input:focus {
+  border: 1px solid var(--secondary-background-color);
+  color: var(--primary-background-color);
 }
 
 .input-error {
@@ -89,4 +92,3 @@ label {
   font-size: var(--font-size-xsm);
   margin-left: 0.4rem;
 }
-

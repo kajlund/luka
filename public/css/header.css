@@ -7,7 +7,7 @@
   z-index: 999;
 }
 
-.navbar{
+.navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,13 +49,13 @@
   display: none;
 }
 
-.btn {
+.btn-icon {
   cursor: pointer;
 }
 
 .list-link:hover,
-.btn:hover,
-.btn:hover span {
+.btn-icon:hover,
+.btn-icon:hover span {
   color: var(--light-color);
 }
 
