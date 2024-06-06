@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import utils from '../utils.js';
+import { resourceCategories } from '../utils.js';
 
 const ResourceSchema = new mongoose.Schema(
   {
@@ -25,7 +25,7 @@ const ResourceSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Category is required'],
       enum: {
-        values: utils.resouceCategories,
+        values: resourceCategories,
         message: 'Category must be among valid categories',
       },
     },

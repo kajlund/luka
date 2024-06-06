@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../../partials/head') %>
+  <link rel="stylesheet" href="/css/resources.css" />
+</head>
+<body>
+  <%- include('../../partials/header') %>
+  <main>
+    <section class="commands">
+      <div>
+        <label for="groups">Category</label>
+        <select name="categories" id="categories">
+          <% categories.forEach(function(category) { %>
+            <option value="<%= category %>"><%= category %></option>
+          <% }); %>
+        </select>
+      </div>
+      <div>
+        <a class="btn btn-primary" href="/resources/add">Add</a>
+      </div>
+    </section>
+
+    <section class="resources">
+    <% if (resources.length) { %>
+      <% resources.forEach(function(resource) { %>
+      <div class="card">
+        <div class="card-header">
+          <div class="header-left">
+            <h1 class="title"><%= resource.name %></h1>
+            <a href="<%= resource.url %>" target="_blank">
+              <i class="ri-external-link-line"></i>
+            </a>
+          </div>
+
+          <div class="header-right">
+            <a href="/resources/<%= resource.id %>/upvote">
+              <i class="ri-thumb-up-line"></i>
+            </a>
+            <a href="/resources/<%= resource.id %>/downvote">
+              <i class="ri-thumb-down-line"></i>
+            </a>
+            <a href="/resources/<%= resource.id %>/edit">
+              <i class="ri-edit-box-line"></i>
+            </a>
+          </div>
+        </div>
+        <div class="card-content">
+            <%= resource.description %>
+        </div>
+        <div class="card-footer">
+          <p><%= resource.category %></p>
+          <p><%= resource.tags %></p>
+        </div>
+      </div>
+      <% }); %>
+    <% } else { %>
+      <p>No resources</p>
+    <% } %>
+    </section>
+  </main>
+
+</body>
+</html>

@@ -1,10 +1,20 @@
-const resouceCategories = [
+export const resourceCategories = [
+  'Animation',
+  'API',
+  'CSS',
+  'Databases',
+  'Frameworks',
+  'Graphics',
   'JavaScript',
-  'Node.js'
+  'Libraries',
+  'Node',
+  'Software',
+  'Testing',
+  'Widgets'
 ];
 
 class Utils {
-  resouceCategories
+  constructor() {}
 }
 
 export default new Utils();

@@ -2,39 +2,57 @@ import resourceHandlers from './resource.handlers.js';
 
 export default {
   group: {
-    prefix: '/users',
+    prefix: '/resources',
     middleware: [],
   },
   routes: [
     {
       method: 'get',
-      path: '/register',
+      path: '/',
       middleware: [],
-      handler: hndUser.showRegisterForm,
-    },
-    {
-      method: 'post',
-      path: '/register',
-      middleware: [],
-      handler: hndUser.register,
+      handler: resourceHandlers.showResources,
     },
     {
       method: 'get',
-      path: '/login',
+      path: '/add',
       middleware: [],
-      handler: hndUser.showLoginForm
-    },
-    {
-      method: 'post',
-      path: '/login',
-      middleware: [],
-      handler: hndUser.login,
+      handler: resourceHandlers.showAddResourceForm,
     },
     {
       method: 'get',
-      path: '/logout',
+      path: '/:id/edit',
       middleware: [],
-      handler: hndUser.logout,
-    }
+      handler: resourceHandlers.showEditResourceForm,
+    },
+    {
+      method: 'post',
+      path: '/',
+      middleware: [],
+      handler: resourceHandlers.addResource,
+    },
+    {
+      method: 'post',
+      path: '/:id/update',
+      middleware: [],
+      handler: resourceHandlers.updateResource,
+    },
+    {
+      method: 'get',
+      path: '/:id/delete',
+      middleware: [],
+      handler: resourceHandlers.deleteResource,
+    },
+    {
+      method: 'get',
+      path: '/:id/upvote',
+      middleware: [],
+      handler: resourceHandlers.upvoteResource,
+    },
+    {
+      method: 'get',
+      path: '/:id/downvote',
+      middleware: [],
+      handler: resourceHandlers.downvoteResource,
+    },
   ],
 }

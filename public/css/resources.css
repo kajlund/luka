@@ -1,0 +1,93 @@
+main {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+}
+
+section.commands {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background-color: var(--light-color);
+  border-color: var(--secondary-background-color);
+  border-radius: 1rem;
+}
+
+section.resources {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 20rem;
+  /* width: 25rem; */
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--secondary-background-color);
+  border-radius: 1rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 0;
+  width: 100%;
+  font-size: 1.4rem;
+}
+
+.card-footer {
+  display: flex;
+  font-size: 1rem;
+  justify-content: space-between;
+  flex-grow: 0;
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  /* letter-spacing: 0.3rem; */
+}
+
+.title a {
+  margin-left: 1rem;
+}
+
+.title a i {
+  font-size: 1.8rem;
+}
+
+.card-content {
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.header-left {
+  font-size: 1.2rem;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 0.5rem;
+}
+
+.header-right {
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cmd-right a {
+  margin: 0 0.2rem;
+}
+
+.cmd-right a i {
+  font-size: 1.8rem;
+}
+
