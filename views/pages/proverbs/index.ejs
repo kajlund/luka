@@ -22,7 +22,7 @@
     </section>
 
     <section class="proverbs">
-    <% if (proverbs) { %>
+    <% if (proverbs.length) { %>
       <% proverbs.forEach(function(proverb) { %>
         <div class="card">
         <div class="card-header">
@@ -48,7 +48,6 @@
         </div>
       </div>
       <% }); %>
-    </ul>
     <% } else { %>
       <p>No proverb data</p>
     <% } %>
