@@ -27,7 +27,6 @@ menuToggleIcon.addEventListener('click', () => {
 // Theme toggle
 const themeToggleBtn = selectElement('#theme-toggle-btn');
 themeToggleBtn.addEventListener('click', () => {
-  console.log('click')
   document.body.classList.toggle('light-theme');
 });
 
@@ -46,5 +45,3 @@ closeBtns.forEach((btn) => {
     msgElm.remove();
   });
 });
-
-
