@@ -8,6 +8,7 @@ export const resourceCategories = [
   'JavaScript',
   'Libraries',
   'Node',
+  'Programming',
   'Software',
   'Testing',
   'Widgets'
