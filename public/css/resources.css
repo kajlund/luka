@@ -1,13 +1,14 @@
 main {
-  margin-top: 10rem;
   display: flex;
   flex-direction: column;
+  margin-top: 10rem;
   padding: 1rem 2rem;
 }
 
-section.commands {
+section.page-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
   padding: 2rem;
   background-color: var(--light-color);
@@ -91,3 +92,18 @@ section.resources {
   font-size: 1.8rem;
 }
 
+.filters {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.commands {
+  display: flex;
+  align-items: center;
+}
+
+.tagFilter {
+  min-width: 10rem;
+}

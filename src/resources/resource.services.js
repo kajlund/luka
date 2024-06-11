@@ -37,9 +37,16 @@ class ResourceService {
     }
   }
 
-  async findResources() {
+  async findResources(filter) {
+
+    let qry = {};
+
+    if (filter.category) {
+      qry.category = filter.category
+    }
+
     try {
-      const resources = await Resource.find({});
+      const resources = await Resource.find(qry);
       return { resources, error: null };
     } catch (error) {
       log.error(error);
@@ -57,7 +64,7 @@ class ResourceService {
   }
 
   async getTags() {
-    const tags = await Resource.find().distinct('tags');
+    const tags = await Resource.find({}).distinct('tags');
     return tags.sort();
   }
 

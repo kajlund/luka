@@ -1,22 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="sl-theme-light">
 <head>
   <%- include('../../partials/head') %>
   <link rel="stylesheet" href="/css/resources.css" />
+  <script type="module" src="/js/resources.js" defer></script>
 </head>
 <body>
   <%- include('../../partials/header') %>
   <main>
-    <section class="commands">
-      <div>
-        <label for="groups">Category</label>
-        <select name="categories" id="categories">
-          <% categories.forEach(function(category) { %>
-            <option value="<%= category %>"><%= category %></option>
-          <% }); %>
-        </select>
+    <section class="page-header">
+      <div class="filters">
+        <% if (categories.length) { %>
+          <sl-select id="categoryFilter" label="Categories"
+            value="<%= filter.category %>" size="large">
+            <% categories.forEach(function(category) { %>
+              <sl-option value="<%= category %>"><%= category %></sl-option>
+            <% }); %>
+          </sl-select>
+        <% } else { %>
+          <p>No categories to filter by</p>
+        <% } %>
+
+        <% if (resources.length) { %>
+          <sl-select id="tagFilter" label="Tags"
+            value="<%= filter.tags.join(' ') %>" style="margin-left: 2rem; min-width: 100px;"
+            multiple clearable size="large">
+            <% tags.forEach(function(tag) { %>
+              <sl-option value="<%= tag %>"><%= tag %></sl-option>
+            <% }); %>
+          </sl-select>
+        <% } else { %>
+          <p>No tags to filter by</p>
+        <% } %>
       </div>
-      <div>
+
+      <div class="commands">
         <a class="btn btn-primary" href="/resources/add">Add</a>
       </div>
     </section>

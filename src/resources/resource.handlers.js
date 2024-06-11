@@ -1,5 +1,5 @@
 import svcResources from './resource.services.js';
-
+import log from '../logger.js';
 class ResourceHandlers {
 
   async addResource(req, res) {
@@ -98,10 +98,16 @@ class ResourceHandlers {
     //   req.flash('info', 'Not allowed. Admins only');
     //   return res.redirect('/');
     // }
-    const result = await svcResources.findResources();
+
+    const filter = {
+      category: req.query.category,
+      tags: req.query.tags ? req.query.tags.split(',') : [],
+    };
+
     let categories = svcResources.getCategories();
-    // categories = ['Filter by category', [...categories]];
     const tags = await svcResources.getTags();
+
+    const result = await svcResources.findResources(filter);
     res.render('pages/resources/index', {
       title: 'Resources',
       page: 'resources',
@@ -109,6 +115,7 @@ class ResourceHandlers {
       categories,
       tags,
       resources: result.resources,
+      filter,
     });
   }
 
