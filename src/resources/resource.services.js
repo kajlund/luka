@@ -1,6 +1,7 @@
 import pkg from 'validator';
 const { isLength, isURL } = pkg;
 
+import log from '../logger.js';
 import Resource from './resource.model.js';
 import { resourceCategories } from '../utils.js';
 class ResourceService {
@@ -44,6 +45,12 @@ class ResourceService {
     if (filter.category) {
       qry.category = filter.category
     }
+
+    if (filter.tags.length) {
+      qry.tags = { $all: filter.tags }
+    }
+
+    log.debug(qry, 'Fetching resources with query:');
 
     try {
       const resources = await Resource.find(qry);

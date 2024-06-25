@@ -1,0 +1,31 @@
+.filters {
+  /* border: 1px solid red; */
+  padding: 0;
+}
+
+.filter-section {
+  /* border: 1px solid green; */
+  margin: 0 0.2rem;
+}
+
+.filter-commands {
+  /* border: 1px solid blue; */
+  margin: 0 0.2rem;
+}
+
+/* .commands {
+  border: 1px solid purple;
+} */
+
+select,
+input {
+  color: inherit;
+  border: 1px solid var(--light-color-alt);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+select::placeholder,
+input::placeholder {
+  color: var(--light-color-alt);
+}

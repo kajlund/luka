@@ -3,35 +3,48 @@
 <head>
   <%- include('../../partials/head') %>
   <link rel="stylesheet" href="/css/resources.css" />
+  <link rel="stylesheet" href="/css/filters.css" />
+
   <script type="module" src="/js/resources.js" defer></script>
+  <script src="/js/multiselect-dropdown.js" ></script>
+  <style>
+    select { width: 40rem; }
+  </style>
 </head>
 <body>
   <%- include('../../partials/header') %>
   <main>
     <section class="page-header">
       <div class="filters">
-        <% if (categories.length) { %>
-          <sl-select id="categoryFilter" label="Categories"
-            value="<%= filter.category %>" size="large">
-            <% categories.forEach(function(category) { %>
-              <sl-option value="<%= category %>"><%= category %></sl-option>
-            <% }); %>
-          </sl-select>
-        <% } else { %>
-          <p>No categories to filter by</p>
-        <% } %>
+        <div class="filter-section">
+            <input class="input" type="text" placeholder="Category" list="categoryList"
+              name="category" id="txtCategory"
+              value="<%= filter.category %>"
+            >
+            <datalist id="categoryList">
+              <% categories.forEach(function(category) { %>
+                <option><%= category %></option>
+              <% }); %>
+            </datalist>
 
-        <% if (resources.length) { %>
-          <sl-select id="tagFilter" label="Tags"
-            value="<%= filter.tags.join(' ') %>" style="margin-left: 2rem; min-width: 100px;"
-            multiple clearable size="large">
-            <% tags.forEach(function(tag) { %>
-              <sl-option value="<%= tag %>"><%= tag %></sl-option>
-            <% }); %>
-          </sl-select>
-        <% } else { %>
-          <p>No tags to filter by</p>
-        <% } %>
+            <select id="selTags" multiple placeholder="Tags"
+              multiselect-search="true"
+              multiselect-select-all="true"
+              multiselect-max-items="2"
+              multiselect-hide-x = "false"
+            >
+              <% tags.forEach(function(tag) { %>
+                <option value="<%= tag %>"
+                  <%= filter.tags.includes(tag) ? 'selected' : '' %>
+                ><%= tag %></option>
+              <% }); %>
+            </select>
+        </div>
+        <div class="filter-section">
+          <div class="filter-commands">
+            <button id="btnClearFilter" class="btn btn-small">Clear</button>
+          </div>
+        </div>
       </div>
 
       <div class="commands">

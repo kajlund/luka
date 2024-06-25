@@ -104,6 +104,8 @@ class ResourceHandlers {
       tags: req.query.tags ? req.query.tags.split(',') : [],
     };
 
+    log.debug(filter);
+
     let categories = svcResources.getCategories();
     const tags = await svcResources.getTags();
 

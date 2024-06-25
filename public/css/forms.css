@@ -71,7 +71,7 @@ label {
   border: 1px solid var(--light-color-alt);
   border-radius: 0.6rem;
   padding: 1rem;
-  color: var(--primary-background-color);
+  color: var(--light-color-alt);
   /* outline: 0; */
   /* outline-color: azure; */
 }
