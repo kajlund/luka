@@ -3,13 +3,14 @@ import express from 'express';
 import log from './logger.js';
 import homeRoutes from './home/home.routes.js';
 import userRoutes from './users/user.routes.js';
+import postRoutes from './posts/post.routes.js';
 import proverbRoutes from './proverbs/proverb.routes.js';
 import resourceRoutes from './resources/resource.routes.js';
 
 class Router {
   constructor() {
     this.router = express.Router();
-    this.routes = [homeRoutes, userRoutes, proverbRoutes, resourceRoutes];
+    this.routes = [homeRoutes, userRoutes, proverbRoutes, resourceRoutes, postRoutes];
   }
 
   #attachRoutes(routeGroups, prefix = '') {

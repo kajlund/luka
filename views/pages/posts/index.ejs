@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../../partials/head') %>
+  <link rel="stylesheet" href="/css/posts.css" />
+</head>
+<body>
+  <%- include('../../partials/header') %>
+  <main>
+    <section class="page-header">
+      <div class="filters">
+        <div class="filter-section">&nbsp;</div>
+      </div>
+      <div class="commands">
+        <a class="btn btn-primary" href="/posts/add">Add</a>
+      </div>
+    </section>
+
+    <section class="posts">
+    <% if (posts.length) { %>
+      <% posts.forEach(function(post) { %>
+      <div class="card">
+        <div class="card-header">
+          <div class="header-left">
+            <a href="/posts/<%= post.id %>">
+              <h1 class="title"><%= post.title %></h1>
+            </a>
+          </div>
+          <div class="header-right">
+            <a href="/posts/<%= post.id %>/edit">
+              <i class="ri-edit-box-line"></i>
+            </a>
+          </div>
+        </div>
+        <div class="card-content">
+            <%= post.description %>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+      <% }); %>
+    <% } else { %>
+      <p>No posts</p>
+    <% } %>
+    </section>
+  </main>
+
+</body>
+</html>

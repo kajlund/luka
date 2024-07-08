@@ -5,9 +5,10 @@ Simply my website
 ## Resources
 
 - [Remix icons](https://remixicon.com/)
-- [Nunjucks](https://mozilla.github.io/nunjucks/) Temmplating
+- [EJS](https://ejs.co/) Temmplating
 - [Validator.js](https://github.com/validatorjs/validator.js/)
-- [Toastr](https://github.com/CodeSeven/toastr)
+- [Markdown it](https://markdown-it.github.io/markdown-it/)
+- [Prism.js](https://prismjs.com/) for source code highlighting
 
 ## ToDos
 
@@ -44,13 +45,40 @@ Simply my website
   - [x] Add personal info and image
   - [ ] Add See Also section
   - [ ] Add history section
-- [ ] Resources page
+- [x] Resources page
+  - [x] Ceate backend model for resources
+  - [x] Create backend service for handling resource data
+  - [x] Create backend routes for navigating resources
+  - [x] Create backend handlers for resource routes
+  - [x] Create a page for displaying and finding resources
+  - [x] Create a page for adding a resource (admin)
+  - [x] Create a page for editing and deleting a resource (admin)
+  - [x] Create basic styling for resources UI
 - [ ] Blog page
+  - [x] Create backend model for posts
+  - [x] Create backend service for hanling post data
+  - [x] Create backend routes for navigating blog/posts
+  - [x] Create backend handlers for posts routes
+  - [x] Create a page for displaying posts
+    - [ ] Sort pages latest updated on top
+    - [ ] Add filter for tags
+  - [x] Create a page for adding a post (admin)
+    - [ ] Add tags
+  - [x] Create a page for editing and deleting a post (admin)
+    - [ ] Add tags
+  - [x] Create a page for viewing a post (with markdown rendering and source code highlighting)
+    - [x] Add note for old posts
+  - [x] Create basic styling for posts
+  - [ ] Add better widget for toggles
+  - [ ] Add page control widget with content on separate page
+  - [ ] Add widget for mardown editing?
 - [ ] Footer
   - [ ] Add copyright
   - [ ] Add social media links
 
-## UI improvements
+## Improvements
 
 - [ ] Add animation for displaing proverb
+- [ ] Rethink and implement CSS variables, shared....
+- [ ] Reimplement theme selection
 - [ ] Persist theme selection
