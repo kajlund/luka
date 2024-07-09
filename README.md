@@ -44,7 +44,7 @@ Simply my website
 - [ ] About page
   - [x] Add personal info and image
   - [ ] Add See Also section
-  - [ ] Add history section
+  - [x] Add history section
 - [x] Resources page
   - [x] Ceate backend model for resources
   - [x] Create backend service for handling resource data

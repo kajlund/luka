@@ -41,6 +41,13 @@
   flex-direction: column;
 }
 
+ul.list {
+  margin: none;
+  padding: none;
+  list-style-type: none;
+}
+
+
 .list-link.current {
   color: var(--light-color);
 }

@@ -41,7 +41,9 @@ section.posts {
   font-size: 1rem;
 }
 
-.title {
+h2.title {
+  margin: 0;
+  font-size: 1.8rem;
   font-weight: 800;
   /* letter-spacing: 0.3rem; */
 }
