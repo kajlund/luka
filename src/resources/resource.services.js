@@ -38,7 +38,9 @@ class ResourceService {
     }
   }
 
-  async findResources(filter) {
+  async findResources(filter, sorting) {
+
+    let sort = sorting ? sorting : { name : 1 }
 
     let qry = {};
 
@@ -53,7 +55,7 @@ class ResourceService {
     log.debug(qry, 'Fetching resources with query:');
 
     try {
-      const resources = await Resource.find(qry);
+      const resources = await Resource.find(qry).sort(sort);
       return { resources, error: null };
     } catch (error) {
       log.error(error);
