@@ -76,6 +76,7 @@ Simply my website built using
   - [ ] Add better widget for boolean toggles
   - [ ] Add page control widget with content on separate page
   - [ ] Add widget for mardown editing?
+- [x] Add server /healthz endpoint
 - [ ] Footer
   - [ ] Add copyright
   - [ ] Add social media links

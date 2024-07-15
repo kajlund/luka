@@ -34,6 +34,14 @@ export default {
           user,
         });
       }
+    },
+    {
+      method: 'get',
+      path: '/healthz',
+      middleware: [],
+      handler: (req, res) => {
+        res.status(200).send('OK');
+      }
     }
   ],
 }
