@@ -17,7 +17,9 @@
         </select>
       </div>
       <div>
-        <a class="btn btn-primary" href="/proverbs/add">Add</a>
+        <% if (user && user.role.includes('admin')) { %>
+          <a class="btn btn-primary" href="/proverbs/add">Add</a>
+        <% } %>  
       </div>
     </section>
 
@@ -27,9 +29,11 @@
         <div class="card">
         <div class="card-header">
           <h2 class="title"><%= proverb.title %></h2>
-          <a  href="/proverbs/<%= proverb.id %>/edit">
-            <i class="ri-edit-box-line"></i>
-          </a>
+          <% if (user && user.role.includes('admin')) { %>
+            <a  href="/proverbs/<%= proverb.id %>/edit">
+              <i class="ri-edit-box-line"></i>
+            </a>
+          <% } %>  
         </div>
         <div class="card-content">
           <p class="proverb">

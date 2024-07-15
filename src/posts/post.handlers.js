@@ -11,10 +11,10 @@ class PostHandlers {
 
   async addPost(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
+    if (!user || !user.role==='admin') {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
 
     const validation = await svcPost.validate(req.body);
     if (!validation.isValid) return res.render('pages/posts/add', {
@@ -47,10 +47,10 @@ class PostHandlers {
 
   async showAddPostForm(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
+    if (!user || !user.role==='admin') {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
     res.render('pages/posts/add', {
       title: 'Add Post',
       page: 'blog',
@@ -62,10 +62,11 @@ class PostHandlers {
 
   async showEditPostForm(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
+    // log.debug(user);
+    if (!user || !user.role==='admin') {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
     const id = req.params.id;
     const value = await svcPost.getPostById(id);
     if (!value) {
@@ -96,10 +97,10 @@ class PostHandlers {
 
   async updatePost(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
+    if (!user || !user.role==='admin') {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
 
     const id = req.params.id;
     log.info(req.body);

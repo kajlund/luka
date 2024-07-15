@@ -14,7 +14,7 @@ class PostService {
     const yearsOld = dayjs().diff(dayjs(r.updatedAt), 'year');
     const updated = dayjs(r.updatedAt).fromNow();
     const post = { ...{}, ...r, ...{ updated, yearsOld } }
-    log.info(post);
+    // log.debug(post);
     return post;
   }
 

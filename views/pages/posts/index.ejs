@@ -12,7 +12,9 @@
         <div class="filter-section">&nbsp;</div>
       </div>
       <div class="commands">
-        <a class="btn btn-primary" href="/posts/add">Add</a>
+        <% if (user && user.role.includes('admin')) { %>
+          <a class="btn btn-primary" href="/posts/add">Add</a>
+        <% } %>  
       </div>
     </section>
 
@@ -27,9 +29,11 @@
             </a>
           </div>
           <div class="header-right">
-            <a href="/posts/<%= post.id %>/edit">
-              <i class="ri-edit-box-line"></i>
-            </a>
+            <% if (user && user.role.includes('admin')) { %>
+              <a href="/posts/<%= post.id %>/edit">
+                <i class="ri-edit-box-line"></i>
+              </a>
+            <% } %>
           </div>
         </div>
         <div class="card-content">

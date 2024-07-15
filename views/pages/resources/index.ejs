@@ -48,7 +48,9 @@
       </div>
 
       <div class="commands">
-        <a class="btn btn-primary" href="/resources/add">Add</a>
+        <% if (user && user.role.includes('admin')) { %>
+          <a class="btn btn-primary" href="/resources/add">Add</a>
+        <% } %>  
       </div>
     </section>
 
@@ -71,9 +73,11 @@
             <a href="/resources/<%= resource.id %>/downvote">
               <i class="ri-thumb-down-line"></i>
             </a>
-            <a href="/resources/<%= resource.id %>/edit">
-              <i class="ri-edit-box-line"></i>
-            </a>
+            <% if (user && user.role.includes('admin')) { %>
+              <a href="/resources/<%= resource.id %>/edit">
+                <i class="ri-edit-box-line"></i>
+              </a>
+            <% } %>  
           </div>
         </div>
         <div class="card-content">

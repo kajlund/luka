@@ -42,6 +42,11 @@
         <li class="list-item">
           <a href="/resources" class="<%= page == 'resources' ? 'list-link current' : 'list-link' %>">Resources</a>
         </li>
+        <% if (user && user.role.includes('admin')) { %>
+          <li class="list-item">
+            <a href="/proverbs" class="<%= page == 'proverbs' ? 'list-link current' : 'list-link' %>">Proverbs</a>
+          </li>
+        <% } %>  
         <li class="list-item">
           <a href="/about" class="<%= page == 'about' ? 'list-link current' : 'list-link' %>">About</a>
         </li>
