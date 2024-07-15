@@ -1,6 +1,10 @@
 # LuKa
 
-Simply my website
+Simply my website built using
+
+- Server-rendered pages using EJS templates
+- Node.js plus Mongoose
+- Vanilla JS
 
 ## Resources
 
@@ -28,7 +32,7 @@ Simply my website
   - [x] Add header section with responsive navigation
   - [x] Add main.js script for handling popup menu
   - [x] Add theme toggle functionality
-  - [x] Highligt active page in main menu
+  - [x] Highligt active page in main menu 
 - [x] Home page
   - [x] Add random quote functionality
 - [x] Register user
@@ -69,7 +73,7 @@ Simply my website
   - [x] Create a page for viewing a post (with markdown rendering and source code highlighting)
     - [x] Add note for old posts
   - [x] Create basic styling for posts
-  - [ ] Add better widget for toggles
+  - [ ] Add better widget for boolean toggles
   - [ ] Add page control widget with content on separate page
   - [ ] Add widget for mardown editing?
 - [ ] Footer
@@ -80,5 +84,6 @@ Simply my website
 
 - [ ] Add animation for displaing proverb
 - [ ] Rethink and implement CSS variables, shared....
+- [x] Remove theme selection for now.
 - [ ] Reimplement theme selection
 - [ ] Persist theme selection
