@@ -25,10 +25,10 @@ menuToggleIcon.addEventListener('click', () => {
 });
 
 // Theme toggle
-const themeToggleBtn = selectElement('#theme-toggle-btn');
-themeToggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('light-theme');
-});
+// const themeToggleBtn = selectElement('#theme-toggle-btn');
+// themeToggleBtn.addEventListener('click', () => {
+//   document.body.classList.toggle('light-theme');
+// });
 
 const messages = document.querySelectorAll('.alert-message');
 // console.log(messages);
