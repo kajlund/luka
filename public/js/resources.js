@@ -1,40 +1,57 @@
-let resourceFilter = { category: '', tags: [] };
+const cleanFilter = { category: '', tags: [], name: '' };
+let filter = { ...cleanFilter };
+
+const keyName = 'luka.resourceFilter';
+
+function setLocation() {
+  localStorage.setItem(keyName, JSON.stringify(filter));
+  // console.log(filter);
+  window.location.search = `?category=${filter.category}&tags=${filter.tags}&name=${filter.name}`;
+}
+
 // Try to get from localStorage
-let resourceFilterStr = localStorage.getItem('resourceFilter', '');
-if (resourceFilterStr) {
-  resourceFilter = JSON.parse(resourceFilterStr);
+let filterStr = localStorage.getItem(keyName, '');
+if (filterStr) {
+  const temp = JSON.parse(filterStr);
+  if (temp) {
+    filter = { ...filter, ...temp }
+  }
 }
 
 // Resources list page with no search? load filters
 if (window.location.pathname === '/resources' && !window.location.search) {
-  const newSearch = `?category=${resourceFilter.category}&tags=${resourceFilter.tags}`;
-  if (newSearch !== window.location.search) {
-    window.location.search = newSearch;
+  const currFilter = `?category=${filter.category}&tags=${filter.tags}&name=${filter.name}`;
+  if (currFilter !== window.location.search) {
+    window.location.search = currFilter;
   }
 }
 
 const txtCategory = document.querySelector('#txtCategory');
 txtCategory.addEventListener('change', (event) => {
-  if (event.target.value !== resourceFilter.category) {
-    resourceFilter.category = event.target.value;
-    localStorage.setItem("resourceFilter", JSON.stringify(resourceFilter));
-    window.location.search = `?category=${resourceFilter.category}&tags=${resourceFilter.tags}`;
+  if (event.target.value !== filter.category) {
+    filter.category = event.target.value.trim();
+    setLocation();
+  }
+});
+
+const elName = document.querySelector('#searchName');
+elName.addEventListener('change', (event) => {
+  const newValue = event.target.value.trim();
+  if ((newValue !== filter.name && newValue.length >= 2) || (!newValue && filter.name)) {
+    filter.name = event.target.value.trim();
+    setLocation();
   }
 });
 
 const selTags = document.querySelector('#selTags');
 selTags.addEventListener('change', event => {
   // console.log(Array.from(selTags.selectedOptions).map(x => x.value));
-  resourceFilter.tags = Array.from(selTags.selectedOptions).map(x => x.value);
-  localStorage.setItem("resourceFilter", JSON.stringify(resourceFilter));
-  window.location.search = `?category=${resourceFilter.category}&tags=${resourceFilter.tags}`;
+  filter.tags = Array.from(selTags.selectedOptions).map(x => x.value.trim());
+  setLocation();
 });
 
 const btnClearFilter = document.querySelector('#btnClearFilter');
 btnClearFilter.addEventListener('click', event => {
-  resourceFilter.category = '';
-  resourceFilter.tags = [];
-  localStorage.setItem("resourceFilter", JSON.stringify(resourceFilter));
-  // console.log(resourceFilter);
-  window.location.search = '';
+  filter = { ...cleanFilter };
+  setLocation();
 });

@@ -52,6 +52,10 @@ class ResourceService {
       qry.tags = { $all: filter.tags }
     }
 
+    if (filter.name) {
+      qry.name = filter.name;
+    }
+
     log.debug(qry, 'Fetching resources with query:');
 
     try {

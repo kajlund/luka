@@ -58,6 +58,7 @@ Simply my website built using
   - [x] Create a page for adding a resource (admin)
   - [x] Create a page for editing and deleting a resource (admin)
   - [x] Create basic styling for resources UI
+  - [x] Add name filter to resources list
 - [ ] Blog page
   - [x] Create backend model for posts
   - [x] Create backend service for hanling post data
