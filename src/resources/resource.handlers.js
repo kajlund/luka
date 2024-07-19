@@ -94,22 +94,23 @@ class ResourceHandlers {
 
   async showResources(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
-
     const filter = {
       category: req.query.category,
       tags: req.query.tags ? req.query.tags.split(',') : [],
     };
 
-    log.debug(filter);
+    const nameFilter = req.query.name ? req.query.name.trim() : '';
+    if (nameFilter) {
+      filter.name = { '$regex': nameFilter, '$options': 'i' }
+    }
+
+    // log.debug(filter);
 
     let categories = svcResources.getCategories();
     const tags = await svcResources.getTags();
 
     const result = await svcResources.findResources(filter);
+    filter.name = nameFilter;
     res.render('pages/resources/index', {
       title: 'Resources',
       page: 'resources',
