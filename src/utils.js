@@ -7,6 +7,7 @@ export const resourceCategories = [
   'Graphics',
   'JavaScript',
   'Libraries',
+  'Mocking',
   'Node',
   'Programming',
   'Software',
