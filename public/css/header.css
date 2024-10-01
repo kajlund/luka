@@ -12,10 +12,16 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.navbar a {
+  display: inline-block;
 }
 
 .logo {
-  font-size: var(--font-size-md);
+  position: relative;
+  top: -0.6rem;
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-lg);
   color: var(--light-color);
 }
 
