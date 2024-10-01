@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,600;0,700;0,900;1,100;1,300;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 
 :root {
   /* Variables */
   --gradient-color: linear-gradient(115deg,#4fcf70,#fad648,#a767e5,#12bcfe,#44ce7b);
   --font-family: 'Poppins', sans-serif;
+  --font-secondary: 'Parisienne', cursive;
   --font-size-xs: 1rem;
   --font-size-xsm: 1.2rem;
   --font-size-sm: 1.6rem;
