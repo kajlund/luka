@@ -14,7 +14,7 @@ class PostService {
     const yearsOld = dayjs().diff(dayjs(r.updatedAt), 'year');
     const updated = dayjs(r.updatedAt).fromNow();
     const post = { ...{}, ...r, ...{ updated, yearsOld } }
-    // log.debug(post);
+    log.debug(post, 'Mapped Post:');
     return post;
   }
 
@@ -76,6 +76,7 @@ class PostService {
     const description = data.description ? data.description.trim() : '';
     const content = data.content ? data.content.trim() : '';
     const author = data.author ? data.author.trim() : '';
+    const featured = data.featured ? true : false;
 
     const value = {
       title,
@@ -83,6 +84,7 @@ class PostService {
       description,
       content,
       author,
+      featured,
     };
 
     const isValid = (Object.keys(error).length === 0);

@@ -73,6 +73,7 @@ class PostHandlers {
       req.flash('error', `Post with id ${id} was not found`);
       return res.redirect('/posts');
     }
+    log.debug(value, 'Editing post:')
     res.render('pages/posts/edit', {
       title: 'Edit Post',
       page: 'blog',
@@ -103,7 +104,7 @@ class PostHandlers {
     }
 
     const id = req.params.id;
-    log.info(req.body);
+    log.debug(req.body, 'Updating post (body):');
     const validation = await svcPost.validate(req.body);
     if (!validation.isValid) return res.render('pages/posts/edit', {
       title: 'Update Post',
@@ -114,6 +115,7 @@ class PostHandlers {
       error: validation.error
     });
 
+    log.debug(validation.value, 'Updating post (validated):')
     const result = await svcPost.updatePost(id, validation.value);
     if (result.error) {
       req.flash('error', `Error saving post: ${result.error}`);
