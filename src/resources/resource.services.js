@@ -3,7 +3,6 @@ const { isLength, isURL } = pkg;
 
 import log from '../logger.js';
 import Resource from './resource.model.js';
-import { resourceCategories } from '../utils.js';
 class ResourceService {
 
   #mapToEntity(r) {
@@ -44,10 +43,6 @@ class ResourceService {
 
     let qry = {};
 
-    if (filter.category) {
-      qry.category = filter.category
-    }
-
     if (filter.tags.length) {
       qry.tags = { $all: filter.tags }
     }
@@ -67,11 +62,7 @@ class ResourceService {
     }
   }
 
-  getCategories() {
-    return resourceCategories;
-  }
-
-  async getResourceById(id) {
+    async getResourceById(id) {
     const obj = await Resource.findById(id);
     return obj;
   }
@@ -101,18 +92,12 @@ class ResourceService {
 
     const description = data.description ? data.description.trim() : '';
 
-    const category = data.category ? data.category.trim() : '';
-    if (!resourceCategories.includes(category)) {
-      error.category = 'Category must be selected from category list';
-    }
-
     const tags =  data.tags ? data.tags.split(' ') : [];
 
     const value = {
       name,
       url,
       description,
-      category,
       tags,
     };
 

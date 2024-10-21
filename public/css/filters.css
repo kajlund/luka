@@ -10,7 +10,8 @@
 
 .filter-commands {
   /* border: 1px solid blue; */
-  margin: 0 0.2rem;
+  display: flex;
+  margin: 0 1rem;
 }
 
 /* .commands {
@@ -21,11 +22,18 @@ select,
 input {
   color: inherit;
   border: 1px solid var(--light-color-alt);
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  padding: 0.3rem 0.6rem;
 }
 
 select::placeholder,
 input::placeholder {
   color: var(--light-color-alt);
+}
+
+.btn-small {
+  padding: 0.6rem 1.2rem;
+  font-size: 1.2rem;
+  border: 1px solid var(--light-color-alt);
+  border-radius: 0.5rem;
 }

@@ -1,4 +1,4 @@
-const cleanFilter = { category: '', tags: [], name: '' };
+const cleanFilter = { tags: [], name: '' };
 let filter = { ...cleanFilter };
 
 const keyName = 'luka.resourceFilter';
@@ -6,7 +6,7 @@ const keyName = 'luka.resourceFilter';
 function setLocation() {
   localStorage.setItem(keyName, JSON.stringify(filter));
   // console.log(filter);
-  window.location.search = `?category=${filter.category}&tags=${filter.tags}&name=${filter.name}`;
+  window.location.search = `?tags=${filter.tags}&name=${filter.name}`;
 }
 
 // Try to get from localStorage
@@ -20,19 +20,11 @@ if (filterStr) {
 
 // Resources list page with no search? load filters
 if (window.location.pathname === '/resources' && !window.location.search) {
-  const currFilter = `?category=${filter.category}&tags=${filter.tags}&name=${filter.name}`;
+  const currFilter = `?tags=${filter.tags}&name=${filter.name}`;
   if (currFilter !== window.location.search) {
     window.location.search = currFilter;
   }
 }
-
-const txtCategory = document.querySelector('#txtCategory');
-txtCategory.addEventListener('change', (event) => {
-  if (event.target.value !== filter.category) {
-    filter.category = event.target.value.trim();
-    setLocation();
-  }
-});
 
 const elName = document.querySelector('#searchName');
 elName.addEventListener('change', (event) => {

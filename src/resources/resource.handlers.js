@@ -4,18 +4,16 @@ class ResourceHandlers {
 
   async addResource(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
-    const categories = svcResources.getCategories();
+    if (!user || !user.role==='admin') {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
 
     const validation = await svcResources.validate(req.body);
     if (!validation.isValid) return res.render('pages/resources/add', {
       title: 'Resources',
       page: 'resources',
       user,
-      categories,
       value: validation.value,
       error: validation.error
     });
@@ -53,40 +51,38 @@ class ResourceHandlers {
 
   async showAddResourceForm(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
-    const categories = svcResources.getCategories();
+    if (!user || !user.role==='admin') {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
+    
     res.render('pages/resources/add', {
       title: 'Add Resource',
       page: 'resources',
       user,
-      categories,
-      value: { name: '', url: '', description: '', category: '', tags: [] },
+      value: { name: '', url: '', description: '', tags: [] },
       error: {}
     });
   }
 
   async showEditResourceForm(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
+    if (!user || !user.role==='admin') {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
     const id = req.params.id;
     const value = await svcResources.getResourceById(id);
     if (!value) {
       req.flash('error', `Resource with id ${id} was not found`);
       return res.redirect('/resources');
     }
-    const categories = svcResources.getCategories();
+    
     res.render('pages/resources/edit', {
       title: 'Edit Resource',
       page: 'resources',
       user,
       resourceId: id,
-      categories,
       value,
       error: {}
     });
@@ -95,7 +91,6 @@ class ResourceHandlers {
   async showResources(req, res) {
     const user = req.session.user;
     const filter = {
-      category: req.query.category,
       tags: req.query.tags ? req.query.tags.split(',') : [],
     };
 
@@ -104,9 +99,6 @@ class ResourceHandlers {
       filter.name = { '$regex': nameFilter, '$options': 'i' }
     }
 
-    // log.debug(filter);
-
-    let categories = svcResources.getCategories();
     const tags = await svcResources.getTags();
 
     const result = await svcResources.findResources(filter);
@@ -115,7 +107,6 @@ class ResourceHandlers {
       title: 'Resources',
       page: 'resources',
       user,
-      categories,
       tags,
       resources: result.resources,
       filter,
@@ -124,13 +115,12 @@ class ResourceHandlers {
 
   async updateResource(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
+    if (!user || !user.role==='admin') {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
 
     const id = req.params.id;
-    let categories = svcResources.getCategories();
 
     const validation = await svcResources.validate(req.body);
     if (!validation.isValid) return res.render('pages/resources/edit', {
@@ -138,7 +128,6 @@ class ResourceHandlers {
       page: 'resources',
       user,
       resourceId: id,
-      categories,
       value: validation.value,
       error: validation.error
     });

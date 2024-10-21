@@ -107,5 +107,28 @@ h2.title {
 }
 
 .tagFilter {
-  min-width: 10rem;
+  flex-grow: 1;
+}
+
+.tags {
+  padding: 0.5rem 1rem;
+}
+
+.multiselect-dropdown {
+  margin: 0.5rem 1rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .tagFilter {
+    min-width: 10rem;
+  }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+}
+
+@media screen and (min-width: 1500px) {
+
 }
