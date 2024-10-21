@@ -37,6 +37,7 @@ class PostHandlers {
   async deletePost(req, res) {
     const id = req.params.id;
     const result = await svcPost.deleteById(id);
+    log.debug(result, 'Deleted');
     if (result.error) {
       req.flash('error', `Error deleting post: ${result.error}`);
     } else {
