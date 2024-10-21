@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <%- include('../../partials/head') %>
-  <link rel="stylesheet" href="/css/forms.css" />
-</head>
-<body>
-  <%- include('../../partials/header') %>
-  <main>
-    <section class="small-form">
-      <div class="place-items-center" style="width: 100%;">
-        <h1>Edit Resource</h1>
-      </div>
 
-      <form class="form" action="/resources/<%= resourceId %>/update" method="POST">
-        <div class="form-section">
-          <div class="input-group">
-            <label class="input-label" for="name">Name</label>
-            <input class="input" type="text" placeholder="Name"
-              name="name" id="name" required
-              value="<%= value.name %>"
-            >
-            <p class="input-error"><%= error.name %></p>
+  <head>
+    <%- include('../../partials/head') %>
+      <link rel="stylesheet" href="/css/forms.css" />
+  </head>
+
+  <body>
+    <%- include('../../partials/header') %>
+      <main>
+        <section class="small-form">
+          <div class="place-items-center" style="width: 100%;">
+            <h1>Edit Resource</h1>
+          </div>
+
+          <form class="form" action="/resources/<%= resourceId %>/update" method="POST">
+            <div class="form-section">
+              <div class="input-group">
+                <label class="input-label" for="name">Name</label>
+                <input class="input" type="text" placeholder="Name" name="name" id="name" required
+                  value="<%= value.name %>">
+                <p class="input-error">
+                  <%= error.name %></p>
           </div>
 
           <div class="input-group">
@@ -30,20 +31,6 @@
               value="<%= value.url %>"
             >
             <p class="input-error"><%= error.url %></p>
-          </div>
-
-          <div class="input-group">
-            <label class="input-label" for="category">Category</label>
-            <input class="input" type="text" placeholder="Category" list="categoryList"
-              name="category" id="category" required
-              value="<%= value.category %>"
-            >
-            <p class="input-error"><%= error.category %></p>
-            <datalist id="categoryList">
-              <% categories.forEach(function(category) { %>
-                <option><%= category %></option>
-              <% }); %>
-            </datalist>
           </div>
 
           <div class="input-group">
