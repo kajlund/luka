@@ -8,7 +8,7 @@
             <button class="btn-close">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path></svg>
             </button>
-            </div>
+          </div>
         <% }); %>
       <% } %>
       <% if (messages.info) { %>
@@ -28,7 +28,7 @@
 <header class="header" id="header">
   <nav class="navbar container">
     <a href="/">
-      <h2 class="logo">KajLund.com</h2>
+      <h2 class="logo">KajLund</h2>
     </a>
 
     <div class="menu" id="menu">
@@ -80,11 +80,10 @@
 
       <% if (user) { %>
         <img src="<%= user.picture %>" class="profile-pic screen-sm-hidden" alt="profile pic">
-        <a href="/users/logout" class="list-link screen-sm-hidden">Logout</a>
+        <a href="/users/logout" class="list-link screen-sm-hidden">Logoff</a>
       <% } else { %>
-        <a href="/users/login" class="<%= page == 'login' ? 'list-link current' : 'list-link' %>">Log on</a>
+        <a href="/users/login" class="<%= page == 'login' ? 'list-link screen-sm-hidden current' : 'list-link screen-sm-hidden' %>">Log on</a>
       <% } %>
-      <a href="/users/register" class="<%= page == 'register' ? 'list-link current' : 'list-link' %>">Register</a>
     </div>
   </nav>
 </header>
