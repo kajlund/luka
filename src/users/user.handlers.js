@@ -34,7 +34,7 @@ class UserHandlers {
   }
 
   showRegisterForm(req, res) {
-    res.render('pages/register', {
+    res.render('register', {
       title: 'Register',
       page: 'register',
       user: null,
@@ -45,7 +45,7 @@ class UserHandlers {
 
   async register(req, res) {
     let validation = await svcUser.validate(req.body);
-    if (!validation.isValid) return res.render('pages/register', {
+    if (!validation.isValid) return res.render('register', {
       title: 'Register',
       page: 'register',
       user: null,
@@ -54,7 +54,7 @@ class UserHandlers {
     });
 
     const result = await svcUser.register(validation.value);
-    if (result.error) return res.render('pages/register', {
+    if (result.error) return res.render('register', {
       title: 'Register',
       page: 'register',
       user: null,
