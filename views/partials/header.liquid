@@ -52,12 +52,20 @@
           </li>
         {% else %}
           <li class="list-item screen-lg-hidden">
-            <a href="/users/login" class="<%= page == 'login' ? 'list-link current' : 'list-link' %>">Log on</a>
+            {% if page == 'login' %}
+              <a href="/users/login" class="list-link current">Log on</a>
+            {% else %}
+              <a href="/users/login" class="list-link">Log on</a>
+            {% endif %}
           </li>
         {% endif %}
 
         <li class="list-item screen-lg-hidden">
-          <a href="/users/register" class="<%= page == 'register' ? 'list-link current' : 'list-link' %>">Register</a>
+          {% if page == 'register' %}
+            <a href="/users/register" class="list-link current">Register</a>
+          {% else %}
+            <a href="/users/register" class="list-link">Register</a>
+          {% endif %}  
         </li>
       </ul>
     </div>
@@ -76,7 +84,7 @@
       </button>
 
       {% if user %}
-        <img src="<%= user.picture %>" class="profile-pic screen-sm-hidden" alt="profile pic">
+        <img src="{{user.picture}}" class="profile-pic screen-sm-hidden" alt="profile pic">
         <a href="/users/logout" class="list-link screen-sm-hidden">Logoff</a>
       {% else %}
         <a href="/users/login" class="list-link screen-sm-hidden">Logon</a>
