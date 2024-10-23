@@ -1,0 +1,86 @@
+<header class="header" id="header">
+  <nav class="navbar container">
+    <a href="/">
+      <h2 class="logo">KajLund</h2>
+    </a>
+
+    <div class="menu" id="menu">
+      <ul class="list">
+        <li class="list-item">
+          {% if page == 'home' %}
+            <a href="/" class="list-link current">Home</a>
+          {% else %}
+            <a href="/" class="list-link">Home</a>
+          {% endif %}
+        </li>
+        <li class="list-item">
+          {% if page == 'blog' %}
+            <a href="/posts" class="list-link current">Blog</a>
+          {% else %}
+            <a href="/posts" class="list-link">Blog</a>
+          {% endif %}
+        </li>
+        <li class="list-item">
+          {% if page == 'resources' %}
+            <a href="/resources" class="list-link current">Resources</a>
+          {% else %}
+            <a href="/resources" class="list-link">Resources</a>
+          {% endif %}
+        </li>
+
+        {% if user and user.role contains "admin" %}
+          <li class="list-item">
+            {% if page == 'proverbs' %}
+              <a href="/proverbs" class="list-link current">Proverbs</a>
+            {% else %}  
+              <a href="/proverbs" class="list-link">Proverbs</a>
+            {% endif %}  
+          </li>
+        {% endif %}
+
+        <li class="list-item">
+          {% if page == 'about' %}
+            <a href="/about" class="list-link current">About</a>
+          {% else %}  
+            <a href="/about" class="list-link">About</a>
+          {% endif %}
+        </li>
+
+        {% if user  %}
+          <li class="list-item screen-lg-hidden">
+            <a href="/users/logout" class="list-link">Logoff</a>
+          </li>
+        {% else %}
+          <li class="list-item screen-lg-hidden">
+            <a href="/users/login" class="<%= page == 'login' ? 'list-link current' : 'list-link' %>">Log on</a>
+          </li>
+        {% endif %}
+
+        <li class="list-item screen-lg-hidden">
+          <a href="/users/register" class="<%= page == 'register' ? 'list-link current' : 'list-link' %>">Register</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="list list-right">
+      <button class="btn-icon place-items-center" id="theme-toggle-btn">
+        <i class="ri-sun-line sun-icon"></i>
+        <i class="ri-moon-line moon-icon"></i>
+      </button>
+
+      <button class="btn-icon place-items-center screen-lg-hidden menu-toggle-icon"
+        id="menu-toggle-icon"
+      >
+        <i class="ri-menu-3-line open-menu-icon"></i>
+        <i class="ri-close-line close-menu-icon"></i>
+      </button>
+
+      {% if user %}
+        <img src="<%= user.picture %>" class="profile-pic screen-sm-hidden" alt="profile pic">
+        <a href="/users/logout" class="list-link screen-sm-hidden">Logoff</a>
+      {% else %}
+        <a href="/users/login" class="list-link screen-sm-hidden">Logon</a>
+      {% endif %}
+    </div>
+  </nav>
+</header>

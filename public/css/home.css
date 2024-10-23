@@ -1,30 +1,23 @@
 section.home {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 12rem;
+  display: block;
+  margin-top: 15rem;
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  height: 40rem;
+  display: block;
   width: 80%;
   max-width: 60rem;
+  margin: 0 auto; 
   padding: 2rem;
-  border: 3px solid;
-  border-color: var(--secondary-background-color);
+  padding-top: 0;
+  border: 3px solid var(--secondary-background-color);
   border-radius: 3rem;
-  align-items: center;
-  justify-content: center;
   user-select: none;
 }
 
 .card-header {
-  flex-grow: 0;
   width: 100%;
   text-align: center;
-  padding: 2rem;
 }
 
 .title {
@@ -33,9 +26,7 @@ section.home {
 }
 
 .card-content {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  display: block;
 }
 
 .proverb {
@@ -51,10 +42,10 @@ section.home {
 
 .card-footer {
   display: flex;
-  font-size: 1.2rem;
   justify-content: space-between;
-  flex-grow: 0;
   width: 100%;
+  font-size: 1.2rem;
+  margin-top: 2rem;
 }
 
 .cite {

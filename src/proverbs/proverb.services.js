@@ -64,7 +64,7 @@ class ProverbService {
     try {
       const proverbs = await Proverb.find({ group });
       const idx = Math.floor(Math.random() * proverbs.length);
-      const proverb =  proverbs[idx];
+      const proverb = proverbs[idx].toJSON();
       return proverb;
     } catch (err) {
       log.error(err);
