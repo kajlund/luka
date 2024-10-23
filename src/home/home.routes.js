@@ -30,7 +30,7 @@ export default {
       middleware: [],
       handler: (req, res) => {
         const user = req.session.user;
-        res.render('pages/about', {
+        res.render('about', {
           title: 'About',
           page: 'about',
           user,

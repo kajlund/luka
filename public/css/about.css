@@ -23,6 +23,5 @@ article.info img {
   border: 2px solid var(--light-color-alt);
   border-radius: 1rem;
   margin-left: .8rem;
-  margin-top: 0.6rem;
-  /* max-width: 15rem; */
+  margin-top: 1.2rem;
 }
