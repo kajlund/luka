@@ -2,7 +2,7 @@ import svcUser from './user.services.js';
 
 class UserHandlers {
   showLoginForm(req, res) {
-    res.render('pages/login', {
+    res.render('login', {
       title: 'Login',
       page: 'login',
       user: null,

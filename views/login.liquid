@@ -1,0 +1,42 @@
+{% layout 'layout' %}
+
+{% block 'head' %}
+  <link rel="stylesheet" href="/css/forms.css" />
+{% endblock %}
+
+<section class="small-form">
+  <div class="place-items-center" style="width: 100%;">
+    <h1>Login</h1>
+  </div>
+
+  <form class="form" action="/users/login" method="POST">
+    <div class="form-section">
+
+      <div class="input-group">
+        <label class="input-label" for="email">email
+          <!-- <i class="ri-at-line input-icon"></i>  -->
+        </label>
+        <input class="input" type="email" placeholder="Email"
+          name="email" id="email" required
+          value="{{value.email}}"
+        >
+        <p class="input-error">{{error.email}}</p>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" for="password">password
+          <!-- <i class="ri-lock-line"></i> -->
+        </label>
+        <input class="input" type="password" name="password"
+          id="password" placeholder="Password" required
+          value="{{value.password}}"
+        >
+        <p class="input-error">{{error.password}}</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <input class="btn btn-primary" type="submit" value="Submit">
+    </div>
+  </form>
+</section>
