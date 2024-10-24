@@ -23,7 +23,7 @@
       </div>
       <div class="card-footer">
         <p>{{proverb.group}}</p>
-        <p>{{proverb.tags}}</p>
+        <p>{{proverb.tags | join: ", "}}</p>
       </div>
     </div>
   {% endif %}
