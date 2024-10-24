@@ -54,7 +54,7 @@ class ResourceService {
     log.debug(qry, 'Fetching resources with query:');
 
     try {
-      const resources = await Resource.find(qry).sort(sort);
+      const resources = await Resource.find(qry).sort(sort).lean();
       return { resources, error: null };
     } catch (error) {
       log.error(error);
@@ -64,11 +64,11 @@ class ResourceService {
 
     async getResourceById(id) {
     const obj = await Resource.findById(id);
-    return obj;
+    return obj.toJSON();
   }
 
   async getTags() {
-    const tags = await Resource.find({}).distinct('tags');
+    const tags = await Resource.find({}).distinct('tags').lean();
     return tags.sort();
   }
 
@@ -105,7 +105,5 @@ class ResourceService {
     return { isValid, error, value };
   }
 }
-
-
 
 export default new ResourceService();
