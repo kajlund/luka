@@ -12,8 +12,10 @@ class ProverbService {
 
   async addProverb(data) {
     try {
-      const pv = await Proverb.create(data);
-      return { proverb: this.#mapToEntity(pv), error: null };
+      const doc = await Proverb.create(data);
+      const proverb = this.#mapToEntity(doc.toJSON());
+      log.debug(proverb, 'Created proverb');
+      return { proverb, error: null };
     } catch (err) {
       log.error(err);
       return { proverb: null, error: err.message };
@@ -22,8 +24,10 @@ class ProverbService {
 
   async deleteById(id) {
     try {
-      const result = await Proverb.findByIdAndDelete(id);
-      return { proverb: this.#mapToEntity(result), error: null };
+      const doc = await Proverb.findByIdAndDelete(id);
+      const deleted = this.#mapToEntity(doc.toJSON());
+      log.debug(deleted, 'Deleted proverb by Id');
+      return { proverb: deleted, error: null };
     } catch (err) {
       log.error(err);
       return { proverb: null, error: err.message };
@@ -32,7 +36,7 @@ class ProverbService {
 
   async getAllProverbs() {
     try {
-      const proverbs = await Proverb.find({});
+      const proverbs = await Proverb.find({}).lean();
       return { proverbs, error: null };
     } catch (error) {
       log.error(error);
@@ -51,20 +55,27 @@ class ProverbService {
   }
 
   async getProverbById(id) {
-    const obj = await Proverb.findById(id);
-    return obj;
+    const doc = await Proverb.findById(id);
+    const proverb = this.#mapToEntity(doc.toJSON());
+    log.debug(proverb, 'Get proverb by Id');
+    return proverb;
   }
 
   async getTags() {
+    // Fetching distinct tags will return sorted string array.
     const tags = await Proverb.find().distinct('tags');
-    return tags.sort();
+    log.trace(tags, 'Fetched unique proverb tag list');
+    return tags;
   }
 
-  async fetchRandomQuote(group = 'IT') {
+  async fetchRandomQuote(qry = { group: 'IT' }) {
     try {
-      const proverbs = await Proverb.find({ group });
-      const idx = Math.floor(Math.random() * proverbs.length);
-      const proverb = proverbs[idx].toJSON();
+      const cnt = await Proverb.countDocuments(qry);
+      const rnd = Math.floor(Math.random() * cnt);
+      const document = await Proverb.findOne(qry).skip(rnd);
+      const proverb = this.#mapToEntity(document.toJSON());
+      log.debug(proverb, `Fetched random quote (${rnd}/${cnt}) filtering
+        on group: ${qry.group}`);
       return proverb;
     } catch (err) {
       log.error(err);
@@ -74,8 +85,10 @@ class ProverbService {
 
   async updateProverb(id, data) {
     try {
-      const proverb = await Proverb.findByIdAndUpdate(id, data, { new: true });
-      return { proverb, error: null };
+      const doc = await Proverb.findByIdAndUpdate(id, data, { new: true });
+      const updated = this.#mapToEntity(doc.toJSON());
+      log.debug(updated, 'Updated proverb');
+      return { proverb: updated, error: null };
     } catch (error) {
       return { proverb: null, error };
     }

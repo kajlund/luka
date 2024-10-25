@@ -5,19 +5,20 @@ class ProverbHandler {
 
   async addProverb(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
+    if (!user || !user.role.includes('admin')) {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
 
     const authors = await svcProverbs.getAuthors();
     const groups = await svcProverbs.getGroups();
 
     const validation = await svcProverbs.validate(req.body);
-    if (!validation.isValid) return res.render('pages/proverbs/add', {
+    if (!validation.isValid) return res.render('proverbs/edit', {
       title: 'Proverbs',
       page: 'proverbs',
       user,
+      insertMode: true,
       authors,
       groups,
       value: validation.value,
@@ -34,6 +35,11 @@ class ProverbHandler {
   }
 
   async deleteProverb(req, res) {
+    const user = req.session.user;
+    if (!user || !user.role.includes('admin')) {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
     const id = req.params.id;
     const result = await svcProverbs.deleteById(id);
     if (result.error) {
@@ -46,15 +52,15 @@ class ProverbHandler {
 
   async showProverbs(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
+    if (!user || !user.role.includes('admin')) {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
     const result = await svcProverbs.getAllProverbs();
     let groups = await svcProverbs.getGroups();
     groups = ['Filter by group', [...groups]];
     const tags = await svcProverbs.getTags();
-    res.render('pages/proverbs/index', {
+    res.render('proverbs/list', {
       title: 'Proverbs',
       page: 'proverbs',
       user,
@@ -66,16 +72,17 @@ class ProverbHandler {
 
   async showAddProverbForm(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
+    if (!user || !user.role.includes('admin')) {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
     const authors = await svcProverbs.getAuthors();
     const groups = await svcProverbs.getGroups();
-    res.render('pages/proverbs/add', {
+    res.render('proverbs/edit', {
       title: 'Add Proverb',
       page: 'proverbs',
       user,
+      insertMode: true,
       authors,
       groups,
       value: { title: '', author: '', content: '', description: '', group: '', tags: [] },
@@ -85,10 +92,10 @@ class ProverbHandler {
 
   async showEditProverbForm(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
+    if (!user || !user.role.includes('admin')) {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
     const id = req.params.id;
     const value = await svcProverbs.getProverbById(id);
     if (!value) {
@@ -97,10 +104,11 @@ class ProverbHandler {
     }
     const authors = await svcProverbs.getAuthors();
     const groups = await svcProverbs.getGroups();
-    res.render('pages/proverbs/edit', {
+    res.render('proverbs/edit', {
       title: 'Edit Proverb',
       page: 'proverbs',
       user,
+      insertMode: false,
       proverbId: id,
       authors,
       groups,
@@ -111,21 +119,21 @@ class ProverbHandler {
 
   async updateProverb(req, res) {
     const user = req.session.user;
-    // if (!user || !user.role==='admin') {
-    //   req.flash('info', 'Not allowed. Admins only');
-    //   return res.redirect('/');
-    // }
+    if (!user || !user.role.includes('admin')) {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
 
     const id = req.params.id;
     const authors = await svcProverbs.getAuthors();
     const groups = await svcProverbs.getGroups();
 
     const validation = await svcProverbs.validate(req.body);
-
-    if (!validation.isValid) return res.render('pages/proverbs/edit', {
-      title: 'Proverbs',
+    if (!validation.isValid) return res.render('proverbs/edit', {
+      title: 'Edit Proverb',
       page: 'proverbs',
       user,
+      insertMode: false,
       proverbId: id,
       authors,
       groups,
@@ -141,7 +149,6 @@ class ProverbHandler {
     }
     res.redirect('/proverbs');
   }
-
 }
 
 export default new ProverbHandler();
