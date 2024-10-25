@@ -21,7 +21,7 @@ class PostService {
   async addPost(data) {
     try {
       const res = await Post.create(data);
-      return { post: this.#mapToEntity(res), error: null };
+      return { post: this.#mapToEntity(res.toJSON()), error: null };
     } catch (err) {
       return { resource: null, error: err };
     }
@@ -30,19 +30,18 @@ class PostService {
   async deleteById(id) {
     try {
       const result = await Post.findByIdAndDelete(id);
-      return { post: this.#mapToEntity(result), error: null };
+      return { post: this.#mapToEntity(result.toJSON()), error: null };
     } catch (err) {
       log.error(err);
       return { post: null, error: err.message };
     }
   }
 
-  async findPosts(filter) {
+  async findPosts(filter, sort = { 'updatedAt': -1 }) {
     let qry = {};
     log.debug(qry, 'Fetching posts with query:');
-
     try {
-      const posts = await Post.find(qry);
+      const posts = await Post.find(qry).sort(sort).lean();
       return { posts, error: null };
     } catch (error) {
       log.error(error);
@@ -58,7 +57,7 @@ class PostService {
   async updatePost(id, data) {
     try {
       const post = await Post.findByIdAndUpdate(id, data, { new: true });
-      return { post: this.#mapToEntity(post) , error: null };
+      return { post: this.#mapToEntity(post.toJSON()) , error: null };
     } catch (error) {
       return { post: null, error };
     }

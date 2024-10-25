@@ -1,0 +1,86 @@
+{% layout 'layout' %}
+
+{% block 'head' %}
+  <link rel="stylesheet" href="/css/forms.css" />
+{% endblock %}
+
+<section class="small-form">
+  <div class="place-items-center" style="width: 100%;">
+    <h1>{{ title }}</h1>
+  </div>
+  {% if insertMode %}
+    <form class="form" action="/posts/add" method="POST">
+  {% else %}  
+    <form class="form" action="/posts/{{postId}}/update" method="POST">
+  {% endif %} 
+    <div class="form-section">
+      <div class="input-group">
+        <label for="title" class="input-label">Title</label>
+        <input type="text" id="title" name="title" 
+          class="input"
+          required
+          placeholder="Title"
+          value="{{value.title}}"
+        >
+        <p class="input-error">{{error.title}}</p>
+      </div>
+
+      <div class="input-group">
+        <label for="image" class="input-label">Image</label>
+        <input type="text" id="image" name="image" 
+          class="input" 
+          required
+          placeholder="image.jpg"
+          value="{{value.image}}"
+        >
+        <p class="input-error">{{error.image}}</p>
+      </div>
+
+      <div class="input-group">
+        <label for="description" class="input-label">Description</label>
+        <textarea name="description" id="description" 
+          class="input" 
+          cols="30" rows="5"
+          required
+        >{{value.description}}</textarea>
+        <p class="input-error">{{error.description}}</p>
+      </div>
+
+      <div class="input-group">
+        <label for="content" class="input-label">Content</label>
+        <textarea id="content" name="content" 
+          class="input" cols="30" rows="15"
+          required
+        >{{value.content}}</textarea>
+        <p class="input-error">{{error.content}}</p>
+      </div>
+
+      <div class="input-group">
+        <label for="author" class="input-label">Author</label>
+        <input type="text" id="author" name="author" class="input" 
+          placeholder="Author"  
+          value="{{value.author}}"
+        >
+        <p class="input-error">{{error.author}}</p>
+      </div>
+
+      <div class="input-group">
+        <label for="featured" class="input-label">
+          <input type="checkbox" id="featured" name="featured"
+            value="{{value.featured}}" {% if value.featured %} checked{% endif %} /> Featured
+        </label>
+        <p class="input-error">{{error.featured}}</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-commands">
+        <input class="btn btn-primary" type="submit" value="Save">
+        <a class="btn btn-outline" href="/posts">Cancel</a>
+        {% unless insertMode %}
+          <a class="btn btn-alert" href="/posts/{{postId}}/delete">Delete</a>
+        {% endunless %}
+      </div>
+    </div>
+  </form>
+</section>

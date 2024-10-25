@@ -1,0 +1,47 @@
+{% layout 'layout' %}
+
+{% block 'head' %}
+  <link rel="stylesheet" href="/css/posts.css" />
+{% endblock %}
+
+<section class="page-header">
+  <div class="filters">
+    <div class="filter-section">&nbsp;</div>
+  </div>
+  
+  <div class="commands">
+    {% if user and user.role contains "admin" %}
+      <a class="btn btn-primary" href="/posts/add">Add</a>
+    {% endif %}
+  </div>
+</section>
+
+<section class="posts">
+  {% unless posts.length > 0 %}
+    <p>No posts</p>
+  {% endunless %}
+
+  {% for post in posts %}
+    <div class="card">
+      <div class="card-header">
+        <div class="header-left">
+          <a href="/posts/{{post._id}}">
+            <h2 class="title">{{post.title}}</h2>
+          </a>
+        </div>
+        <div class="header-right">
+          {% if user and user.role contains "admin" %}
+            <a href="/posts/{{post._id}}/edit">
+              <i class="ri-edit-box-line"></i>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="card-content">
+        {{post.description}}
+      </div>
+      <div class="card-footer">
+      </div>
+    </div>
+  {% endfor %}
+</section>
