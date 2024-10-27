@@ -1,0 +1,55 @@
+{% layout 'layout' %}
+
+{% block 'head' %}
+  <link rel="stylesheet" href="/css/proverbs.css" />
+{% endblock %}
+
+<section class="commands">
+  <div>
+    <label for="groups">Group</label>
+    <select id="groups" name="groups">
+      {% for group in groups %}
+        <option value="{{group}}">{{group}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div>
+    {% if user and user.role contains "admin" %}
+      <a class="btn btn-primary" href="/proverbs/add">Add</a>
+    {% endif %}
+  </div>
+</section>
+
+<section class="proverbs">
+  {% unless proverbs.length > 0 %}
+    <p>No proverbs</p>
+  {% endunless %}
+
+  {% for proverb in proverbs %}
+    <div class="card">
+      <div class="card-header">
+        <h2 class="title">{{proverb.title}}</h2>
+        {% if user and user.role contains "admin" %}
+          <a  href="/proverbs/{{proverb.id}}/edit">
+            <i class="ri-edit-box-line"></i>
+          </a>
+        {% endif %}
+      </div>
+      <div class="card-content">
+        <p class="proverb">
+          <span class="cite">&OpenCurlyDoubleQuote;</span>
+            {{proverb.content}}
+          <span class="cite">&CloseCurlyDoubleQuote;</span>
+        </p>
+        <p class="author">
+          <em>&mdash; {{proverb.author}}</em>
+          {{proverb.description}}
+        </p>
+      </div>
+      <div class="card-footer">
+        <p>{{proverb.group}}</p>
+        <p>{{proverb.tags | join: ", "}}</p>
+      </div>
+    </div>
+  {% endfor %}
+</section>

@@ -1,5 +1,6 @@
 import { BadRequestError } from '../errors.js';
 import svcProverbs from '../proverbs/proverb.services.js';
+import log from '../logger.js';
 
 export default {
   group: {
@@ -14,7 +15,7 @@ export default {
       handler: async (req, res) => {
         const user = req.session.user;
         const proverb = await svcProverbs.fetchRandomQuote();
-        res.render('pages/home', {
+        res.render('home', {
           title: 'Home',
           page: 'home',
           user,
@@ -28,7 +29,7 @@ export default {
       middleware: [],
       handler: (req, res) => {
         const user = req.session.user;
-        res.render('pages/about', {
+        res.render('about', {
           title: 'About',
           page: 'about',
           user,

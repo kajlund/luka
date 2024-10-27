@@ -1,0 +1,89 @@
+{% layout 'layout' %}
+
+{% block 'head' %}
+  <link rel="stylesheet" href="/css/resources.css" />
+  <link rel="stylesheet" href="/css/filters.css" />
+
+  <script type="module" src="/js/resources.js" defer></script>
+  <script src="/js/multiselect-dropdown.js"></script>
+  <style>
+    select {
+      width: 40rem;
+    }
+  </style>
+{% endblock %}
+
+<section class="page-header">
+  <div class="filters">
+    <div class="filter-section">
+      <select id="selTags" class="tags" 
+        multiple placeholder="Tags"
+        multiselect-search="true"
+        multiselect-select-all="true"
+        multiselect-max-items="2" 
+        multiselect-hide-x="false"
+      >
+        {% for tag in tags %}
+          <option value="{{tag}}"
+            {% if filter.tags contains tag %} selected{% endif %}
+          >{{tag}}</option>
+        {% endfor %}
+      </select>
+      <input id="searchName" type="search" 
+        name="searchName" 
+        value="{{filter.name}}"
+        placeholder="Name"
+      />
+    </div>
+    
+    <div class="filter-commands">
+      <button id="btnClearFilter" class="btn btn-small">Clear</button>
+    </div>
+  </div>
+
+  <div class="commands">
+    {% if user and user.role contains "admin" %}
+      <a class="btn btn-primary" href="/resources/add">Add</a>
+    {% endif %}  
+  </div>
+</section>
+
+<section class="resources">
+  {% unless resources.length > 0 %}
+    <p>No resources</p>
+  {% endunless %}
+
+  {% for resource in resources %}
+    <div class="card">
+      <div class="card-header">
+        <div class="header-left">
+          <h2 class="title">{{resource.name}}</h2>
+          <a href="{{resource.url}}" target="_blank">
+            <i class="ri-external-link-line"></i>
+          </a>
+        </div>
+
+        <div class="header-right">
+          <a href="/resources/{{resource.id}}/upvote">
+            <i class="ri-thumb-up-line"></i>
+          </a>
+          <a href="/resources/{{resource.id}}/downvote">
+            <i class="ri-thumb-down-line"></i>
+          </a>
+          {% if user and user.role contains "admin" %}
+            <a href="/resources/{{resource.id}}/edit">
+              <i class="ri-edit-box-line"></i>
+            </a>
+          {% endif %} 
+        </div>
+      </div>
+      <div class="card-content">
+        {{resource.description}}
+      </div>
+      <div class="card-footer">
+        <p>{{resource.tags | join: ", "}}</p>
+      </div>
+    </div>
+  {% endfor %}
+
+</section>

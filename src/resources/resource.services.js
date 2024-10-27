@@ -1,20 +1,35 @@
 import pkg from 'validator';
-const { isLength, isURL } = pkg;
 
 import log from '../logger.js';
 import Resource from './resource.model.js';
+import Utils from '../utils.js';
+
+const { isLength, isURL } = pkg;
+
 class ResourceService {
 
-  #mapToEntity(r) {
-    return r;
+  #mapToEntity(obj) {
+    return {
+      id: obj._id,
+      name: obj.name,
+      url: obj.url,
+      description: obj.description,
+      likes: obj.likes,
+      tags: obj.tags,
+      createdAt: obj.createdAt,
+      updatedAt: obj.updatedAt,
+    };
   }
 
   async addResource(data) {
     try {
-      const res = await Resource.create(data);
-      return { resource: this.#mapToEntity(res), error: null };
+      const doc = await Resource.create(data);
+      const res = this.#mapToEntity(doc.toJSON());
+      log.debug(res, 'Created resource');
+      return { resource: res, error: null };
     } catch (err) {
-      return { resource: null, error: err };
+      log.error(err);
+      return { resource: null, error: err.message };
     }
   }
 
@@ -23,61 +38,75 @@ class ResourceService {
       const updated = await Resource.findByIdAndUpdate(id, { $inc: { 'likes': votes }}, { new: true });
       return { resource: this.#mapToEntity(updated), error: null };
     } catch (err) {
-      return { resource: null, error: err };
+      log.error(err);
+      return { resource: null, error: err.message };
     }
   }
 
   async deleteById(id) {
     try {
-      const result = await Resource.findByIdAndDelete(id);
-      return { resource: this.#mapToEntity(result), error: null };
+      const doc = await Resource.findByIdAndDelete(id);
+      const deleted = this.#mapToEntity(doc.toJSON());
+      log.debug(deleted, `Deleted resource by id: ${id}`);
+      return { resource: deleted, error: null };
     } catch (err) {
       log.error(err);
       return { resource: null, error: err.message };
     }
   }
 
-  async findResources(filter, sorting) {
-
-    let sort = sorting ? sorting : { name : 1 }
-
-    let qry = {};
-
-    if (filter.tags.length) {
-      qry.tags = { $all: filter.tags }
-    }
-
-    if (filter.name) {
-      qry.name = filter.name;
-    }
+  async findResources(fltTags = [], fltName = '', sort = 'name') {
+    const qry = {}
+    if (fltTags.length) qry.tags = { $all: fltTags };
+    if (fltName) qry.name = { '$regex': fltName, '$options': 'i' };
+    const sortObj = Utils.parseSort(sort);
 
     log.debug(qry, 'Fetching resources with query:');
+    log.debug(sortObj, 'and sort:');
 
     try {
-      const resources = await Resource.find(qry).sort(sort);
+      const docs = await Resource.find(qry).sort(sortObj).lean();
+      const resources = docs.map((doc) => this.#mapToEntity(doc));
       return { resources, error: null };
-    } catch (error) {
-      log.error(error);
-      return { resources: [], error };
+    } catch (err) {
+      log.error(err);
+      return { resources: [], error: err.message };
     }
   }
 
-    async getResourceById(id) {
-    const obj = await Resource.findById(id);
-    return obj;
+  async getResourceById(id) {
+    try {
+      const doc = await Resource.findById(id);
+      const res = this.#mapToEntity(doc.toJSON());
+      log.debug(res, `Get resource by id: ${id}`);
+      return res;
+    } catch (err) {
+      log.error(err);
+      return null;
+    }  
   }
 
   async getTags() {
-    const tags = await Resource.find({}).distinct('tags');
-    return tags.sort();
+    // Fetching distinct tags will return sorted string array.
+    try {
+      const tags = await Resource.find({}).distinct('tags');
+      log.trace(tags, 'Fetched unique resources tag list');
+      return tags;
+    } catch (err) {
+      log.error(err);
+      return [];
+    }
   }
 
   async updateResource(id, data) {
     try {
-      const resource = await Resource.findByIdAndUpdate(id, data, { new: true });
-      return { resource, error: null };
-    } catch (error) {
-      return { resource: null, error };
+      const doc = await Resource.findByIdAndUpdate(id, data, { new: true });
+      const updated = this.#mapToEntity(doc.toJSON());
+      log.debug(updated, 'Updated resource');
+      return { resource: updated, error: null };
+    } catch (err) {
+      log.error(err);
+      return { resource: null, error: err.message };
     }
   }
 
@@ -105,7 +134,5 @@ class ResourceService {
     return { isValid, error, value };
   }
 }
-
-
 
 export default new ResourceService();

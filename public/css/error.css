@@ -1,10 +1,10 @@
 section.error {
   max-width: 60rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 12rem;
-  padding: 3rem;
-  border: 3px solid  var(--secondary-background-color);
+  margin: 0 auto;
+  margin-top: 15rem;
+  padding: 2rem;
+  padding-top: 0;
+  border: 3px solid var(--secondary-background-color);
   border-radius: 3rem;
 }
 

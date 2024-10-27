@@ -13,7 +13,7 @@ class UserService {
 
   #mapToEntity = (u) => {
     return {
-      id: u.id,
+      id: u._id,
       email: u.email,
       alias: u.alias,
       picture: u.picture,
@@ -27,11 +27,11 @@ class UserService {
     try {
       let user;
       const result = await User.findOne({ email });
-      if (result) user = result.toObject();
+      if (result) user = result.toJSON();
       if (!user) throw new NotFoundError(`User ${email} was not found`);
-      if (user.role === 'prospect') throw new UnauthorizedError(`Prevented prospect ${email} from logging in`);
+      if (user.role.includes('prospect')) throw new UnauthorizedError(`Prevented prospect ${email} from logging in`);
       const ok = await bcrypt.compare(password, user.password);
-      if (!ok) throw new UnauthorizedError(`User ${email} tried logging in with invalid password ${password}`);
+      if (!ok) throw new UnauthorizedError(`Prevented user ${email} from logging in`);
       return this.#mapToEntity(user);
     } catch (err) {
       log.error(err);
@@ -48,7 +48,8 @@ class UserService {
       // Return registered user
       return { user: this.#mapToEntity(user), error: null };
     } catch (err) {
-      return { user: null, error: err };
+      log.error(err);
+      return { user: null, error: err.message };
     }
   }
 

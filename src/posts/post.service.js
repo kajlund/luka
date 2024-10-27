@@ -10,57 +10,84 @@ dayjs.extend(relativeTime)
 
 class PostService {
 
-  #mapToEntity(r) {
-    const yearsOld = dayjs().diff(dayjs(r.updatedAt), 'year');
-    const updated = dayjs(r.updatedAt).fromNow();
-    const post = { ...{}, ...r, ...{ updated, yearsOld } }
-    log.debug(post, 'Mapped Post:');
-    return post;
+  #mapToEntity(obj) {
+    const yearsOld = dayjs().diff(dayjs(obj.updatedAt), 'year');
+    const updated = dayjs(obj.updatedAt).fromNow();
+    
+    return {
+      id: obj._id,
+      title: obj.title,
+      image: obj.image,
+      description: obj.description,
+      content: obj.content,
+      author: obj.author,
+      views: obj.views || 0,
+      featured: obj.featured,
+      tags: obj.tags,
+      updated,
+      yearsOld,
+      createdAt: obj.createdAt,
+      updatedAt: obj.updatedAt,
+    };
   }
 
   async addPost(data) {
     try {
-      const res = await Post.create(data);
-      return { post: this.#mapToEntity(res), error: null };
-    } catch (err) {
-      return { resource: null, error: err };
-    }
-  }
-
-  async deleteById(id) {
-    try {
-      const result = await Post.findByIdAndDelete(id);
-      return { post: this.#mapToEntity(result), error: null };
+      const doc = await Post.create(data);
+      const post = this.#mapToEntity(doc.toJSON());
+      log.debug(post, 'Created post');
+      return { post, error: null };
     } catch (err) {
       log.error(err);
       return { post: null, error: err.message };
     }
   }
 
-  async findPosts(filter) {
-    let qry = {};
-    log.debug(qry, 'Fetching posts with query:');
-
+  async deleteById(id) {
     try {
-      const posts = await Post.find(qry);
+      const doc = await Post.findByIdAndDelete(id);
+      const deleted = this.#mapToEntity(doc.toJSON());
+      log.debug(deleted, `Deleted post by id: ${id}`);
+      return { post: deleted, error: null };
+    } catch (err) {
+      log.error(err);
+      return { post: null, error: err.message };
+    }
+  }
+
+  async findPosts(qry = {}, sort = { 'updatedAt': -1 }) {
+    try {
+      log.debug(qry, 'Finding posts with query:');
+      const docs = await Post.find(qry).sort(sort).lean();
+      const posts = docs.map((doc) => this.#mapToEntity(doc));
       return { posts, error: null };
-    } catch (error) {
-      log.error(error);
-      return { posts: [], error };
+    } catch (err) {
+      log.error(err);
+      return { posts: [], error: err.message };
     }
   }
 
   async getPostById(id) {
-    const obj = await Post.findById(id);
-    return this.#mapToEntity(obj.toJSON());
+    try {
+      const doc = await Post.findById(id);
+      const post = this.#mapToEntity(doc.toJSON());
+      log.debug(post, `Get post by id: ${id}`);
+      return post;
+    } catch(err) {
+      log.error(err);
+      return null;
+    }
   }
 
   async updatePost(id, data) {
     try {
-      const post = await Post.findByIdAndUpdate(id, data, { new: true });
-      return { post: this.#mapToEntity(post) , error: null };
-    } catch (error) {
-      return { post: null, error };
+      const doc = await Post.findByIdAndUpdate(id, data, { new: true });
+      const updated = this.#mapToEntity(doc.toJSON());
+      log.debug(updated, 'Updated post');
+      return { post: updated, error: null };
+    } catch (err) {
+      log.error(err);
+      return { post: null, error: err.message };
     }
   }
 
@@ -90,7 +117,6 @@ class PostService {
     const isValid = (Object.keys(error).length === 0);
     return { isValid, error, value };
   }
-
 }
 
 export default new PostService();

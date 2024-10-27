@@ -1,6 +1,7 @@
 import path from 'node:path';
 
 import express from 'express';
+import { Liquid } from 'liquidjs';
 import flash from 'express-flash';
 import sessions from 'express-session';
 
@@ -38,11 +39,19 @@ class App {
     this.app.use(flash());
 
     // Set view engine
-    this.app.set('view engine', 'ejs');
+    const engine = new Liquid({
+      cache: process.env.NODE_ENV !== 'development',
+      root: path.join(process.cwd(), 'views'),
+      layouts: path.join(process.cwd(), 'views/layouts'),
+      partials: path.join(process.cwd(), 'views/partials'),
+      extname: '.liquid'
+    });
+    
+    this.app.engine('liquid', engine.express());   // register liquid engine
+    this.app.set('view engine', 'liquid');         // set as default
 
     // Serve public
-    const publicPath = path.join(process.cwd(), 'public');
-    this.app.use(express.static(publicPath));
+    this.app.use(express.static(path.join(process.cwd(), 'public')));
 
     // request logging
     this.app.use((req, res, next) => {
@@ -79,7 +88,7 @@ class App {
         error.errors = err.errors
       }
 
-      return res.render('pages/error', { title: 'Error', page: 'error', user, error });
+      return res.render('error', { title: 'Error', page: 'error', user, error });
     });
   }
 

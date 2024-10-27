@@ -1,0 +1,95 @@
+{% layout 'layout' %}
+
+{% block 'head' %}
+  <link rel="stylesheet" href="/css/forms.css" />
+{% endblock %}
+
+<section class="small-form">
+  <div class="place-items-center" style="width: 100%;">
+    <h1>{{ title }}</h1>
+  </div>
+  {% if insertMode %}
+    <form class="form" action="/proverbs/add" method="POST">
+  {% else %}  
+    <form class="form" action="/proverbs/{{proverbId}}/update" method="POST">
+  {% endif %}
+  
+    <div class="form-section">
+      <div class="input-group">
+        <label for="title" class="input-label">Title</label>
+        <input id="title" name="title" class="input" type="text" placeholder="Title"
+          required
+          value="{{value.title}}"
+        >
+        <p class="input-error">{{error.title}}</p>
+      </div>
+
+      <div class="input-group">
+        <label for="author" class="input-label" >Author</label>
+        <input type="text" id="author" name="author" 
+          class="input" list="authorsList" 
+          placeholder="Author" required
+          value="{{value.author}}"
+        >
+        <p class="input-error">{{error.author}}</p>
+        <datalist id="authorsList">
+          {% for author in authors %}
+            <option>{{author}}</option>
+          {% endfor %}
+        </datalist>
+      </div>
+
+      <div class="input-group">
+        <label for="content" class="input-label">Quote</label>
+        <textarea name="content" id="content" class="input"  
+          cols="30" rows="5" required
+        >{{value.content}}</textarea>
+        <p class="input-error">{{error.content}}</p>
+      </div>
+
+      <div class="input-group">
+        <label for="description" class="input-label">Description</label>
+        <input type="text" id="description" name="description" 
+          class="input" placeholder="Description"
+          value="{{value.description}}"
+        >
+        <p class="input-error">{{error.description}}</p>
+      </div>
+
+      <div class="input-group">
+        <label for="group" class="input-label">Group</label>
+        <input type="text" id="group" name="group"
+          class="input" placeholder="Group" 
+          list="groupList" required
+          value="{{value.group}}"
+        >
+        <p class="input-error">{{error.group}}</p>
+        <datalist id="groupList">
+          {% for group in groups %}
+            <option>{{group}}</option>
+          {% endfor %}
+        </datalist>
+      </div>
+
+      <div class="input-group">
+        <label for="title" class="input-label">Tags</label>
+        <input type="text" id="tags" name="tags" 
+          class="input" placeholder="tag1 tag2"
+          value="{{value.tags | join: " "}}"
+        >
+        <p class="input-error">{{error.tags}}</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-commands">
+        <input type="submit" class="btn btn-primary" value="Save">
+        <a class="btn btn-outline" href="/proverbs">Cancel</a>
+        {% unless insertMode %}
+          <a class="btn btn-alert" href="/proverbs/{{proverbId}}/delete">Delete</a>
+        {% endunless %}
+      </div>
+    </div>
+  </form>
+  
+  </form>

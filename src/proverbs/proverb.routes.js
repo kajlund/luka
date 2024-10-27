@@ -26,7 +26,7 @@ export default {
     },
     {
       method: 'post',
-      path: '/',
+      path: '/add',
       middleware: [],
       handler: proverbHandlers.addProverb,
     },

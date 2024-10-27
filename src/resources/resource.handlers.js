@@ -1,5 +1,4 @@
 import svcResources from './resource.services.js';
-import log from '../logger.js';
 class ResourceHandlers {
 
   async addResource(req, res) {
@@ -10,10 +9,11 @@ class ResourceHandlers {
     }
 
     const validation = await svcResources.validate(req.body);
-    if (!validation.isValid) return res.render('pages/resources/add', {
-      title: 'Resources',
+    if (!validation.isValid) return res.render('resources/edit', {
+      title: 'Add Resource',
       page: 'resources',
       user,
+      insertMode: true,
       value: validation.value,
       error: validation.error
     });
@@ -56,9 +56,10 @@ class ResourceHandlers {
       return res.redirect('/');
     }
     
-    res.render('pages/resources/add', {
+    res.render('resources/edit', {
       title: 'Add Resource',
       page: 'resources',
+      insertMode: true,
       user,
       value: { name: '', url: '', description: '', tags: [] },
       error: {}
@@ -78,9 +79,10 @@ class ResourceHandlers {
       return res.redirect('/resources');
     }
     
-    res.render('pages/resources/edit', {
+    res.render('resources/edit', {
       title: 'Edit Resource',
       page: 'resources',
+      insertMode: false,
       user,
       resourceId: id,
       value,
@@ -90,26 +92,23 @@ class ResourceHandlers {
 
   async showResources(req, res) {
     const user = req.session.user;
-    const filter = {
-      tags: req.query.tags ? req.query.tags.split(',') : [],
-    };
-
+    // Check filters and sort field
+    const tagsFilter = req.query.tags ? req.query.tags.split(',') : [];
     const nameFilter = req.query.name ? req.query.name.trim() : '';
-    if (nameFilter) {
-      filter.name = { '$regex': nameFilter, '$options': 'i' }
-    }
-
+    
     const tags = await svcResources.getTags();
-
-    const result = await svcResources.findResources(filter);
-    filter.name = nameFilter;
-    res.render('pages/resources/index', {
+    const result = await svcResources.findResources(tagsFilter, nameFilter);
+    
+    res.render('resources/list', {
       title: 'Resources',
       page: 'resources',
       user,
       tags,
       resources: result.resources,
-      filter,
+      filter: {
+        tags: tagsFilter,
+        name: nameFilter,
+      },
     });
   }
 
@@ -121,12 +120,12 @@ class ResourceHandlers {
     }
 
     const id = req.params.id;
-
     const validation = await svcResources.validate(req.body);
-    if (!validation.isValid) return res.render('pages/resources/edit', {
-      title: 'Resources',
+    if (!validation.isValid) return res.render('resources/edit', {
+      title: 'Edit Resource',
       page: 'resources',
       user,
+      insertMode: false,
       resourceId: id,
       value: validation.value,
       error: validation.error
