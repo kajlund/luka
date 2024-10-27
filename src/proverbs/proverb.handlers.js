@@ -1,8 +1,6 @@
 import svcProverbs from './proverb.services.js';
-// import log from '../logger.js';
 
 class ProverbHandler {
-
   async addProverb(req, res) {
     const user = req.session.user;
     if (!user || !user.role.includes('admin')) {
@@ -12,7 +10,6 @@ class ProverbHandler {
 
     const authors = await svcProverbs.getAuthors();
     const groups = await svcProverbs.getGroups();
-
     const validation = await svcProverbs.validate(req.body);
     if (!validation.isValid) return res.render('proverbs/edit', {
       title: 'Proverbs',
@@ -48,26 +45,6 @@ class ProverbHandler {
       req.flash('info', `Deleted proverb ${result.proverb.title}`);
     }
     res.redirect('/proverbs');
-  }
-
-  async showProverbs(req, res) {
-    const user = req.session.user;
-    if (!user || !user.role.includes('admin')) {
-      req.flash('info', 'Not allowed. Admins only');
-      return res.redirect('/');
-    }
-    const result = await svcProverbs.getAllProverbs();
-    let groups = await svcProverbs.getGroups();
-    groups = ['Filter by group', [...groups]];
-    const tags = await svcProverbs.getTags();
-    res.render('proverbs/list', {
-      title: 'Proverbs',
-      page: 'proverbs',
-      user,
-      groups,
-      tags,
-      proverbs: result.proverbs,
-    });
   }
 
   async showAddProverbForm(req, res) {
@@ -117,6 +94,26 @@ class ProverbHandler {
     });
   }
 
+  async showProverbs(req, res) {
+    const user = req.session.user;
+    if (!user || !user.role.includes('admin')) {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
+    const result = await svcProverbs.findProverbs();
+    let groups = await svcProverbs.getGroups();
+    groups = ['Filter by group', [...groups]];
+    const tags = await svcProverbs.getTags();
+    res.render('proverbs/list', {
+      title: 'Proverbs',
+      page: 'proverbs',
+      user,
+      groups,
+      tags,
+      proverbs: result.proverbs,
+    });
+  }
+
   async updateProverb(req, res) {
     const user = req.session.user;
     if (!user || !user.role.includes('admin')) {
@@ -127,7 +124,6 @@ class ProverbHandler {
     const id = req.params.id;
     const authors = await svcProverbs.getAuthors();
     const groups = await svcProverbs.getGroups();
-
     const validation = await svcProverbs.validate(req.body);
     if (!validation.isValid) return res.render('proverbs/edit', {
       title: 'Edit Proverb',

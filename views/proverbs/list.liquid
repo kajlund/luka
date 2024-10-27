@@ -30,7 +30,7 @@
       <div class="card-header">
         <h2 class="title">{{proverb.title}}</h2>
         {% if user and user.role contains "admin" %}
-          <a  href="/proverbs/{{proverb._id}}/edit">
+          <a  href="/proverbs/{{proverb.id}}/edit">
             <i class="ri-edit-box-line"></i>
           </a>
         {% endif %}

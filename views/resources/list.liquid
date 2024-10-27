@@ -64,14 +64,14 @@
         </div>
 
         <div class="header-right">
-          <a href="/resources/{{resource._id}}/upvote">
+          <a href="/resources/{{resource.id}}/upvote">
             <i class="ri-thumb-up-line"></i>
           </a>
-          <a href="/resources/{{resource._id}}/downvote">
+          <a href="/resources/{{resource.id}}/downvote">
             <i class="ri-thumb-down-line"></i>
           </a>
           {% if user and user.role contains "admin" %}
-            <a href="/resources/{{resource._id}}/edit">
+            <a href="/resources/{{resource.id}}/edit">
               <i class="ri-edit-box-line"></i>
             </a>
           {% endif %} 

@@ -1,5 +1,4 @@
 import svcResources from './resource.services.js';
-import log from '../logger.js';
 class ResourceHandlers {
 
   async addResource(req, res) {
@@ -93,25 +92,23 @@ class ResourceHandlers {
 
   async showResources(req, res) {
     const user = req.session.user;
-    const filter = {
-      tags: req.query.tags ? req.query.tags.split(',') : [],
-    };
-
+    // Check filters and sort field
+    const tagsFilter = req.query.tags ? req.query.tags.split(',') : [];
     const nameFilter = req.query.name ? req.query.name.trim() : '';
-    if (nameFilter) {
-      filter.name = { '$regex': nameFilter, '$options': 'i' }
-    }
-
+    
     const tags = await svcResources.getTags();
-    const result = await svcResources.findResources(filter);
-    filter.name = nameFilter;
+    const result = await svcResources.findResources(tagsFilter, nameFilter);
+    
     res.render('resources/list', {
       title: 'Resources',
       page: 'resources',
       user,
       tags,
       resources: result.resources,
-      filter,
+      filter: {
+        tags: tagsFilter,
+        name: nameFilter,
+      },
     });
   }
 

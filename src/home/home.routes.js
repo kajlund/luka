@@ -15,7 +15,6 @@ export default {
       handler: async (req, res) => {
         const user = req.session.user;
         const proverb = await svcProverbs.fetchRandomQuote();
-        log.debug(proverb);
         res.render('home', {
           title: 'Home',
           page: 'home',

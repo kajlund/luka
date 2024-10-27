@@ -25,13 +25,13 @@
     <div class="card">
       <div class="card-header">
         <div class="header-left">
-          <a href="/posts/{{post._id}}">
+          <a href="/posts/{{post.id}}">
             <h2 class="title">{{post.title}}</h2>
           </a>
         </div>
         <div class="header-right">
           {% if user and user.role contains "admin" %}
-            <a href="/posts/{{post._id}}/edit">
+            <a href="/posts/{{post.id}}/edit">
               <i class="ri-edit-box-line"></i>
             </a>
           {% endif %}

@@ -2,12 +2,8 @@ import dayjs from 'dayjs';
 import markdownit from 'markdown-it';
 
 import svcPost from './post.service.js';
-import log from '../logger.js';
 
 class PostHandlers {
-  constructor() {
-  }
-
   async addPost(req, res) {
     const user = req.session.user;
     if (!user || !user.role.includes('admin')) {
@@ -16,7 +12,7 @@ class PostHandlers {
     }
 
     const validation = await svcPost.validate(req.body);
-    if (!validation.isValid) return res.render('pages/posts/edit', {
+    if (!validation.isValid) return res.render('posts/edit', {
       title: 'Add Post',
       page: 'blog',
       user,
@@ -35,9 +31,13 @@ class PostHandlers {
   }
 
   async deletePost(req, res) {
+    const user = req.session.user;
+    if (!user || !user.role.includes('admin')) {
+      req.flash('info', 'Not allowed. Admins only');
+      return res.redirect('/');
+    }
     const id = req.params.id;
     const result = await svcPost.deleteById(id);
-    log.debug(result, 'Deleted');
     if (result.error) {
       req.flash('error', `Error deleting post: ${result.error}`);
     } else {
@@ -50,7 +50,7 @@ class PostHandlers {
     const user = req.session.user;
     if (!user || !user.role.includes('admin')) {
       req.flash('info', 'Not allowed. Admins only');
-      return res.redirect('/');
+      return res.redirect('/posts');
     }
     res.render('posts/edit', {
       title: 'Add Post',
@@ -66,7 +66,7 @@ class PostHandlers {
     const user = req.session.user;
     if (!user || !user.role.includes('admin')) {
       req.flash('info', 'Not allowed. Admins only');
-      return res.redirect('/');
+      return res.redirect('/posts');
     }
     const id = req.params.id;
     const value = await svcPost.getPostById(id);
@@ -74,7 +74,7 @@ class PostHandlers {
       req.flash('error', `Post with id ${id} was not found`);
       return res.redirect('/posts');
     }
-    log.debug(value, 'Editing post:')
+
     res.render('posts/edit', {
       title: 'Edit Post',
       page: 'blog',
@@ -102,14 +102,13 @@ class PostHandlers {
     const user = req.session.user;
     if (!user || !user.role.includes('admin')) {
       req.flash('info', 'Not allowed. Admins only');
-      return res.redirect('/');
+      return res.redirect('/posts');
     }
 
     const id = req.params.id;
-    log.debug(req.body, 'Updating post (body):');
     const validation = await svcPost.validate(req.body);
     if (!validation.isValid) return res.render('posts/edit', {
-      title: 'Update Post',
+      title: 'Edit Post',
       page: 'blog',
       user,
       insertMode: false,
@@ -118,9 +117,7 @@ class PostHandlers {
       error: validation.error
     });
 
-    log.debug(validation.value, 'Updating post (validated):');
     const result = await svcPost.updatePost(id, validation.value);
-    log.debug(result, 'Updated post:')
     if (result.error) {
       req.flash('error', `Error saving post: ${result.error}`);
     } else {
