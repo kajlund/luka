@@ -14,8 +14,11 @@ const PostSchema = new mongoose.Schema(
     description: {
       type: String
     },
-    content: {
+    filename: {
+      required: [true, 'A blog post must point to a file name. 4 - 100 chars'],
       type: String,
+      minlength: 4,
+      maxlength: 100,
     },
     author: {
       type: String,

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
-import markdownit from 'markdown-it';
 
 import svcPost from './post.service.js';
+import Utils from '../utils.js';
 
 class PostHandlers {
   async addPost(req, res) {
@@ -57,7 +57,7 @@ class PostHandlers {
       page: 'blog',
       user,
       insertMode: true,
-      value: { title: '', image: '', description: '', content: '', author: '', featured: false },
+      value: { title: '', image: '', description: '', filename: '', author: '', featured: false },
       error: {}
     });
   }
@@ -130,17 +130,13 @@ class PostHandlers {
     const user = req.session.user;
     const id = req.params.id;
     const post = await svcPost.getPostById(id);
-    let content = '';
-    const postUpdatedAt = dayjs(post.updatedAt).format('D MMM YYYY');
-
     if (!post) {
       req.flash('error', `Post with id ${id} was not found`);
       return res.redirect('/posts');
     }
-    const md = markdownit();
-    if (post.content) {
-      content = md.render(post.content);
-    }
+
+    let content = await Utils.parseMarkdownFile(post.filename);
+    const postUpdatedAt = dayjs(post.updatedAt).format('D MMM YYYY');
     res.render('posts/view', {
       title: 'View Post',
       page: 'blog',

@@ -19,7 +19,7 @@ class PostService {
       title: obj.title,
       image: obj.image,
       description: obj.description,
-      content: obj.content,
+      filename: obj.filename,
       author: obj.author,
       views: obj.views || 0,
       featured: obj.featured,
@@ -101,7 +101,7 @@ class PostService {
     // if (!isURL(image)) error.image = 'A valid image must be provided';
 
     const description = data.description ? data.description.trim() : '';
-    const content = data.content ? data.content.trim() : '';
+    const filename = data.filename ? data.filename.trim() : '';
     const author = data.author ? data.author.trim() : '';
     const featured = data.featured ? true : false;
 
@@ -109,7 +109,7 @@ class PostService {
       title,
       image,
       description,
-      content,
+      filename,
       author,
       featured,
     };
