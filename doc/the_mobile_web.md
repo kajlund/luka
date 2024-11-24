@@ -1,3 +1,7 @@
+### Resources
+
+- [Mobile Frameworks Comparison Chart](https://www.mobile-frameworks-comparison-chart.com/)
+
 The Mobile Web refers to browser-based applications created for mobile devices, like smartphones and tablets, wirelessly connected to the internet.
 
 Think of the mobile web as a usage scenario instead of just a form factor. Using an application in a totally different environment than the typical desktop application is used in changes the way users access and consume websites.
@@ -7,23 +11,16 @@ Mobile device characteristics are important but there's more to it than just scr
 ### Mobile compared to desktop platforms:
 
 - Lots of different browsers with varying support for modern web technologies
-
 - Have less available resources than desktop machines, both hardware and network bandwidth
-
 - Form factor. Screens are smaller, interactions and expectations are different.
-
 - Might not have good keyboards and pointing devices
-
 - Typically used in an unpredictable environment instead of a fixed location
-
 - Mobile devices have features unavailable on a desktop computer like GPS, accelerometer, camera etc.
 
 ### Things to consider:
 
 - What kinds personas do you want to target? Knowing this helps you identify desirable features.
-
 - What do these personas want to do on the site?
-
 - Where, when and why is the site being accessed?
 
 ### Why do we need mobile sites/WebApps now?
