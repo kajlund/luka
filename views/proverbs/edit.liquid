@@ -57,18 +57,35 @@
       </div>
 
       <div class="input-group">
-        <label for="group" class="input-label">Group</label>
-        <input type="text" id="group" name="group"
-          class="input" placeholder="Group" 
-          list="groupList" required
-          value="{{value.group}}"
-        >
-        <p class="input-error">{{error.group}}</p>
-        <datalist id="groupList">
-          {% for group in groups %}
-            <option>{{group}}</option>
-          {% endfor %}
-        </datalist>
+        <label for="category" class="input-label">Category</label>
+        <div class="select-wrapper">
+          <select id="category" name="category" placeholder="Category">
+            {% for cat in categories %}
+              {% if cat == value.category %}
+                <option selected>{{cat}}</option>
+              {% else %}
+                <option>{{cat}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>  
+        <p class="input-error">{{error.category}}</p>
+      </div>
+
+      <div class="input-group">
+        <label for="lang" class="input-label">Language</label>
+        <div class="select-wrapper">
+          <select id="lang" name="lang" placeholder="Language">
+            {% for lang in languages %}
+              {% if lang == value.lang %}
+                <option selected>{{lang}}</option>
+              {% else %}
+                <option>{{lang}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>  
+        <p class="input-error">{{error.lang}}</p>
       </div>
 
       <div class="input-group">

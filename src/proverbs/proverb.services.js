@@ -1,8 +1,10 @@
 import pkg from 'validator';
-const { isLength } = pkg;
 
 import log from '../logger.js';
 import Proverb from './proverb.model.js';
+import { categories, languages } from './proverb.model.js';
+
+const { isLength } = pkg;
 
 class ProverbService {
 
@@ -13,7 +15,8 @@ class ProverbService {
       content: obj.content,
       author: obj.author,
       description: obj.description,
-      group: obj.group,
+      category: obj.category,
+      lang: obj.lang,
       tags: obj.tags,
       createdAt: obj.createdAt,
       updatedAt: obj.updatedAt,
@@ -44,7 +47,7 @@ class ProverbService {
     }
   }
 
-  async findProverbs(qry = {}, sort = { 'updatedAt': -1 }) {
+  async findProverbs(qry = {}, sort = { 'title': 1 }) {
     try {
       log.debug(qry, 'Finding provebs with query:');
       const docs = await Proverb.find(qry).sort(sort).lean();
@@ -62,18 +65,6 @@ class ProverbService {
       const authors = await Proverb.find().distinct('author');
       log.trace(authors, 'Fetched unique authors list');
       return authors;
-    } catch (err) {
-      log.error(err);
-      return [];
-    }
-  }
-
-  async getGroups() {
-    // Fetching distinct group will return sorted string array.
-    try {
-      const groups = await Proverb.find().distinct('group');
-      log.trace(groups, 'Fetched unique groups list');
-      return groups;
     } catch (err) {
       log.error(err);
       return [];
@@ -104,13 +95,13 @@ class ProverbService {
     }
   }
 
-  async fetchRandomQuote(qry = { group: 'IT' }) {
+  async fetchRandomQuote(qry = { category: 'IT' }) {
     try {
       const cnt = await Proverb.countDocuments(qry);
       const rnd = Math.floor(Math.random() * cnt);
       const doc = await Proverb.findOne(qry).skip(rnd);
       const proverb = this.#mapToEntity(doc.toJSON());
-      log.debug(proverb, `Fetched random quote (${rnd}/${cnt}) filtering on group: ${qry.group}`);
+      log.debug(proverb, `Fetched random quote (${rnd}/${cnt}) filtering on category: ${qry.category}`);
       return proverb;
     } catch (err) {
       log.error(err);
@@ -144,8 +135,11 @@ class ProverbService {
 
     const description = data.description ? data.description.trim() : '';
 
-    const group = data.group ? data.group.trim() : '';
-    if (!isLength(group, { min: 2, max: 50 })) error.group = 'Group must be 2 - 50 chars';
+    const category = data.category ? data.category.trim() : '';
+    if (!categories.includes(category)) error.category = 'Invalid category value';
+
+    const lang = data.lang ? data.lang.trim() : '';
+    if (!languages.includes(lang)) error.lang = 'Invalid language code';
 
     const tags =  data.tags ? data.tags.split(' ') : [];
 
@@ -154,7 +148,8 @@ class ProverbService {
       content,
       author,
       description,
-      group,
+      category,
+      lang,
       tags,
     };
 

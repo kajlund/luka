@@ -1,5 +1,9 @@
 import mongoose from 'mongoose';
 
+// List of allowed categories
+export const categories = ['IT', 'Misc.', 'Science', 'Secular']
+export const languages = ['eng', 'swe', 'fin']
+
 const ProverbSchema = new mongoose.Schema(
   {
     title: {
@@ -19,11 +23,17 @@ const ProverbSchema = new mongoose.Schema(
     description: {
       type: String,
     },
-    group: {
+    lang: {
       type: String,
-      required: [true, 'group must be provided. 2 - 50 characters'],
-      maxlength: 50,
-      minlength: 2,
+      default: 'eng',
+      enum: languages,
+      required: [true, 'Language code must be provided.'],
+    },
+    category: {
+      type: String,
+      required: [true, 'Category must be provided.'],
+      default: 'IT',
+      enum: categories,
     },
     tags: [{ type: String }],
   },

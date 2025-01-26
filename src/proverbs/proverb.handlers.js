@@ -1,4 +1,5 @@
 import svcProverbs from './proverb.services.js';
+import { categories, languages } from './proverb.model.js';
 
 class ProverbHandler {
   async addProverb(req, res) {
@@ -9,7 +10,6 @@ class ProverbHandler {
     }
 
     const authors = await svcProverbs.getAuthors();
-    const groups = await svcProverbs.getGroups();
     const validation = await svcProverbs.validate(req.body);
     if (!validation.isValid) return res.render('proverbs/edit', {
       title: 'Proverbs',
@@ -17,7 +17,8 @@ class ProverbHandler {
       user,
       insertMode: true,
       authors,
-      groups,
+      categories,
+      languages,
       value: validation.value,
       error: validation.error
     });
@@ -54,15 +55,15 @@ class ProverbHandler {
       return res.redirect('/');
     }
     const authors = await svcProverbs.getAuthors();
-    const groups = await svcProverbs.getGroups();
     res.render('proverbs/edit', {
       title: 'Add Proverb',
       page: 'proverbs',
       user,
       insertMode: true,
       authors,
-      groups,
-      value: { title: '', author: '', content: '', description: '', group: '', tags: [] },
+      categories,
+      languages,
+      value: { title: '', author: '', content: '', description: '', category: 'IT', language: 'eng', tags: [] },
       error: {}
     });
   }
@@ -80,7 +81,7 @@ class ProverbHandler {
       return res.redirect('/proverbs');
     }
     const authors = await svcProverbs.getAuthors();
-    const groups = await svcProverbs.getGroups();
+
     res.render('proverbs/edit', {
       title: 'Edit Proverb',
       page: 'proverbs',
@@ -88,7 +89,8 @@ class ProverbHandler {
       insertMode: false,
       proverbId: id,
       authors,
-      groups,
+      categories,
+      languages,
       value,
       error: {}
     });
@@ -101,14 +103,14 @@ class ProverbHandler {
       return res.redirect('/');
     }
     const result = await svcProverbs.findProverbs();
-    let groups = await svcProverbs.getGroups();
-    groups = ['Filter by group', [...groups]];
     const tags = await svcProverbs.getTags();
+
     res.render('proverbs/list', {
       title: 'Proverbs',
       page: 'proverbs',
       user,
-      groups,
+      categories: ['Filter by category', [...categories]],
+      languages,
       tags,
       proverbs: result.proverbs,
     });
@@ -123,7 +125,6 @@ class ProverbHandler {
 
     const id = req.params.id;
     const authors = await svcProverbs.getAuthors();
-    const groups = await svcProverbs.getGroups();
     const validation = await svcProverbs.validate(req.body);
     if (!validation.isValid) return res.render('proverbs/edit', {
       title: 'Edit Proverb',
@@ -132,7 +133,8 @@ class ProverbHandler {
       insertMode: false,
       proverbId: id,
       authors,
-      groups,
+      categories,
+      languages,
       value: validation.value,
       error: validation.error
     });

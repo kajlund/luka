@@ -68,11 +68,12 @@ label {
   margin-bottom: 1.6rem;
 }
 
-.input {
+.input,
+select {
   border: 1px solid var(--light-color-alt);
   border-radius: 0.6rem;
   padding: 1rem;
-  color: var(--light-color-alt);
+  color: var(--secondary-background-color);
   /* outline: 0; */
   /* outline-color: azure; */
 }
@@ -93,3 +94,27 @@ label {
   font-size: var(--font-size-xsm);
   margin-left: 0.4rem;
 }
+
+select {
+  background: transparent;
+  box-shadow: none;
+  color: #666;
+  width: 100%;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 222px;
+}
+
+.select-wrapper:after {
+  content: "< >";
+  color: #666;
+  font-size: 14px;
+  top: 8px;
+  right: 0;
+  transform: rotate(90deg);
+  position: absolute;
+  z-index: -1;
+}
+
