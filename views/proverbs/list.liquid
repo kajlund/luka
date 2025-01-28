@@ -2,16 +2,47 @@
 
 {% block 'head' %}
   <link rel="stylesheet" href="/css/proverbs.css" />
+  <script type="module" src="/js/proverbs.js" defer></script>
 {% endblock %}
 
 <section class="commands">
-  <div>
-    <label for="groups">Group</label>
-    <select id="groups" name="groups">
-      {% for group in groups %}
-        <option value="{{group}}">{{group}}</option>
-      {% endfor %}
-    </select>
+  <div class="filter">
+    <div class="filter-group">
+      <label for="langFilter">Language</label>
+      <select id="selLanguage">
+        {% for l in languages %}
+          {% if l == value.lang %}
+            <option selected>{{l}}</option>
+          {% else %}
+            <option>{{l}}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="category">Category</label>
+      <select id="selCategory">
+        {% for cat in categories %}
+          {% if cat == value.category %}
+            <option selected>{{cat}}</option>
+          {% else %}
+            <option>{{cat}}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="txtAuthor">Author</label>
+      <input type="text" id="txtAuthor" name="txtAuthor" list="authorsList" >
+      <datalist id="authorsList">
+        {% for author in authors %}
+          <option>{{author}}</option>
+        {% endfor %}
+      </datalist>
+    </div>
+    <div class="filter-group">
+      <button id="btnFilterClear" class="btn btn-small btn-outline">Clear</button>
+    </div>
   </div>
   <div>
     {% if user and user.role contains "admin" %}

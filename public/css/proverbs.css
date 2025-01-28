@@ -56,6 +56,8 @@ h2.title {
 .proverb {
   font-size: 1.2rem;
   /* line-height: 2.8rem; */
+  max-height: 11.2rem;
+  overflow: auto;
 }
 
 .author {
@@ -76,3 +78,37 @@ h2.title {
   font-size: 1.2rem;
 }
 
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.filter-group label {
+  margin-right: 0.5rem;
+}
+
+.filter select {
+  padding: .5rem 1rem;
+  font-size: 1.2rem;
+  border-radius: .5rem;
+}
+
+.filter label {
+  font-size: 1.2rem;
+  color:var(--secondary-background-color);
+}
+
+.filter input {
+  font-size: 1.2rem;
+  color: var(--secondary-background-color);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--secondary-background-color);
+}

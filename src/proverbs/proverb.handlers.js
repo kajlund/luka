@@ -102,15 +102,23 @@ class ProverbHandler {
       req.flash('info', 'Not allowed. Admins only');
       return res.redirect('/');
     }
-    const result = await svcProverbs.findProverbs();
-    const tags = await svcProverbs.getTags();
+
+    const langFilter = req.query.lang ? req.query.lang.trim() : ''
+    const categoryFilter = req.query.category ? req.query.category.trim() : '';
+    const tagsFilter = req.query.tags ? req.query.tags.split(',') : [];
+    const authorFilter = req.query.author ? req.query.author.trim() : '';
+        
+    const tags = await svcProverbs.getTags();   
+    const authors = await svcProverbs.getAuthors();
+    const result = await svcProverbs.findProverbs(langFilter, categoryFilter, tagsFilter, authorFilter);
 
     res.render('proverbs/list', {
       title: 'Proverbs',
       page: 'proverbs',
       user,
-      categories: ['Filter by category', [...categories]],
-      languages,
+      authors: ['Any', ...authors],
+      categories: ['Any', ...categories],
+      languages: ['Any', ...languages],
       tags,
       proverbs: result.proverbs,
     });

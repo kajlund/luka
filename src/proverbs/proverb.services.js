@@ -47,7 +47,12 @@ class ProverbService {
     }
   }
 
-  async findProverbs(qry = {}, sort = { 'title': 1 }) {
+  async findProverbs(fltLang = '',fltCategory = '', fltTags = [], fltAuthor = '', sort = { 'title': 1 }) {
+    const qry = {}
+    if (fltLang && fltLang !== 'Any') qry.lang = fltLang
+    if (fltCategory && fltCategory !== 'Any') qry.category = fltCategory
+    if (fltAuthor && fltAuthor !== 'Any') qry.author = { '$regex': fltAuthor, '$options': 'i' }
+
     try {
       log.debug(qry, 'Finding provebs with query:');
       const docs = await Proverb.find(qry).sort(sort).lean();
