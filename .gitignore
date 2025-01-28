@@ -6,3 +6,5 @@ node_modules/
 scripts/luka.resources.json
 
 scripts/massagedata.js
+
+.idea/
