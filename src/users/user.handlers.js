@@ -3,7 +3,7 @@ import svcUser from './user.services.js';
 class UserHandlers {
   showLoginForm(req, res) {
     res.render('login', {
-      title: 'Login',
+      title: 'Logon',
       page: 'login',
       user: null,
       value: {},
@@ -16,19 +16,16 @@ class UserHandlers {
     const user = await svcUser.login(email, password);
     req.session.user = user;
     if (user) {
-      req.flash('info', `User ${user.alias} was logged in`);
+      req.flash('info', `User ${user.alias} logged on`);
       res.redirect('/');
     } else {
-      req.flash('info', 'Login failed');
+      req.flash('info', 'Logon failed');
       res.redirect('/users/login');
     }
   }
 
   logout(req, res) {
-    let email = '';
-    const user = req.session.user;
-    if (user) email = user.email;
-    req.session.destroy(function(err) {
+    req.session.destroy(function (err) {
       res.redirect('/');
     });
   }
