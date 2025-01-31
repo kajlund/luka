@@ -12,3 +12,14 @@ section.error h1 {
   font-size: 3rem;
   text-align: center;
 }
+
+section.error footer {
+  display: flex;
+  flex-direction: column-reverse;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+section.error footer a { 
+  display: inline-block;
+}
