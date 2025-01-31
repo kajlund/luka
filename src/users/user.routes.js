@@ -6,18 +6,18 @@ export default {
     middleware: [],
   },
   routes: [
-    {
-      method: 'get',
-      path: '/register',
-      middleware: [],
-      handler: hndUser.showRegisterForm,
-    },
-    {
-      method: 'post',
-      path: '/register',
-      middleware: [],
-      handler: hndUser.register,
-    },
+    // {
+    //   method: 'get',
+    //   path: '/register',
+    //   middleware: [],
+    //   handler: hndUser.showRegisterForm,
+    // },
+    // {
+    //   method: 'post',
+    //   path: '/register',
+    //   middleware: [],
+    //   handler: hndUser.register,
+    // },
     {
       method: 'get',
       path: '/login',
