@@ -6,6 +6,14 @@ const selectElement = (selector) => {
   return element;
 };
 
+function removeElementWithFadeOut(el) {
+    el.style.transition = "opacity 1s ease";
+    el.style.opacity = 0;
+    setTimeout(function() {
+        el.parentNode.removeChild(el);
+    }, 1000);
+}
+
 // Add/Remove nav styles on scroll
 window.addEventListener('scroll', () => {
   const navbarElement = selectElement('#header');
@@ -33,9 +41,16 @@ menuToggleIcon.addEventListener('click', () => {
 const messages = document.querySelectorAll('.alert-message');
 // console.log(messages);
 messages.forEach((element) => {
-  setTimeout(function() {
+  let id = setTimeout(function () {
+    element.style.opacity = '0';
     element.remove();
-  }, 5000 );
+  }, 3000);
+
+  element.addEventListener('mouseover', () => {
+    console.log(element);
+    clearTimeout(id);
+  });
+  
 });
 
 const closeBtns = document.querySelectorAll('.btn-close');

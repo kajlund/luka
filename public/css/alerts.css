@@ -13,12 +13,19 @@ article.alerts {
   align-items: center;
   justify-content: space-between;
   font-size: 1.2rem;
-  padding: 1.5rem 1rem;
+  padding: 1rem;
   border-radius: .5rem;
   margin-bottom: 2px;
+  opacity: 1;
+  transition: opacity 1s linear;
 }
 
 .alert-info {
+  color: #fafafa;
+  background-color: #75a319;
+}
+
+.alert-info:hover {
   color: #fff;
   background-color: #669900;
 }
@@ -35,8 +42,10 @@ article.alerts {
 
 .btn-close {
   cursor: pointer;
+  height: 26px;
+  width: 26px;
   border: 1px solid transparent;
-  border-radius: 0.4rem;
+  border-radius: 0.3rem;
 }
 
 .btn-close:hover {
