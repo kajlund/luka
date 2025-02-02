@@ -30,6 +30,7 @@
 ## Color
 
 - [Color Hex](https://www.color-hex.com/)
+- [Hex to Hsl](https://htmlcolors.com/hex-to-hsl)
 - [HTML Color Codes](https://htmlcolorcodes.com/)
 - [Flat UI Colors](http://flatuicolors.com/)
 - [Color Hex](https://www.color-hex.com/)
