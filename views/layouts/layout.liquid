@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="/css/media.css">
   <link rel="stylesheet" href="/css/alerts.css">
 
-  <script type="module" src="/js/main.js" defer></script>
   {% block head %}{% endblock %}
 </head>
 <body>
@@ -23,5 +22,7 @@
   <main>
     {% block %}{% endblock %}
   </main>
+  <script type="module" src="/js/main.js" defer></script>
+  {% block scripts %}{% endblock %}
 </body>
 </html>

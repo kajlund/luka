@@ -2,7 +2,6 @@
 
 {% block 'head' %}
   <link rel="stylesheet" href="/css/proverbs.css" />
-  <script type="module" src="/js/proverbs.js" defer></script>
 {% endblock %}
 
 <section class="commands">
@@ -84,3 +83,7 @@
     </div>
   {% endfor %}
 </section>
+
+{% block 'scripts' %}
+  <script type="module" src="/js/proverbs.js" defer></script>
+{% endblock %}

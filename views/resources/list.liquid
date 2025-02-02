@@ -3,9 +3,6 @@
 {% block 'head' %}
   <link rel="stylesheet" href="/css/resources.css" />
   <link rel="stylesheet" href="/css/filters.css" />
-
-  <script type="module" src="/js/resources.js" defer></script>
-  <script src="/js/multiselect-dropdown.js"></script>
   <style>
     select {
       width: 40rem;
@@ -87,3 +84,8 @@
   {% endfor %}
 
 </section>
+
+{% block 'scripts' %}
+  <script src="/js/multiselect-dropdown.js" defer></script>
+  <script type="module" src="/js/resources.js" defer></script>
+{% endblock %}
