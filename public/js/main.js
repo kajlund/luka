@@ -6,6 +6,15 @@ const selectElement = (selector) => {
   return element;
 };
 
+
+const dmKeyName = 'luka.darkMode';
+const themeToggleBtn = selectElement('#theme-toggle-btn');
+
+const darkMode = localStorage.getItem(dmKeyName, '');
+if (darkMode) {
+  document.body.classList.add('dark-theme');
+}
+
 function removeElementWithFadeOut(el) {
     el.style.transition = "opacity 1s ease";
     el.style.opacity = 0;
@@ -33,10 +42,14 @@ menuToggleIcon.addEventListener('click', () => {
 });
 
 // Theme toggle
-// const themeToggleBtn = selectElement('#theme-toggle-btn');
-// themeToggleBtn.addEventListener('click', () => {
-//   document.body.classList.toggle('light-theme');
-// });
+themeToggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+  if (document.body.classList.contains('dark-theme')) {
+    localStorage.setItem(dmKeyName, 'Y');
+  } else {
+    localStorage.removeItem(dmKeyName);
+  }
+});
 
 const messages = document.querySelectorAll('.alert-message');
 // console.log(messages);

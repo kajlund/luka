@@ -21,19 +21,19 @@
 select,
 input {
   color: inherit;
-  border: 1px solid var(--light-color-alt);
+  border: 1px solid var(--text-color);
   border-radius: 0.4rem;
   padding: 0.3rem 0.6rem;
 }
 
 select::placeholder,
 input::placeholder {
-  color: var(--light-color-alt);
+  color: lightgray;
 }
 
 .btn-small {
   padding: 0.6rem 1.2rem;
   font-size: 1.2rem;
-  border: 1px solid var(--light-color-alt);
+  border: 1px solid var(--text-color);
   border-radius: 0.5rem;
 }

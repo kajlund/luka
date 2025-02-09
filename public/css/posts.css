@@ -11,8 +11,8 @@ section.page-header {
   align-items: center;
   margin-bottom: 2rem;
   padding: 2rem;
-  background-color: var(--light-color);
-  border-color: var(--secondary-background-color);
+  background-color: var(--highlight-color);
+  border-color: var(--primary-color);
   border-radius: 1rem;
 }
 
@@ -28,7 +28,7 @@ section.posts {
   height: 20rem;
   /* width: 25rem; */
   padding: 2rem;
-  border: 2px solid var(--secondary-background-color);
+  border: 2px solid var(--primary-color);
   border-radius: 1rem;
 }
 

@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--secondary-background-color);
+  background-color: var(--primary-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -17,8 +17,8 @@
   position: relative;
   top: -0.6rem;
   font-family: var(--font-secondary);
-  font-size: var(--font-size-lg);
-  color: var(--light-color);
+  font-size: var(--font-size-xl);
+  color: var(--highlight-color);
 }
 
 .menu {
@@ -27,7 +27,7 @@
   right: 1.5rem;
   width: 23rem;
   padding: 1.5rem;
-  background-color:var(--secondary-background-color);
+  background-color:var(--primary-color);
   opacity: 0;
   transform: scale(0);
   transition: opacity .25s ease-in;
@@ -36,7 +36,7 @@
 .list {
   display: flex;
   align-items: center;
-  gap: var(--gap);
+  gap: 2rem;
 }
 
 .menu > .list {
@@ -51,7 +51,7 @@ ul.list {
 
 
 .list-link.current {
-  color: var(--light-color);
+  color: var(--highlight-color);
 }
 
 .close-menu-icon {
@@ -65,35 +65,43 @@ ul.list {
 .list-link:hover,
 .btn-icon:hover,
 .btn-icon:hover span {
-  color: var(--light-color);
+  color: var(--highlight-color);
 }
 
-.moon-icon {
+i.sun-icon {
   display: none;
 }
 
-.light-theme .sun-icon {
-  display: none;
-}
-
-.light-theme .moon-icon {
+.dark-theme .sun-icon {
   display: block;
+}
+
+.dark-theme i.moon-icon {
+  display: none;
 }
 
 /* Header JavaScript Styles */
 
 .header.activated {
-  box-shadow: 0 1px .5rem var(--transparent-light-color);
+  box-shadow: 0 1px .5rem rgba(255, 255, 255, .05);
 }
 
 .menu.activated {
-  box-shadow: 1px 1px 1rem var(--transparent-light-color);
+  box-shadow: 1px 1px 1rem rgba(255, 255, 255, .05);
   opacity: 1;
   transform: scale(1);
 }
 
 .menu-toggle-icon.activated .open-menu-icon {
   display: none;
+}
+
+#theme-toggle-btn {
+  background-color: transparent;
+}
+
+#menu-toggle-icon {
+  background-color: transparent;
 }
 
 .menu-toggle-icon.activated .close-menu-icon {

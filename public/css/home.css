@@ -10,7 +10,7 @@ section.home {
   margin: 0 auto; 
   padding: 2rem;
   padding-top: 0;
-  border: 3px solid var(--secondary-background-color);
+  border: 3px solid var(--primary-color);
   border-radius: 3rem;
   user-select: none;
 }
