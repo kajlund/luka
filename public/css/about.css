@@ -20,7 +20,7 @@ article.info p {
 
 article.info img {
   max-height: 12rem;
-  border: 2px solid var(--text-color);
+  border: 2px solid var(--theme-color-text);
   border-radius: 1rem;
   margin-left: .8rem;
   margin-top: 1.2rem;

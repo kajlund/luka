@@ -28,7 +28,7 @@ label {
 .form-input {
   padding: 1rem 0.5rem;
   position: relative;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--theme-color-primary);
   border-radius: 1rem;
 }
 
@@ -44,7 +44,7 @@ label {
 }
 
 .form {
-  background-color: var(--highlight-color);
+  background-color: var(--theme-color-hl);
   border: none;
   border-radius: 1rem;
   padding: 2rem;
@@ -70,7 +70,7 @@ label {
 
 .input,
 select {
-  border: 1px solid var(--text-color);
+  border: 1px solid var(--theme-color-text);
   border-radius: 0.6rem;
   padding: 1rem;
   outline: 0;
@@ -78,7 +78,7 @@ select {
 }
 
 .input:focus {
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--theme-color-primary);
 }
 
 .input-error {
