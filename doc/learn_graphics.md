@@ -35,7 +35,6 @@
 - [Flat UI Colors](http://flatuicolors.com/)
 - [Color Hex](https://www.color-hex.com/)
 - [Meyerweb Colorblend](http://meyerweb.com/eric/tools/color-blend/)
-- [colr.org](http://www.colr.org/) - Play with colors and color schemes
 - [0to255](http://www.0to255.com/) - Find color variations
 - [colourcode](http://www.colourco.de/)
 - [Spectral](http://jxnblk.com/Spectral/)
