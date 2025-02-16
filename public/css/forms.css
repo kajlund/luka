@@ -44,7 +44,7 @@ label {
 }
 
 .form {
-  background-color: var(--theme-color-hl);
+  background-color: var(--theme-color-panel);
   border: none;
   border-radius: 1rem;
   padding: 2rem;
@@ -70,7 +70,7 @@ label {
 
 .input,
 select {
-  border: 1px solid var(--theme-color-text);
+  border: 1px solid var(--theme-color-hl);
   border-radius: 0.6rem;
   padding: 1rem;
   outline: 0;
@@ -82,13 +82,14 @@ select {
 }
 
 .input-error {
-  color: coral;
+  color: var(--color-error-md);
   font-size: var(--font-size-xs);
   margin-left: 0.4rem;
   margin-top: 0.2rem;
 }
 
 .input-label {
+  color: var(--theme-color-hl);
   font-size: var(--font-size-sm);
   margin-left: 0.4rem;
 }
@@ -96,7 +97,7 @@ select {
 select {
   background: transparent;
   box-shadow: none;
-  color: #666;
+  color: var(--theme-color-hl);
   width: 100%;
 }
 
@@ -107,7 +108,7 @@ select {
 
 .select-wrapper:after {
   content: "< >";
-  color: #666;
+  color: var(--theme-color-hl);
   font-size: 14px;
   top: 8px;
   right: 0;

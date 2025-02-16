@@ -10,7 +10,7 @@ section.commands {
   justify-content: space-between;
   margin-bottom: 2rem;
   padding: 2rem;
-  background-color: var(--theme-color-hl);
+  background-color: var(--theme-color-panel);
   border-color: var(--theme-color-primary);
   border-radius: 1rem;
 }
@@ -25,7 +25,7 @@ section.proverbs {
   display: flex;
   flex-direction: column;
   height: 25rem;
-  background-color: var(--theme-color-primary);
+  /* background-color: var(--theme-color-primary); */
   padding: 2rem;
   border: 2px solid var(--theme-color-primary);
   border-radius: 1rem;

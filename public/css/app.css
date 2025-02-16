@@ -12,31 +12,38 @@
   --font-size-xl: 3rem;
   --font-size-xxl: 4rem;
   
+  --color-success-dk: #75a319;
+  --color-success-alt: #669900;
   --color-success-md: #008000;
   --color-success-lt: #00B800;
   --color-warn-md: #ffa500;
   --color-warn-lt: #ffc71b;
+  --color-error-alt: #ff3366;
   --color-error-md: #ff2323;
   --color-error-lt: #ff5757;
 
-  --theme-color-primary: #f7c873;
+  /* --theme-color-primary: #f7c873; */
+  --theme-color-primary: #ffa500;
   --theme-color-secondary: #434343;
   --theme-color-text: #434343;
-  --theme-color-hl: #faebcd; 
-  --theme-color-bg: #f8f8f8;
+  --theme-color-hl: #fff; 
+  --theme-color-bg: #f1f1f1;
+  --theme-color-panel: #333;
+  --theme-color-label: #fff;
   --theme-color-btn-bg: #f8f8f8;
   --theme-color-btn-bg-lt: #fff;
-  --theme-color-btn-txt: #888;
-  --theme-color-btn-outline: #888;
+  --theme-color-btn-txt: #333;
+  --theme-color-btn-outline: #fff;
 }
 
 /* Theme color change */
 body.dark-theme {
   --theme-color-primary: #252830;
   --theme-color-secondary: #434343;
-  --theme-color-text: #afb6cd;
+  --theme-color-text: #f8f8f8;
   --theme-color-hl: #fff;
   --theme-color-bg: #131417;
+  --theme-color-panel: #434343;
   --theme-color-btn-bg: #252830;
   --theme-color-btn-bg-lt: #434343;
   --theme-color-btn-txt: #eee;
