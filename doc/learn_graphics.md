@@ -44,3 +44,7 @@
 - [ui colors](http://getuicolors.com/)
 
 - [Inkscape](https://inkscape.org) - A professional vector graphics editor
+
+## Tools
+
+- [Pixlr](https://pixlr.com/se/)

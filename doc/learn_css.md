@@ -30,8 +30,6 @@ The next step was using [floats](https://developer.mozilla.org/en-US/docs/Web/CS
 In 2017 Flexbox became a CSS module with the goal of laying out and distributing space between or around items an a container. For the first time there was a powerful way to do one dimensional layouts in CSS. See MDN for a [tutorial](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox) or to read up on the [basic concepts](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox).
 
 
-
-
 #### Layout Resources
 
 - [Learn Layout](https://learnlayout.com/)
@@ -39,7 +37,6 @@ In 2017 Flexbox became a CSS module with the goal of laying out and distributing
 - [Free Codecamp's CSS Flexbox Handbook](https://www.freecodecamp.org/news/the-css-flexbox-handbook/) with practical examples
 - [MDN - Realizing Common Layouts using Grids](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Realizing_common_layouts_using_grids)
 - [Grid By Example](https://gridbyexample.com/)
-
 
 ## Browser Default Styles
 

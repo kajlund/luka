@@ -1,30 +1,62 @@
-## General Internet Knowledge
 
-- [Hosting]()
-- [DNS]()
-- [HTTP]()
-- [Browsers]()
-- [Domain Names]()
+> A **web developer** is responsible for implementing website functionality as opposed to a **web designer** who is responsible for designing the look and feel of it.
+
+- The #1 resource for web development is [MDN](https://developer.mozilla.org/en-US/) - The Mozilla Developer Network
+- Frontend Masters [Free Bootcamp](https://frontendmasters.com/bootcamp/) 
+- Frontend Masters [Internet Fundamentals](https://www.internetfundamentals.com/watch/) videos
+* [How the Web works](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works)
+- [FreeCodeCamp](https://www.freecodecamp.org/learn/)
+- [LevelUp Tutorials](https://leveluptutorials.com/)
+- [WebDev Simplified YouTube Channel](https://www.youtube.com/c/WebDevSimplified/) is all about teaching web development skills and techniques in an efficient and practical manner.
+- [The Front End Developer Handbook 2024](https://frontendmasters.com/guides/front-end-handbook/2024/) lists the most popular libraries and frameworks in front end development today
+- [Can I Use?](http://caniuse.com/) provides up-to-date browser support tables for support of front-end web technologies on desktop and mobile web browsers
+- [What Web Can Do Today](https://whatwebcando.today/) - An overview of the device integration HTML5 APIs
+- [Quirksmode.org](http://www.quirksmode.org/) is the prime source for browser compatibility information on the Internet.
+- [Modernizr](https://modernizr.com/) tells you what HTML, CSS and JavaScript features the user’s browser has to offer.
+- [W3C Markup Validation Service](http://validator.w3.org/)
+
+
+
+### Hosting Services
+
+- [Hostinger](https://www.hostinger.com)
+- [Render.com](https://dashboard.render.com/)
+- [Vultr](https://www.vultr.com/)
+
 
 ## Tools
 
-### Text Editors
+### IDE's and Editors
 
-- [Visual Studio Code]()
-- [Sublime Text]()
-- [Atom]()
-- [Vim]()
-- Resources
+Check out [this fine article](https://websitesetup.org/best-ide-software/) on IDEs
+
+- [Visual Studio Code](https://code.visualstudio.com/). See also: 
+  - [Awesome VSCode](https://github.com/viatsko/awesome-vscode)
   - [VSCode Playlist](https://www.youtube.com/playlist?list=PLkwxH9e_vrAJshxiMo6gIavTr5kYsjPs7)
   - [Become a VSCode Superhero](https://vscodehero.com/)
+- [Sublime Text](http://www.sublimetext.com/) is a sophisticated text editor for code, markup and prose.
+- [Nuclide](http://nuclide.io/) - A unified developer experience for web and mobile development, built as a suite of packages on top of Atom to provide hackability and the support of an active community.
+- [Atom](https://atom-editor.cc/) (old)
+- [Vim](https://www.vim.org/)
+- [Phoenix Code](https://phcode.io/#/home)
+- [WebStorm](https://www.jetbrains.com/webstorm/) by JetBrains is a lightweight yet powerful IDE, perfectly equipped for complex client-side development and server-side development with Node.js
+
+#### Cloud IDE's and Editors
+
+- [AWS Cloud9](https://aws.amazon.com/cloud9/)
+- [CodePen](http://codepen.io/)
+- [CodeSandbox](https://codesandbox.io/) - An instant IDE and prototyping tool for rapid web development.
+- [JS Fiddle](http://jsfiddle.net/)
+- [JSON Editor Online](http://jsoneditoronline.org/)
+- [StackBlitz](https://stackblitz.com/) - Create, edit & deploy fullstack apps
+
 
 ### Browsers
 
-- [Chrome]()
-- [Edge]()
-- [Firefox]()
+- [Chrome](https://www.google.com/chrome/)
+- [Firefox](https://www.mozilla.org/en-US/firefox/)
 
-### Terminal
+### Terminal Emulators
 
 - [Powershell]()
 - [Git Bash]()
@@ -93,29 +125,19 @@
 
 ### Front-End Frameworks
 
-- [Svelte]()
-- [React]()
-- [Vue]()
-- [Angular]()
-- Resources
+- [List of frameworks](http://localhost:4000/resources?tags=framework,frontend)
+- Framework Resources
   - [React Playlist - codeSTACKr](https://www.youtube.com/watch?v=UGcALH8kPC0&list=PLkwxH9e_vrAK4TdffpxKY3QGyHCpxFcQ0)
   - [Vue - Program with Erik](https://www.youtube.com/channel/UCshZ3rdoCLjDYuTR_RBubzw)
   - [Vue - Faraday Academy](https://www.youtube.com/channel/UCxA99Yr6P_tZF9_BgtMGAWA)
   - [Angular Crash Course - Traversy Media](https://www.youtube.com/watch?v=Fdf5aTYRW0E)
   - [Svelte Crash Course - Traversy Media](https://www.youtube.com/watch?v=uK2RnIzrQ0M)
 
-#### State Management
-
-- [React Context API]()
-- Resources
-  - [React state Management Tutorial - Dev Ed](https://www.youtube.com/watch?v=35lXWvCuM8o)
-  - [Redux for Beginners - Dev Ed](https://www.youtube.com/watch?v=CVpUuw9XSjY)
-  - [Learn VueX in 15 mins - Program with Erik](https://www.youtube.com/watch?v=oxUyIzDbZts)
-
 #### Server-Side Rendering (SSR)
 
 - Nuxt.js for Vue
 - Next.js for React
+- [SvelteKit](https://kit.svelte.dev/) for Svelte
 
 #### Static Site Generators
 
@@ -123,14 +145,17 @@
 - Next.js for React
 - Nuxt.js for Vue
 - Gridsome for Vue
-- [Eleventy 11ty](https://www.11ty.dev/)
-- [SvelteKit](https://kit.svelte.dev/)
+- [11ty](https://www.11ty.dev/) - Eleventy, a simpler static site generator.
+- [HUGO](https://gohugo.io/) - A fast and modern static website engine
+- [Publican](https://publican.dev/) is a simple HTML-first static site generator for Node.js
+- [Vitepress](https://vitepress.dev/) - Vite & Vue-Powered Static Site Generator
+
 
 ### Tools
 
 #### Package Managers
 
-- npm
+- npm, pnpm
 - yarn
 
 #### Task Runners
@@ -140,14 +165,15 @@
 
 #### Linters/Formatters
 
-- Prettier
 - ESLint
+- Prettier
 
 #### Module Bundlers
 
-- Webpack
 - Parcel
 - Rollup
+- Vite
+- Webpack
 
 ### Other
 
