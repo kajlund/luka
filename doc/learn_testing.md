@@ -1,4 +1,10 @@
-- [Best Practices](https://github.com/testjavascript/nodejs-integration-tests-best-practices)
+- [Integration Test Best Practices](https://github.com/testjavascript/nodejs-integration-tests-best-practices)
+- [Wallaby](https://wallabyjs.com/) Accelerated Distraction-Free JavaScript Testing
+- [Playwright](https://playwright.dev/) enables reliable end-to-end testing for modern web apps.
+- [Cypress Docs](https://docs.cypress.io/guides/overview/why-cypress)
+- [NodeJS Integration Tests Best Practices](https://github.com/testjavascript/nodejs-integration-tests-best-practices)
+- [JavaScript & Node.js Testing Best Practices](https://github.com/goldbergyoni/javascript-testing-best-practices#readme)
+
 
 ## Test Runners
 
@@ -8,6 +14,7 @@
 - [Intern](https://theintern.github.io/) is a complete test system for JavaScript designed to help you write and run consistent, high-quality test cases for your JavaScript libraries and applications. It can be used to test any JavaScript code.
 - [Japa](https://japa.dev/docs) - A simple yet powerful testing framework for Node.js
 - [Jest](http://facebook.github.io/jest/) is used by Facebook to test all JavaScript code including React applications.
+  - [Robin's Post](https://www.robinwieruch.de/node-js-jest)
   - [Majestic](https://github.com/Raathigesh/majestic/) - Zero config GUI for Jest
   - [Mastering Jest](https://michalzalecki.com/ebooks/mastering-jest-tips-tricks-for-javascript-developers.html)
 - [Lab](https://github.com/hapijs/lab) is a simple test utility for node.
