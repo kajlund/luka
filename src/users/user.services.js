@@ -56,7 +56,7 @@ class UserService {
   async validate(data) {
     const error = {};
 
-    const email = data.email ? data.email.trim() : '';
+    const email = data.email?.trim() || '';
     if (!isEmail(email)) {
       error.email = 'Email must be a valid email address';
     } else {
@@ -64,7 +64,7 @@ class UserService {
       if (found) error.email = `Email: ${email} is already registered`;
     }
 
-    const alias = data.alias ? data.alias.trim() : '';
+    const alias = data.alias?.trim() || '';
     if (!isLength(alias, { min: 3, max: 20 })) error.alias = 'Alias must be 3 - 20 chars';
 
     const password = data.password;

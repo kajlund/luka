@@ -94,14 +94,14 @@ class PostService {
   async validate(data) {
     const error = {};
 
-    const title = data.title ? data.title.trim() : '';
+    const title = data.title?.trim() || '';
     if (!isLength(title, { min: 2, max: 100 })) error.name = 'Name must be 2 - 100 chars';
 
-    const image = data.image ? data.image.trim() : '';
+    const image = data.image?.trim() || '';
     // if (!isURL(image)) error.image = 'A valid image must be provided';
 
-    const description = data.description ? data.description.trim() : '';
-    const filename = data.filename ? data.filename.trim() : '';
+    const description = data.description?.trim() || '';
+    const filename = data.filename?.trim() || '';
     const author = data.author ? data.author.trim() : '';
     const featured = data.featured ? true : false;
 

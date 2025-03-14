@@ -113,15 +113,15 @@ class ResourceService {
   async validate(data) {
     const error = {};
 
-    const name = data.name ? data.name.trim() : '';
+    const name = data.name?.trim() || '';
     if (!isLength(name, { min: 2, max: 100 })) error.name = 'Name must be 2 - 100 chars';
 
-    const url = data.url ? data.url.trim() : '';
+    const url = data.url?.trim() || '';
     if (!isURL(url)) error.url = 'A valid URL must be provided';
 
-    const description = data.description ? data.description.trim() : '';
+    const description = data.description?.trim() || '';
 
-    const tags =  data.tags ? data.tags.split(' ') : [];
+    const tags =  data.tags?.split(' ') || [];
 
     const value = {
       name,

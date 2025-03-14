@@ -129,24 +129,24 @@ class ProverbService {
   async validate(data) {
     const error = {};
 
-    const title = data.title ? data.title.trim() : '';
+    const title = data.title?.trim() || '';
     if (!isLength(title, { min: 3, max: 100 })) error.title = 'Title must be 3 - 100 chars';
 
-    const content = data.content ? data.content.trim() : '';
+    const content = data?.content.trim() || '';
     if (!content) error.content = 'Content cannot be empty';
 
-    const author = data.author ? data.author.trim() : '';
+    const author = data.author?.trim() || '';
     if (!author) error.author = 'Author cannot be empty';
 
-    const description = data.description ? data.description.trim() : '';
+    const description = data.description?.trim() || '';
 
-    const category = data.category ? data.category.trim() : '';
+    const category = data.category?.trim() || '';
     if (!categories.includes(category)) error.category = 'Invalid category value';
 
-    const lang = data.lang ? data.lang.trim() : '';
+    const lang = data.lang?.trim() || '';
     if (!languages.includes(lang)) error.lang = 'Invalid language code';
 
-    const tags =  data.tags ? data.tags.split(' ') : [];
+    const tags =  data.tags?.split(' ') || [];
 
     const value = {
       title,
