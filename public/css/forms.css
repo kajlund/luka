@@ -28,7 +28,7 @@ label {
 .form-input {
   padding: 1rem 0.5rem;
   position: relative;
-  border: 1px solid var(--theme-color-primary);
+  border: 1px solid var(--color-accent1);
   border-radius: 1rem;
 }
 
@@ -70,7 +70,7 @@ label {
 
 .input,
 select {
-  border: 1px solid var(--theme-color-hl);
+  border: 1px solid var(--color-text);
   border-radius: 0.6rem;
   padding: 1rem;
   outline: 0;
@@ -78,7 +78,7 @@ select {
 }
 
 .input:focus {
-  border: 1px solid var(--theme-color-primary);
+  /* border: 1px solid var(--color-accent1); */
 }
 
 .input-error {
@@ -89,15 +89,14 @@ select {
 }
 
 .input-label {
-  color: var(--theme-color-hl);
+  color: var(--color-text);
   font-size: var(--font-size-sm);
   margin-left: 0.4rem;
 }
 
-select {
-  background: transparent;
+/* select {
   box-shadow: none;
-  color: var(--theme-color-hl);
+  color: var(--color-accent2);
   width: 100%;
 }
 
@@ -108,7 +107,7 @@ select {
 
 .select-wrapper:after {
   content: "< >";
-  color: var(--theme-color-hl);
+  color: var(--color-accent2);
   font-size: 14px;
   top: 8px;
   right: 0;
@@ -116,4 +115,4 @@ select {
   position: absolute;
   z-index: -1;
 }
-
+ */

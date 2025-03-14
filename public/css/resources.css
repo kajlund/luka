@@ -12,7 +12,7 @@ section.page-header {
   margin-bottom: 2rem;
   padding: 2rem;
   background-color: var(--theme-color-panel);
-  border-color: var(--theme-color-primary);
+  border-color: var(--color-accent1);
   border-radius: 1rem;
 }
 
@@ -28,7 +28,7 @@ section.resources {
   height: 20rem;
   /* width: 25rem; */
   padding: 0.5rem 1rem;
-  border: 2px solid var(--theme-color-primary);
+  border: 2px solid var(--color-accent1);
   border-radius: 1rem;
 }
 

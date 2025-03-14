@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--theme-color-primary);
+  background-color: var(--color-accent1);
   position: fixed;
   top: 0;
   left: 0;
@@ -18,7 +18,7 @@
   top: -0.6rem;
   font-family: var(--font-secondary);
   font-size: var(--font-size-xl);
-  color: var(--theme-color-hl);
+  color: var(--color-accent2);
 }
 
 .menu {
@@ -27,7 +27,7 @@
   right: 1.5rem;
   width: 23rem;
   padding: 1.5rem;
-  background-color:var(--theme-color-primary);
+  background-color:var(--color-accent1);
   opacity: 0;
   transform: scale(0);
   transition: opacity .25s ease-in;
@@ -50,8 +50,12 @@ ul.list {
 }
 
 
+.list-link {
+  color: var(--color-text);
+}
+
 .list-link.current {
-  color: var(--theme-color-hl);
+  color: var(--color-accent2);
 }
 
 .close-menu-icon {
@@ -65,7 +69,7 @@ ul.list {
 .list-link:hover,
 .btn-icon:hover,
 .btn-icon:hover span {
-  color: var(--theme-color-hl);
+  color: var(--color-accent2);
 }
 
 i.sun-icon {
@@ -98,7 +102,14 @@ i.sun-icon {
 
 #theme-toggle-btn {
   background-color: transparent;
+  font: inherit;
+  color: var(--color-text);
+  border: none;
 }
+
+#theme-toggle-btn:hover {
+  color: var(--color-accent2);
+}  
 
 #menu-toggle-icon {
   background-color: transparent;

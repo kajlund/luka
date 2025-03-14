@@ -12,7 +12,7 @@ section.page-header {
   margin-bottom: 2rem;
   padding: 2rem;
   background-color: var(--theme-color-panel);
-  border-color: var(--theme-color-primary);
+  border-color: var(--color-accent1);
   border-radius: 1rem;
 }
 
@@ -28,7 +28,7 @@ section.posts {
   height: 20rem;
   /* width: 25rem; */
   padding: 2rem;
-  border: 2px solid var(--theme-color-primary);
+  border: 2px solid var(--color-accent1);
   border-radius: 1rem;
 }
 
@@ -60,13 +60,6 @@ h2.title {
   justify-content: space-between;
   flex-grow: 0;
   width: 100%;
-}
-
-.filters {
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  align-items: center;
 }
 
 .commands {

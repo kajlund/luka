@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 
 :root {
+  scroll-behavior: smooth;
+
   --font-primary: 'Poppins', sans-serif;
   --font-secondary: 'Parisienne', cursive;
 
@@ -22,32 +24,32 @@
   --color-error-md: #ff2323;
   --color-error-lt: #ff5757;
 
-  /* --theme-color-primary: #f7c873; */
-  --theme-color-primary: #ffa500;
-  --theme-color-secondary: #434343;
-  --theme-color-text: #434343;
-  --theme-color-hl: #fff; 
-  --theme-color-bg: #f1f1f1;
-  --theme-color-panel: #333;
-  --theme-color-label: #fff;
-  --theme-color-btn-bg: #f8f8f8;
-  --theme-color-btn-bg-lt: #fff;
-  --theme-color-btn-txt: #333;
-  --theme-color-btn-outline: #fff;
+  --color-text:	hsl(0, 0%, 26%);
+  --color-bg:	hsl(0, 0%, 95%); 
+  --color-accent1: hsl(40, 89%, 65%);
+  /* --theme-color-accent1: hsl(39, 89%, 71%); */
+  --color-accent2: hsl(0, 0%, 100%);
+  --color-accent3: hsl(0, 0%, 26%);
+
+  --text: hsl(255, 36%,17%);
+  --bkg1: hsl(0, 0%, 100%);
+  --bkg2: hsl(26, 37%, 96%);
+  --shadow: 20px 20px 50px hsl(255, 36%, 17%, .35), -30px -30px 50px hsl(26, 37%, 96%, .15);
 }
 
 /* Theme color change */
 body.dark-theme {
-  --theme-color-primary: #252830;
-  --theme-color-secondary: #434343;
-  --theme-color-text: #f8f8f8;
-  --theme-color-hl: #fff;
-  --theme-color-bg: #131417;
-  --theme-color-panel: #434343;
-  --theme-color-btn-bg: #252830;
-  --theme-color-btn-bg-lt: #434343;
-  --theme-color-btn-txt: #eee;
-  --theme-color-btn-outline: #888;
+  --color-text:	hsl(0, 0%, 80%);
+  --color-bg: hsl(225, 10%, 8%);
+  --color-accent1: hsl(0, 0%, 26%);
+  --color-accent2: hsl(0, 0%, 100%);
+  /* --color-accent2: hsl(0, 0%, 93%); */
+  --color-accent3: hsl(0, 0%, 97%); 
+
+  --bkg1: hsl(218, 15.4%, 10.2%);
+  --bkg2: hsl(218, 14.7%, 18.7%);
+  --shadow: 20px 20px 50px hsl(255, 36%, 17%, .35),
+  -30px -30px 50px hsl(26, 37%, 26%, .15);
 }
 
 /* Base styles */
@@ -57,6 +59,7 @@ body.dark-theme {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border: 0;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -69,8 +72,8 @@ html {
 body {
   font-family: var(--font-primary);
   font-size: var(--font-size-md);
-  background-color: var(--theme-color-bg);
-  color: var(--theme-color-text);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   letter-spacing: 1px;
   transition: background-color .25s, color .25s;
 }
@@ -101,11 +104,16 @@ p {
   margin: 1rem 0;
 }
 
-input,
-button {
-  font: inherit;
+input, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
   color: inherit;
-  border: none;
+  background: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  border-radius: none;
+  -webkit-border-radius: 0;
 }
 
 i { font-size: var(--font-size-lg); }
@@ -153,6 +161,8 @@ img {
 * Buttons
 ****************/
 
+/*
+
 .btn {
   display: inline-block;
   background-color: var(--theme-color-btn-bg);
@@ -167,7 +177,7 @@ img {
   letter-spacing: 0.15rem;
   cursor: pointer;
   transition: .25s all linear;
-  /* transform: scale(.9, .9); */
+  transform: scale(.9, .9);
 }
 
 .btn:focus,
@@ -185,7 +195,7 @@ img {
 }
 
 .btn-small {
-  padding: 0.3rem 1rem;
+  padding: 0.3rem .9rem;
   letter-spacing: 1px;
 }
 
@@ -225,13 +235,44 @@ img {
 
 .btn-outline {
   background-color: transparent;
-  border: 2px solid var(--theme-color-btn-outline);
-  color: var(--theme-color-btn-outline);
+  border: 2px solid var(--color-accent1);
+  color: var(--color-accent1);
 }
 
 .btn-outline:focus,
 .btn-outline:hover {
   background-color: transparent;
-  border: 2px solid var(--theme-color-btn-outline);
-  color: var(--theme-color-btn-outline);
+  border: 2px solid var(--color-accent1);
+  color: var(--color-accent1);
+} 
+
+*/
+
+.btn {
+  padding: .8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  max-width: max-content;
+  border: 2px solid var(--color-text);
+  border-radius: 2rem;
+  font-size: var(--font-size-md);
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  cursor: pointer;
+  transition: .25s all linear;
+  box-shadow: none;
+  /* transition: all 200ms cubic-bezier(1, -0.03, 0, 1.21); */
+}
+
+.btn:is(:hover, :focus){
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px var(--color-text);
+}
+
+.btn-small {
+  padding: 0.3rem .9rem;
+  font-size: var(--font-size-sm);
+  letter-spacing: 1px;
+  border-radius: 1.5rem;
 }

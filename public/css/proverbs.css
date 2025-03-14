@@ -11,7 +11,7 @@ section.commands {
   margin-bottom: 2rem;
   padding: 2rem;
   background-color: var(--theme-color-panel);
-  border-color: var(--theme-color-primary);
+  border-color: var(--color-accent1);
   border-radius: 1rem;
 }
 
@@ -25,9 +25,9 @@ section.proverbs {
   display: flex;
   flex-direction: column;
   height: 25rem;
-  /* background-color: var(--theme-color-primary); */
+  /* background-color: var(--color-accent1); */
   padding: 2rem;
-  border: 2px solid var(--theme-color-primary);
+  border: 2px solid var(--color-accent1);
   border-radius: 1rem;
 }
 
@@ -77,37 +77,3 @@ h2.title {
 .cite {
   font-size: 1.2rem;
 }
-
-.filter {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.filter-group {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  margin-right: 1rem;
-}
-
-.filter-group label {
-  margin-right: 0.5rem;
-}
-
-.filter select {
-  padding: .5rem 1rem;
-  font-size: 1.2rem;
-  border-radius: .5rem;
-}
-
-.filter label {
-  font-size: 1.2rem;
-}
-
-.filter input {
-  font-size: 1.2rem;
-  padding: 0.3rem 0.6rem;
-  border-radius: 0.4rem;
-  border: 1px solid var(--theme-color-text);
-}
-
