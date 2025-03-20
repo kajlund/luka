@@ -1,6 +1,7 @@
 - [The Modern Javascript Tutorial](https://javascript.info/)
 - [Modern JavaScript Cheatsheet](https://github.com/mbeaudru/modern-js-cheatsheet)
 - [State of JavaScript 2024](https://2024.stateofjs.com/en-US/), [State of JavaScript 2023](https://2023.stateofjs.com/en-US)
+- [JavaScript Tutorial Website](https://www.javascripttutorial.net/) 
 - [FreeCodeCamp](https://www.freecodecamp.org/learn/)
 	- [Data Structures in JavaScript – With Code Examples](https://www.freecodecamp.org/news/data-structures-in-javascript-with-examples/)
 - [JavaScript Design Patterns – Explained with Examples](https://www.freecodecamp.org/news/javascript-design-patterns-explained/#singleton-pattern)

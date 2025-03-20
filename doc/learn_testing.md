@@ -1,3 +1,4 @@
+- [Regression testing](https://en.wikipedia.org/wiki/Regression_testing)
 - [Integration Test Best Practices](https://github.com/testjavascript/nodejs-integration-tests-best-practices)
 - [Wallaby](https://wallabyjs.com/) Accelerated Distraction-Free JavaScript Testing
 - [Playwright](https://playwright.dev/) enables reliable end-to-end testing for modern web apps.

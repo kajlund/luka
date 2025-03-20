@@ -37,6 +37,7 @@ In 2017 Flexbox became a CSS module with the goal of laying out and distributing
 - [Free Codecamp's CSS Flexbox Handbook](https://www.freecodecamp.org/news/the-css-flexbox-handbook/) with practical examples
 - [MDN - Realizing Common Layouts using Grids](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Realizing_common_layouts_using_grids)
 - [Grid By Example](https://gridbyexample.com/)
+- [CSS Grid Generator Tool](https://cssgrid-generator.netlify.app/)
 
 ## Browser Default Styles
 
@@ -94,3 +95,10 @@ To overcome some of the limitations of CSS a number of tools and extensions have
 
 - [CSS Secrets](https://www.amazon.com/gp/product/1449372635): Better Solutions to Everyday Web Design Problems by Lea Verou
 - [CSS in 44 minutes](https://jgthms.com/css-in-44-minutes-ebook)
+
+### Misc
+
+- [Learn and Practice Modern CSS](https://moderncss.dev/)
+  - [CSS Button Styling Guide
+](https://moderncss.dev/css-button-styling-guide/)
+

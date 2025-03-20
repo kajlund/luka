@@ -5,6 +5,7 @@
 - [A Practical Approach to API Design](https://leanpub.com/restful-api-design)
 - [Swagger Editor](https://editor.swagger.io/)
 - [{JSON} Placeholder](https://jsonplaceholder.typicode.com/) - Free fake API for testing and prototyping
+- [JSON Schema](https://json-schema.org/)
 - [Design and Build Great Web APIs Robust, Reliable, and Resilient - Pragmatic Programmers](https://www.pragprog.com/titles/maapis/design-and-build-great-web-apis/)
 - [API Katalogen](http://apikatalogen.se/)
 - [HTTP Status Codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
@@ -17,6 +18,7 @@
 
 - [Country Data](http://country.io/)
 - [Dropbox Developers](https://www.dropbox.com/developers)
+- [Free Public APIs](https://www.freepublicapis.com/) a collection of free public APIs for students and developers.
 - [Github API](https://developer.github.com/v3/)
 - [Google API Explorer](https://developers.google.com/apis-explorer/#p/)
 - [Google Maps](https://developers.google.com/maps/)

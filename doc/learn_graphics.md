@@ -33,15 +33,14 @@
 - [Hex to Hsl](https://htmlcolors.com/hex-to-hsl)
 - [HTML Color Codes](https://htmlcolorcodes.com/)
 - [Flat UI Colors](http://flatuicolors.com/)
+- [Darken Color](https://mdigi.tools/darken-color/) and [Lighten Color](https://mdigi.tools/lighten-color/)
 - [Color Hex](https://www.color-hex.com/)
 - [Meyerweb Colorblend](http://meyerweb.com/eric/tools/color-blend/)
 - [0to255](http://www.0to255.com/) - Find color variations
-- [colourcode](http://www.colourco.de/)
-- [Spectral](http://jxnblk.com/Spectral/)
+- [ColourCode](https://www.toptal.com/designers/colourcode) - Color Palette Generator
 - [Adobe Color CC](https://color.adobe.com)
-- [Colorblendy](http://colorblendy.com/)
-- [webcolourdata](http://webcolourdata.com/) - Provide URL to get colors
-- [ui colors](http://getuicolors.com/)
+- [Colorblendy](https://colorblendy.com/)
+- [UI Colors](https://uicolors.app/generate/21aa89)
 
 - [Inkscape](https://inkscape.org) - A professional vector graphics editor
 
