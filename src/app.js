@@ -3,6 +3,7 @@ import path from 'node:path';
 import express from 'express';
 import { Liquid } from 'liquidjs';
 import flash from 'express-flash';
+import { rateLimit } from 'express-rate-limit';
 import sessions from 'express-session';
 
 import Router from './router.js';
@@ -24,6 +25,16 @@ class App {
     this.app.set('trust proxy', 1) // trust first proxy
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
+
+    const limiter = rateLimit({
+      windowMs: 5 * 60 * 1000, // 5 minutes
+      limit: 100, // Limit each IP to 100 requests per `window` (here, per 5 minutes).
+      standardHeaders: 'draft-8', // draft-6: `RateLimit-*` headers; draft-7 & draft-8: combined `RateLimit` header
+      legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+      // store: ... , // Redis, Memcached, etc. See below.
+    });
+
+    this.app.use(limiter); // Apply the rate limiting middleware to all requests
 
     // Session handling
     this.app.use(sessions({
