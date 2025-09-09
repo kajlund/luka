@@ -72,6 +72,6 @@ git reset head@{1}      # Undo last reset
 ## Remotes
 
 ```bash
-git push -u origin master #Push master branch to origin and store params
+git push -u origin main #Push master branch to origin and store params
 git push
 ```
