@@ -7,11 +7,13 @@
 - [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)
 - [How to code in Node.js](https://assets.digitalocean.com/books/how-to-code-in-nodejs.pdf)
 - [The Nine Node Pillars](https://www.platformatichq.com/node-principles#radix-:RmjaH1:) - 9 Principles for Doing Node.js Right in Enterprise Environments
+- [Node Security](https://node-security.com/)
 - [How I write backends](https://github.com/fpereiro/backendlore)
 - [Node.js Reference Architecture](https://github.com/nodeshift/nodejs-reference-architecture#nodejs-reference-architecture)
 - [Shell scripting with Node.js](https://exploringjs.com/nodejs-shell-scripting/toc.html)
 - [Bun.js](https://bun.sh/)
 - [Introducing npx: an npm package runner](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)
+- [Advancen Node.js Patterns Repository](https://github.com/v-checha/node-js-advanced-patterns/blob/main/examples/RetryMechanism.js)
 
 - [Node cryptography](https://blog.yonatan.dev/cryptography-with-node-crypto-module/#key-derivation-functions-%F0%9F%94%91)
 - Look at Vest for validation https://vestjs.dev/docs/writing_your_suite/vests_suite
@@ -60,6 +62,9 @@
 
 See list on this [website](https://kajlund.com/resources?tags=templating)
 
+## Testing
+
+- [Node.js Testing Best Practices](https://github.com/goldbergyoni/nodejs-testing-best-practices#readme)
 
 ## Misc libraries
 - [tasuku](https://github.com/privatenumber/tasuku) - The minimal task runner for Node.js

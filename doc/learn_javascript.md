@@ -13,15 +13,21 @@
 
 The definitive source of the best JavaScript libraries, frameworks, and plugins at [JavaScripting.com](https://www.javascripting.com/).
 
-### Books
+## New Language Constructs
+
+- [Nullish coalescing assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment)
+- [Nullish coalescing operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)
+- [Optional Chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+
+## Books
 
 - [Eloquent JavaScript](https://eloquentjavascript.net/)
-- [Exploring JavaScript](https://exploringjs.com/js/index.html) by Dr. Alex
+- [Exploring JavaScript](https://exploringjs.com/js/) by Dr. Alex
 - [Deep JavaScript: Theory and techniques](https://exploringjs.com/deep-js/index.html)
 - [A Common-Sense Guide to Data Structures and Algorithms in JavaScript, Volume 1](https://pragprog.com/titles/jwjavascript/a-common-sense-guide-to-data-structures-and-algorithms-in-javascript-volume-1/) Pragmatic Programmers
 - [Tackling TypeScript:  Upgrading from JavaScript](https://exploringjs.com/tackling-ts/index.html) by Dr. Alex
 
-### Tools
+## Tools
 
 - [ESBuild](https://esbuild.github.io/) - An extremely fast JavaScript bundler
 - [ESLint](https://eslint.org/) - The pluggable linting utility for JavaScript and JSX

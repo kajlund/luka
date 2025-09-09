@@ -68,16 +68,17 @@ Check out [this fine article](https://websitesetup.org/best-ide-software/) on ID
 
 ### Design Tools
 
-- [Figma]()
-- [Adobe XD]()
-- [Sketch]()
-- [Photoshop]()
+- [Figma](https://www.figma.com/)
+- [Adobe XD](https://www.adobe.com)
+- [Sketch](https://www.sketch.com/)
+- [Photoshop](https://www.adobe.com)
 - Resources
   - [Design Course YouTube Channel](https://www.youtube.com/channel/UCVyRiMvfUNMA1UPlDPzG5Ow)
   - [Adrian Twarog YouTube Channel](https://www.youtube.com/channel/UCvM5YYWwfLwpcQgbRr68JLQ)
 
 ## HTML
 
+- [State of HTML 2024](https://2024.stateofhtml.com/en-US/)
 - Best Practices
 - Semantic HTML
 - Forms & Validation
