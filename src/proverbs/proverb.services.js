@@ -101,11 +101,12 @@ class ProverbService {
   }
 
   async fetchRandomQuote(qry = { category: 'IT' }) {
+    let proverb = null;
     try {
       const cnt = await Proverb.countDocuments(qry);
       const rnd = Math.floor(Math.random() * cnt);
       const doc = await Proverb.findOne(qry).skip(rnd);
-      const proverb = this.#mapToEntity(doc.toJSON());
+      if (doc) proverb = this.#mapToEntity(doc.toJSON());
       log.debug(proverb, `Fetched random quote (${rnd}/${cnt}) filtering on category: ${qry.category}`);
       return proverb;
     } catch (err) {
