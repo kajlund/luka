@@ -27,6 +27,30 @@ section.post > p {
   margin-bottom: 1.5rem;
 }
 
+section.post > blockquote {
+  border-left: 0.3rem solid var(--color-accent1);
+  padding-left: 0.5rem;
+}
+
+section.post > table {
+  border-collapse: collapse;
+  border: 1px solid var(--color-accent1);
+}
+
+section.post > table thead {
+  border-bottom: 1px solid var(--color-accent1);
+}
+
+section.post th {
+  text-align: left;
+}
+
+section.post th, td {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--color-accent1);
+  border-left: 1px solid var(--color-accent1);
+}
+
 section.post > ul,
 section.post > ol {
   margin: 1rem 0 1rem 2rem;
